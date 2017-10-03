@@ -1,0 +1,104 @@
+@media screen and (max-width: 768px) {
+
+/*=====================1.0 General===========================*/
+
+/*=====================2.0 Header===========================*/
+
+
+	.showing-menu{
+		overflow: hidden !important;
+	}
+	.menu-item-button{
+		display: none;
+	}
+
+	.burger-menu{
+		display: block;
+	}
+
+	.main-menu{
+		display: block;
+	}
+
+	.user-menu{
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+
+	.user-menu li{
+		padding: 0 29px 0 24px;	
+	}
+
+	.user-menu.user-menu-hide{
+		right: -100%;
+	}
+
+/*=====================3.0 Body===========================*/
+
+	.search-main-wrapper{
+		height:68px;
+	}
+
+	.search-main-right, 
+	.search-main-left{
+		height:50%;
+	}
+
+	.search-main-left-input{
+		border-bottom-left-radius: 0 !important;
+		border-bottom: none !important;
+	}
+
+	.search-main-right-input{
+		border-bottom-left-radius: 4px !important;
+		border-right:none !important;
+	}
+
+	.search-main-button{
+		height:100%;
+		border-left:1px solid #ccc;;
+		position:absolute !important;
+		top:0;
+		right:11px;
+	}
+
+	.search-expand{
+		top: 68px;
+	}
+
+/*=====================4.0 footer===========================*/
+
+/*=====================5.0 Responsive===========================*/
+
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+
+/*=====================1.0 General===========================*/
+
+/*=====================2.0 Header===========================*/
+
+/*=====================3.0 Body===========================*/
+	
+	.view-switcher{
+		display: block;
+	}
+
+	.map-wrapper{
+		display: none;
+	}
+
+	.mobile-show{
+		display:block;
+	}
+
+/*=====================4.0 footer===========================*/
+
+/*=====================5.0 Responsive===========================*/
+
+}
+
