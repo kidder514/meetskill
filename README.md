@@ -1,8 +1,12 @@
 # README #
 
+### Recent task break down ###
+
+
 ### How do I get set up? ###
 1. clone the repo into local
 2. npm install
+3. npm start
 
 ### main components ###
 1. server and domain setup

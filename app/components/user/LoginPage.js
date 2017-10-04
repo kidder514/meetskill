@@ -5,8 +5,6 @@ import TextField from '../../uicomponent/form/TextField';
 import ReCAPTCHA from "react-google-recaptcha";
 import MD5 from "../../helpers/MD5";
 import config from "../../config"
-import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
 
 class LoginPage extends Component {
 
@@ -190,20 +188,6 @@ class LoginPage extends Component {
 								sign up a new account
 							</button>
 		            	</form>
-						<GoogleLogin
-						    clientId={config.googleLoginKey}
-						    buttonText="Login with google"
-						    onSuccess={this.gLoginSuccess}
-						    onFailure={this.gLoginFail}
-						/>
-
-					  	<FacebookLogin
-						    appId="1330278720421075"
-						    autoLoad={true}
-						    fields="name,email,picture"
-						    onClick={this.componentClicked}
-						    callback={this.responseFb} />
-						<br />
 						<button className="btn btn-default" onClick={this.gSignout}>g Signout</button>
 						<button className="btn btn-default" onClick={this.fbSignout}>fb Signout</button>
 		            </div>
