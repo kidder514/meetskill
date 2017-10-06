@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import LoadingSpinner from "../helpers/uicomponent/LoadingSpinner"
 
 class OutterWrapper extends Component{
 
@@ -6,9 +7,10 @@ class OutterWrapper extends Component{
 	    return (
 	    	<div className="outter-wrapper clearfix">
 				{this.props.children}
+				<LoadingSpinner />
+				
 				{/*
 					<ErrorPopup />
-					<LoadingSpinner />
 				*/}
 
 	    	</div>
