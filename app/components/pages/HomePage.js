@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { AccessAlarm, ThreeDRotation } from 'material-ui-icons';
 
 class HomePage extends Component{
 	constructor(props){
@@ -7,7 +8,10 @@ class HomePage extends Component{
 
   	render(){
   		return (
-  			<div>This is home page</div>
+  			<div>
+  				This is home page
+  				<i className="material-icons">face</i>
+  			</div>
   		);
   	}
   		
