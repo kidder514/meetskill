@@ -61,6 +61,11 @@ button{
 	display: none !important;
 }
 
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+}
 /*=====================2.0 General===========================*/
 
 .outter-wrapper{

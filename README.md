@@ -2,6 +2,10 @@
 
 ### Recent task break down ###
 2. set up menu
+2.1 popover uicomponent
+2.1.1 search component
+2.2 Menu, only change the right side of menu when logged in
+2.3 Mobile Menu
 3. set up auth first
 
 ### How do I get set up? ###

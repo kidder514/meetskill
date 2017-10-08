@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './app/reducers';
 import routes from "./app/routes";
+import 'bootstrap/dist/css/bootstrap.css';
 
 require("./app/asset/style.css");
 require("./app/asset/responsive.css");
