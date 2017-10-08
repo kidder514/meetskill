@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
-import HomeFoodPage from "../components/HomeFoodPage"
-import { dishListCall } from "../action/dishAction"
-import { updateSearchOptionsCall } from "../action/searchAction"
 
-const mapStateToProps = (state) => {
-	return {
-		userState: state.userState,
-		dishListData: state.homeFoodDish
-	}
+class MenuSection extends Component {
+
+  	render(){
+	    return (
+	        <div className="wrapper">
+	        	<button>Sign up</button> <br />
+	        	<button onClick={ () => this.props.showDialog("login")}>Log in</button> <br />
+	        	<button onClick={ () => this.props.ShowErrorDialog("we found a error.")}>error</button>
+	        </div>
+	    )
+  	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateDish: (query) => {dispatch(dishListCall(query))},
-        updateSearchOptions: (query) => {dispatch(updateSearchOptionsCall(query))}
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeFoodPage);
+export default MenuSection;

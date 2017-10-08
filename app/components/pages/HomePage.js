@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AccessAlarm, ThreeDRotation } from 'material-ui-icons';
+import LoadingSpinner from '../../helpers/uicomponent/LoadingSpinner'
 
 class HomePage extends Component{
 	constructor(props){
@@ -10,7 +10,9 @@ class HomePage extends Component{
   		return (
   			<div>
   				This is home page
-  				<i className="material-icons">face</i>
+  				<div>
+  					<LoadingSpinner />
+  				</div>
   			</div>
   		);
   	}

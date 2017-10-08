@@ -4,7 +4,8 @@ class LoadingSpinner extends Component{
 
     render(){
 	    return (
-	    	<div className="">
+	    	<div className="loading-spinner">
+  				<i className="material-icons spinner-icon">refresh</i>
 	    	</div>
 	    )
   	}

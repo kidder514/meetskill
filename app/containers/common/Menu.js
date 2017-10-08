@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import HomeFoodPage from "../components/HomeFoodPage"
-import { dishListCall } from "../action/dishAction"
-import { updateSearchOptionsCall } from "../action/searchAction"
+import MenuSection from "../../components/common/MenuSection"
+import { showDialog, ShowErrorDialog } from "../../actions/uiActions"
 
 const mapStateToProps = (state) => {
 	return {
 		userState: state.userState,
-		dishListData: state.homeFoodDish
+		ui: state.ui
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateDish: (query) => {dispatch(dishListCall(query))},
-        updateSearchOptions: (query) => {dispatch(updateSearchOptionsCall(query))}
+        showDialog: (dialogType) => {dispatch(showDialog(dialogType))},
+        ShowErrorDialog: (errorMessage) => {dispatch(ShowErrorDialog(errorMessage))}
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeFoodPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuSection);

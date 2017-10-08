@@ -1,7 +1,6 @@
 # README #
 
 ### Recent task break down ###
-1. set up the page, set up all the common component like loading spinner, popup window.
 2. set up menu
 3. set up auth first
 

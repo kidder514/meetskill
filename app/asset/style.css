@@ -1,5 +1,11 @@
 /*=====================1.0 CSS Reset===========================*/
 
+body{
+	font-family: Arial,Helvetica,sans-serif;
+	position:relative;
+	font-weight: 300;
+	font-size: 16px;
+}
 /*remove the blue border of default chrome style*/
 :focus{
 	outline:0 !important;
@@ -9,7 +15,6 @@ p { margin: 0 !important; }
 
 a {
 	color: #484848 !important;
-	font-size: 14px;
 }
 
 a:hover,
@@ -21,9 +26,6 @@ h1{
 	text-transform: capitalize;
 }
 
-h1{ font-size: 20px !important; }
-h2{ font-size: 18px !important; }
-h3{ font-size: 16px !important; }
 
 input, select, button{
     -webkit-box-shadow: none !important;
@@ -39,68 +41,67 @@ button{
     color: #fff !important;
 }
 
-.icon-button{
-	display: block;
-	width:100%;
-    margin-bottom: 0;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    white-space: nowrap;
-    font-size: 14px;
-    line-height: 1.42857143;
-	user-select: none;
-	border:none;
-	background-color:unset;
+.pull-right{
+	float: right;
+}
+
+.pull-left{
+	float: left;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.hidden {
+	display: none !important;
 }
 
 /*=====================2.0 General===========================*/
-body{
-	font-family: Arial,Helvetica,sans-serif;
-	position:relative;
-	font-weight: 300;
-}
 
 .outter-wrapper{
-	padding-top: 70px;
-    min-height: 100vh;
 	overflow: hidden;
 }
 
 .wrapper{
-	padding-top:30px;
+	padding-top: 2em;
 }
 
-.container{
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-    max-width: 1080px !important;
+.dialog-box-Wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(44, 44, 44, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.centerbox-wrapper.spinner{
-	width:auto;
-}
-
-.centerbox.spinner{
-	border-radius: 20px;
-	color:#F25D30;
-	padding:0;
-	height:40px;
-    -webkit-animation: spin 1.5s infinite linear;
-}
-
-.centerbox.dialog{
+.dialog-box{
+	width: 380px;
+	max-height: 80vh; 
 	background-color: #fff;
-	border:1px solid #eee;
+	border-radius: 6px;
+	padding: 1em;
+	-moz-box-shadow: -1px 1px 5px #2e2e2e;
+	-webkit-box-shadow: -1px 1px 5px #2e2e2e;
+	box-shadow: -1px 1px 5px #2e2e2e;
 }
 
-.material-icons.spinner{
-    font-size:40px;
+.loading-spinner {
+	text-align: center;
+	padding: 2em;
+}
+
+.loading-spinner .spinner-icon{
+	font-size: 4em;
+    -webkit-animation: spin 1.5s infinite linear;
 }
 
 @-webkit-keyframes spin {
@@ -122,6 +123,7 @@ body{
 /* 4.6 Dashboard */
 /* 4.7 instructor Dashboard */
 /* 4.8 payment */
+
 
 /*=====================5.0 footer===========================*/
 
