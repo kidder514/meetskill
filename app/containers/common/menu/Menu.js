@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import MenuSection from "../../components/common/MenuSection"
-import { showDialog, ShowErrorDialog } from "../../actions/uiActions"
+import MenuSection from "../../../components/common/menu/MenuSection"
+import { showDialog, ShowErrorDialog } from "../../../actions/uiActions"
 
 const mapStateToProps = (state) => {
 	return {

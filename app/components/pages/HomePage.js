@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LoadingSpinner from '../../helpers/uicomponent/LoadingSpinner'
+import { Button } from 'reactstrap';
 
 class HomePage extends Component{
 	constructor(props){
@@ -9,9 +10,12 @@ class HomePage extends Component{
   	render(){
   		return (
   			<div>
-  				This is home page
   				<div>
   					<LoadingSpinner />
+		        <Button>
+		        	category
+		        </Button>
+
   				</div>
   			</div>
   		);

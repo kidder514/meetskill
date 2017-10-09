@@ -14,8 +14,13 @@ require("./app/asset/style.css");
 require("./app/asset/responsive.css");
 
 const logger = createLogger();
-const enhancers = compose( window.devToolsExtension ? window.devToolsExtension() : f => f );
-const store = createStore(rootReducer, applyMiddleware(thunk, logger), enhancers);
+const store = createStore(
+	rootReducer,
+	compose(
+		applyMiddleware(thunk, logger),
+		window.devToolsExtension ? window.devToolsExtension() : f => f
+	 	)
+	);
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

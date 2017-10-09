@@ -14,13 +14,13 @@ var initialUserState = {
     settings:{},
     order:{},
     currentPage:"",
-    isLoggedIn: false,
+    isLoggedIn: true,
     hasAddress: false,
     rememberLogin: false
 }
 
 
-function userState(state = [], action) {
+function userState(state = initialUserState, action) {
   	switch (action.type){
 	    case "LOGIN":
 	    		var user = {
