@@ -12,7 +12,7 @@ export const hideDialog = () => {
     }
 }
 
-export const ShowErrorDialog = (errorMessage) => {
+export const showErrorDialog = (errorMessage) => {
     return {
     	type: "SHOW_ERROR",
     	dialogType: "error",

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import { loadDataCall } from "../../../actions/dataActions"
-import SearchSection from "../../../components/common/menu/SearchSection"
+import SearchFieldSection from "../../../components/common/menu/SearchFieldSection"
 
 const mapStateToProps = (state) => {
 	return {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchSection);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchFieldSection);

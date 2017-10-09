@@ -1,5 +1,5 @@
 const config = {
-	logoUrl:"http://www.venmond.com/demo/vendroid/img/avatar/big.jpg",
+	logoUrl:"http://downloadicons.net/sites/default/files/round-icon-68041.png",
 	APIserver:"http://www.mocky.io/v2/596714a3110000cd0db6c077",
 	PreussianBlue:"#0B3C5D",
 	SkyBlue:"#328CC1",

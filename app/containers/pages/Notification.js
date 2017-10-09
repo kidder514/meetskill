@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import InstructorDashboardPage from "../../components/pages/InstructorDashboardPage"
+import NotificationPage from "../../components/pages/NotificationPage"
 
 const mapStateToProps = (state) => {
 	return {
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(InstructorDashboardPage);
+export default connect(mapStateToProps)(NotificationPage);

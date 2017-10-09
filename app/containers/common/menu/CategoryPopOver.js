@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import CategoryPopOverSection from "../../../components/common/menu/CategoryPopOverSection"
-import { loadCategoriesCall } from "../../../actions/dataActions";
 
 const mapStateToProps = (state) => {
 	return {
@@ -9,10 +8,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadCategories: (query) => {dispatch(loadCategoriesCall(query))},
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryPopOverSection);
+export default connect(mapStateToProps)(CategoryPopOverSection);

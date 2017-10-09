@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import MenuSection from "../../../components/common/menu/MenuSection"
-import { showDialog, ShowErrorDialog } from "../../../actions/uiActions"
+import { loadCategoriesCall } from "../../../actions/dataActions"
 
 const mapStateToProps = (state) => {
 	return {
 		userState: state.userState,
-		ui: state.ui
+        ui: state.ui,
+        categories: state.data.categories
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        showDialog: (dialogType) => {dispatch(showDialog(dialogType))},
-        ShowErrorDialog: (errorMessage) => {dispatch(ShowErrorDialog(errorMessage))}
+        loadCategories: () => {dispatch(loadCategoriesCall())}
     };
 };
 

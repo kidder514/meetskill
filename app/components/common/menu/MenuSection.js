@@ -3,7 +3,7 @@ import {Link} from "react-router";
 import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import LoadingSpinner from "../../../helpers/uicomponent/LoadingSpinner"
 import IconButton from "../../../helpers/uicomponent/IconButton";
-import Search from "../../../containers/common/menu/Search"
+import SearchField from "../../../containers/common/menu/SearchField"
 import strings from "../../../Strings"
 import CategoryPopOver from "../../../containers/common/menu/CategoryPopOver"
 import config from "../../../config"
@@ -19,6 +19,12 @@ class MenuSection extends Component {
 		};
 	}
 
+	componentDidMount() {
+		if(this.props.categories.length <= 0 ){
+			this.props.loadCategories();
+		}
+	}
+	
 	toggle() {
 		this.setState({
 			popoverOpen: !this.state.popoverOpen
@@ -28,27 +34,29 @@ class MenuSection extends Component {
 	renderUserSection(){
 		if (this.props.userState.isLoggedIn){
 			return ([
-			        <IconButton className="menu-item" icon="play_circle_outline" />,
-			        <IconButton className="menu-item" icon="notifications_none" />,
-		        	<div className="menu-item profile-icon">
-		        		<img className="img-circle" src={config.logoUrl} />
-		        	</div>
+				<Link key="play_video" to={"/mycourses"}>
+			        <IconButton className="menu-item" icon="play_circle_outline" />			
+				</Link>,
+				<Link key="notification" to={"/notification"}>
+			        <IconButton className="menu-item" icon="notifications_none" />
+				</Link>,
+				<Link to={"/account"} key="profile_icon" className="menu-item profile-icon">
+					<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
+				</Link>
 	        	])
 		} else{
 			return (
 				<Button className="menu-item" onClick={ () => this.props.showDialog("login")}>{strings.MenuLoginSignup}</Button>
-				)
+			)
 		}
 	}
 
     render() {
 	    return (
 	        <div className="menu-wrapper">
-	        	<div className="menu-item logo-wrapper">
-					<Link to={"/"} >
-	        			<img src="https://i.pinimg.com/236x/74/f9/d1/74f9d1fbb45e1fb89a9f069f7e161ae2.jpg" />
-					</Link>
-	        	</div>
+	        	<Link to={"/"}className="menu-item logo-wrapper">
+					<img src={config.logoUrl} />
+	        	</Link>
 
 		        <Button className="menu-item" id="Popover1" onClick={this.toggle}>
 		        	{strings.MenuCategories}
@@ -59,12 +67,16 @@ class MenuSection extends Component {
 		        	</PopoverBody>
 		        </Popover>
 
-		        <Search className="menu-item"/>
-		        <Button className="menu-item">
-		        	{strings.MenuBeAnInstructor}
-		        </Button>
-		        <IconButton className="menu-item" icon="shopping_cart" />
-
+		        <SearchField className="menu-item"/>
+				<Link to={"/instructorDashboard"}>
+		        	<Button className="menu-item">
+		        		{strings.MenuBeAnInstructor}
+		        	</Button>
+				</Link>
+				
+				<Link to={"/shoppingcart"}>
+					<IconButton className="menu-item" icon="shopping_cart" />
+				</Link>
 		        {this.renderUserSection()}
 	        </div>
 	    )

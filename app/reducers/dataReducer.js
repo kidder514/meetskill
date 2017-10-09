@@ -1,7 +1,7 @@
 
 var initialUserState = {
-	data:{},
-	categories:{}
+	data:[],
+	categories:[]
 }
 
 function dataList(state = initialUserState, action) {

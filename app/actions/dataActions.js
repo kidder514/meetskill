@@ -33,7 +33,7 @@ export const loadCategories = (categories) => {
     }
 }
 
-export const loadCategoriesCall = (query) => {
-	return apiCall(query, loadCategories, strings.ErrorNotAbleToLoadCategories);	
+export const loadCategoriesCall = () => {
+	return apiCall("categories", loadCategories, strings.ErrorNotAbleToLoadCategories);	
 }
 
