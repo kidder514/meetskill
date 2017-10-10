@@ -8,16 +8,17 @@ import Account from "./containers/pages/Account"
 import ShoppingCart from "./containers/pages/ShoppingCart"
 import Notification from "./containers/pages/Notification"
 import InstructorDashboard from "./containers/pages/InstructorDashboard"
+import pagePath from "./pagePath";
 
 export default (
 	<Route component={OutterWrapper}>
 		<Route component={Wrapper}>
-			<Route path="/" component={Home} />
-			<Route path="/mycourses" component={MyCourses} />
-			<Route path="/account" component={Account} />
-			<Route path="/shoppingcart" component={ShoppingCart} />
-			<Route path="/notification" component={Notification} />
-			<Route path="/instructorDashboard" component={InstructorDashboard} />
+			<Route path={pagePath.home} component={Home} />
+			<Route path={pagePath.mycourses} component={MyCourses} />
+			<Route path={pagePath.account} component={Account} />
+			<Route path={pagePath.shoppingCart} component={ShoppingCart} />
+			<Route path={pagePath.notification} component={Notification} />
+			<Route path={pagePath.instructorDashboard} component={InstructorDashboard} />
 		</Route>
 	</Route>
 )
