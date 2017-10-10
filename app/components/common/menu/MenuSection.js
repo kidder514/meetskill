@@ -12,16 +12,10 @@ import pagePath from "../../../pagePath"
 class MenuSection extends Component {
 	constructor(props) {
 		super(props);
-
-		this.toggle = this.toggle.bind(this);
-
+		this.downArrow = "";
+		this.upArrow = "";
 		this.state = {
-			isCategoryPOOpen: false,
-			isInstructorPOOpen: false,
-			isCartPOOpen: false,
-			isMyCoursesPOOpen: false,
-			isNotificationPOOpen: false,
-			isAccountPOOpen: false
+			
 		};
 	}
 
@@ -31,45 +25,16 @@ class MenuSection extends Component {
 		}
 	}
 	
-	toggle(popOver) {
-		switch (popOver) {
-			case "category":
-				this.setState({isCategoryPOOpen: !this.state.isCategoryPOOpen});
-			break;
-			case "instructor":
-				this.setState({isInstructorPOOpen: !this.state.isInstructorPOOpen});
-			break;
-			case "cart":
-				this.setState({isCartPOOpen: !this.state.isCartPOOpen});
-			break;
-			case "mycourses":
-				this.setState({isMyCoursesPOOpen: !this.state.isMyCoursesPOOpen});
-			break;
-			case "notification":
-				this.setState({isNotificationPOOpen: !this.state.isNotificationPOOpen});
-			break;
-			case "account":
-				this.setState({isAccountPOOpen: !this.state.isAccountPOOpen});
-			break;
-		}
-	}
-
 	renderUserSection(){
 		if (this.props.userState.isLoggedIn){
-			return ([
-				<Link key="play_video" to={pagePath.mycourses}>
-			        <IconButton className="menu-item" icon="play_circle_outline" />			
-				</Link>,
-				<Link key="notification" to={pagePath.notification}>
-			        <IconButton className="menu-item" icon="notifications_none" />
-				</Link>,
+			return (
 				<Link to={pagePath.account} key="profile_icon" className="menu-item profile-icon">
 					<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
 				</Link>
-	        	])
+	        	)
 		} else{
 			return (
-				<Button className="menu-item" onClick={ () => this.props.showDialog("login")}>{strings.MenuLoginSignup}</Button>
+				<a className="menu-item login-button" onClick={ () => this.props.showDialog("login")}>{strings.MenuLoginSignup}</a>
 			)
 		}
 	}
@@ -81,31 +46,20 @@ class MenuSection extends Component {
 					<img src={config.logoUrl} />
 	        	</Link>
 
-		        <Button 
-					className="menu-item" 
-					id="categoryPopOver" 
-					onMouseEnter={() => this.toggle("category")} 
-					onMouseOut={() => this.toggle("category")} 
-				>
-		        	{strings.MenuCategories}
-		        </Button>
-		        <Popover placement="bottom" isOpen={this.state.isCategoryPOOpen} target="categoryPopOver" toggle={this.toggle}>
-		        	<PopoverBody>
-		        		<CategoryPopOver />
-		        	</PopoverBody>
-		        </Popover>
+		        <a className="menu-item" >
+		        	<span>{strings.MenuCategories + " " + this.downArrow }</span>
+		        </a>
+				<CategoryPopOver />
 
 		        <SearchField className="menu-item"/>
-				<Link to={pagePath.instructordashboard}>
-		        	<Button className="menu-item">
-		        		{strings.MenuBeAnInstructor}
-		        	</Button>
+				<Link className="menu-item" to={pagePath.instructordashboard}>
+		        		<span>{strings.MenuBeAnInstructor}</span>
 				</Link>
 				
-				<Link to={pagePath.shoppingcart}>
-					<IconButton className="menu-item" icon="shopping_cart" />
+				<Link className="menu-item cart-icon" to={pagePath.shoppingcart}>
+					<IconButton icon="shopping_cart" />
 				</Link>
-		        {this.renderUserSection()}
+				{this.renderUserSection()}
 	        </div>
 	    )
     }

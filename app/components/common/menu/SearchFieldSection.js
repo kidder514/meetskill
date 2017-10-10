@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router";
 import IconButton from "../../../helpers/uicomponent/IconButton";
 import strings from "../../../Strings"
+import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 class SearchSection extends Component {
 	constructor(props) {
@@ -15,10 +16,12 @@ class SearchSection extends Component {
 
     render() {
 	    return (
-	        <div className={"search-section " + (this.props.className ? this.props.className : "")}>
-				<input name="keyword" placeholder={strings.SearchEnterKeyWord} />
-	        	<IconButton className="search-icon" onClick={this.search} icon="search" />	
-	        </div>
+			<InputGroup className={"search-section " + (this.props.className ? this.props.className : "")}>
+				<Input name="keyword" placeholder={strings.SearchEnterKeyWord} />
+				<InputGroupAddon onClick={this.search} className="search-icon">
+					<IconButton   icon="search" />	
+				</InputGroupAddon>
+			</InputGroup>
 	    )
     }
 }

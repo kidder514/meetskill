@@ -16,7 +16,7 @@ export default (
 			<Route path={pagePath.home} component={Home} />
 			<Route path={pagePath.mycourses} component={MyCourses} />
 			<Route path={pagePath.account} component={Account} />
-			<Route path={pagePath.shoppingCart} component={ShoppingCart} />
+			<Route path={pagePath.shoppingcart} component={ShoppingCart} />
 			<Route path={pagePath.notification} component={Notification} />
 			<Route path={pagePath.instructordashboard} component={InstructorDashboard} />
 		</Route>
