@@ -1,12 +1,10 @@
-const pagePath =  {
-    en:{
-        home: "/",
-        myCourses:"/mycourses",
-        Account:"/account",
-        shoppingCart:"/shoppingcart",
-        notification:"/notification",
-        instructorDashboard:"/instructordashboard"
-    }
+const pagePath = {
+    home: "/",
+    mycourses:"/mycourses",
+    account:"/account",
+    shoppingcart:"/shoppingcart",
+    notification:"/notification",
+    instructordashboard:"/instructordashboard"
 };
 
 export default pagePath;

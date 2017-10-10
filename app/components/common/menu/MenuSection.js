@@ -77,7 +77,7 @@ class MenuSection extends Component {
     render() {
 	    return (
 	        <div className="menu-wrapper">
-	        	<Link to={pagePath.home}className="menu-item logo-wrapper">
+	        	<Link to={pagePath.home} className="menu-item logo-wrapper">
 					<img src={config.logoUrl} />
 	        	</Link>
 
@@ -96,7 +96,7 @@ class MenuSection extends Component {
 		        </Popover>
 
 		        <SearchField className="menu-item"/>
-				<Link to={pagePath.instructorDashboard}>
+				<Link to={pagePath.instructordashboard}>
 		        	<Button className="menu-item">
 		        		{strings.MenuBeAnInstructor}
 		        	</Button>

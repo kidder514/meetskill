@@ -18,7 +18,7 @@ export default (
 			<Route path={pagePath.account} component={Account} />
 			<Route path={pagePath.shoppingCart} component={ShoppingCart} />
 			<Route path={pagePath.notification} component={Notification} />
-			<Route path={pagePath.instructorDashboard} component={InstructorDashboard} />
+			<Route path={pagePath.instructordashboard} component={InstructorDashboard} />
 		</Route>
 	</Route>
 )
