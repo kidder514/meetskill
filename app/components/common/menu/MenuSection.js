@@ -6,16 +6,16 @@ import IconButton from "../../../helpers/uicomponent/IconButton";
 import SearchField from "../../../containers/common/menu/SearchField"
 import strings from "../../../Strings"
 import CategoryPopOver from "../../../containers/common/menu/CategoryPopOver"
+import CartItemsPopOver from "../../../containers/common/menu/CartItemsPopOver"
+import ProfilePopOver from "../../../containers/common/menu/ProfilePopOver"
 import config from "../../../config"
 import pagePath from "../../../pagePath"
 
 class MenuSection extends Component {
 	constructor(props) {
 		super(props);
-		this.downArrow = "";
-		this.upArrow = "";
 		this.state = {
-			
+
 		};
 	}
 
@@ -28,9 +28,15 @@ class MenuSection extends Component {
 	renderUserSection(){
 		if (this.props.userState.isLoggedIn){
 			return (
-				<Link to={pagePath.account} key="profile_icon" className="menu-item profile-icon">
-					<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
-				</Link>
+				<div className="menu-item no-hover-effect">
+					<Link to={pagePath.account} key="profile_icon" className="profile-icon">
+						<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
+					</Link>
+					<div className="popover">
+						<ProfilePopOver />
+					</div>
+				</div>
+
 	        	)
 		} else{
 			return (
@@ -46,19 +52,26 @@ class MenuSection extends Component {
 					<img src={config.logoUrl} />
 	        	</Link>
 
-		        <a className="menu-item" >
-		        	<span>{strings.MenuCategories + " " + this.downArrow }</span>
-		        </a>
-				<CategoryPopOver />
+		        <div className="menu-item" >
+		        	<a>{strings.MenuCategories}</a>
+					<div className="popover">
+						<CategoryPopOver />
+					</div>
+		        </div>
 
-		        <SearchField className="menu-item"/>
+		        <SearchField className="menu-item no-hover-effect"/>
 				<Link className="menu-item" to={pagePath.instructordashboard}>
 		        		<span>{strings.MenuBeAnInstructor}</span>
 				</Link>
 				
-				<Link className="menu-item cart-icon" to={pagePath.shoppingcart}>
-					<IconButton icon="shopping_cart" />
-				</Link>
+				<div className="menu-item cart-icon">
+					<Link to={pagePath.shoppingcart}>
+						<IconButton icon="shopping_cart" />
+					</Link>
+					<div className="popover">
+						<CartItemsPopOver />
+					</div>
+				</div>
 				{this.renderUserSection()}
 	        </div>
 	    )

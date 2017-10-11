@@ -173,10 +173,11 @@ input {
 	cursor: pointer;
 }
 
-a.menu-item{
+.menu-item{
 	line-height: 100%;
 	padding: 0 1em;	
 	margin: 0 1em;
+	position:relative;
 	cursor: pointer;
 	display : flex;
 	align-items : center;
@@ -184,8 +185,22 @@ a.menu-item{
 	white-space: nowrap;
 }
 
-a.menu-item:not(.logo-wrapper):not(.cart-icon):hover{
+.menu-item:not(.logo-wrapper):not(.cart-icon):not(.no-hover-effect):hover{
 	border: 1px solid #E9E9E9;
+}
+
+.popover{
+	height:100px;
+	width:100px;
+	position: absolute;
+	top:42px;
+	left:0;
+	display:none;
+	border-radius: none;
+}
+
+.menu-item:hover .popover{
+	display: block;
 }
 
 .menu-item.login-button{
