@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import MenuSection from "../../../components/common/menu/MenuSection"
 import { loadCategoriesCall } from "../../../actions/dataActions"
+import { showDialog } from "../../../actions/uiActions"
 
 const mapStateToProps = (state) => {
 	return {
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadCategories: () => {dispatch(loadCategoriesCall())}
+        loadCategories: () => {dispatch(loadCategoriesCall())},
+        showDialog: (content) => {dispatch(showDialog(content))}
     };
 };
 

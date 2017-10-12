@@ -1,13 +1,14 @@
 # README #
 
 ### Recent task break down ###
-2. set up menu
-2.1.1. set up localization string
-2.1 popover uicomponent
-2.1.1 search component
-2.2 Menu, only change the right side of menu when logged in
+
+
 2.3 Mobile Menu
 3. set up auth first
+
+### Backlog tasks ###
+1. add "become an instructor" link to profile popover section, login and signup page 
+
 
 ### How do I get set up? ###
 1. clone the repo into local

@@ -139,6 +139,15 @@ input {
 }
 
 /*=====================3.0 Header===========================*/
+
+.menu-wrapper.desktop-menu{
+	display: flex;
+}
+
+.menu-wrapper.mobile-menu{
+	display: none;	
+}
+
 .menu-wrapper{
 	position: fixed;
 	top: 0;

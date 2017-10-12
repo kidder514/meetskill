@@ -14,7 +14,7 @@ var initialUserState = {
     settings:{},
     order:{},
     currentPage:"",
-    isLoggedIn: true,
+    isLoggedIn: false,
     hasAddress: false,
     rememberLogin: false
 }

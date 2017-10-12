@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import DialogBox from "../helpers/uicomponent/DialogBox"
-import Menu from "../containers/common/menu/Menu"
+import MenuWrapper from "./common/menu/MenuWrapper"
 
 class OutterWrapper extends Component{
 
     render(){
 	    return (
 	    	<div className="outter-wrapper clearfix">
-	            <Menu />
+	            <MenuWrapper />
 				<DialogBox />
 				{this.props.children}
 	    	</div>

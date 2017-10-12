@@ -18,12 +18,6 @@ class MenuSection extends Component {
 
 		};
 	}
-
-	componentDidMount() {
-		if(this.props.categories.length <= 0 ){
-			this.props.loadCategories();
-		}
-	}
 	
 	renderUserSection(){
 		if (this.props.userState.isLoggedIn){
@@ -47,7 +41,7 @@ class MenuSection extends Component {
 
     render() {
 	    return (
-	        <div className="menu-wrapper">
+	        <div className="menu-wrapper desktop-menu">
 	        	<Link to={pagePath.home} className="menu-item logo-wrapper">
 					<img src={config.logoUrl} />
 	        	</Link>
@@ -59,8 +53,8 @@ class MenuSection extends Component {
 					</div>
 		        </div>
 
-		        <SearchField className="menu-item no-hover-effect"/>
-				<Link className="menu-item" to={pagePath.instructordashboard}>
+		        <SearchField className="menu-item no-hover-effect "/>
+				<Link className="menu-item instructor-link" to={pagePath.instructordashboard}>
 		        		<span>{strings.MenuBeAnInstructor}</span>
 				</Link>
 				
@@ -73,8 +67,8 @@ class MenuSection extends Component {
 					</div>
 				</div>
 				{this.renderUserSection()}
-	        </div>
-	    )
+			</div>
+		)
     }
 }
 
