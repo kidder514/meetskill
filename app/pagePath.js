@@ -1,6 +1,6 @@
 const pagePath = {
     home: "/",
-    mycourses:"/mycourses",
+    mycourse:"/mycourse",
     account:"/account",
     shoppingcart:"/shoppingcart",
     notification:"/notification",

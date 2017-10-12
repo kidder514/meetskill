@@ -6,8 +6,8 @@ import {Router, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import rootReducer from './app/reducers';
-import routes from "./app/routes";
+import rootReducer from './app/reducer';
+import route from "./app/route";
 import 'bootstrap/dist/css/bootstrap.css';
 
 require("./app/asset/style.css");
@@ -26,7 +26,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 render(
     <Provider store={store}>
     	<div>
-    		<Router history={history} routes={routes} />
+    		<Router history={history} routes={route} />
     	</div>
 	</Provider>,
   	document.getElementById('root')
