@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router";
 import IconButton from "../../../helper/uicomponent/IconButton";
-import strings from "../../../String"
+import string from "../../../String"
 import LoadingSpinner from "../../../helper/uicomponent/LoadingSpinner";
 
 class CartItemPopOverSection extends Component {

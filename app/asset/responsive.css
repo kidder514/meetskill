@@ -12,6 +12,15 @@
 	display: flex;	
 }
 
+.mobile-search-wrapper.open{
+	display: block;
+}
+
+.mobile-search-wrapper{
+	display: none;
+}
+
+
 /*=====================3.0 Body===========================*/
 
 

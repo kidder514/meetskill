@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router";
 import IconButton from "../../../helper/uicomponent/IconButton";
-import strings from "../../../String"
+import string from "../../../String"
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 class SearchSection extends Component {
@@ -17,9 +17,9 @@ class SearchSection extends Component {
     render() {
 	    return (
 			<InputGroup className={"search-section " + (this.props.className ? this.props.className : "")}>
-				<Input name="keyword" placeholder={strings.SearchEnterKeyWord} />
+				<Input name="keyword" placeholder={string.SearchEnterKeyWord} />
 				<InputGroupAddon onClick={this.search} className="search-icon">
-					<IconButton   icon="search" />	
+					<IconButton icon="search" />
 				</InputGroupAddon>
 			</InputGroup>
 	    )

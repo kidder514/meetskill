@@ -4,42 +4,50 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Li
 import LoadingSpinner from "../../../helper/uicomponent/LoadingSpinner"
 import IconButton from "../../../helper/uicomponent/IconButton";
 import SearchField from "../../../container/common/menu/SearchField"
-import strings from "../../../String"
+import string from "../../../String"
 import config from "../../../config"
 import pagePath from "../../../pagePath"
 
 class MobileMenuSection extends Component {
 	constructor(props) {
 		super(props);
-        this.toggleNavbar = this.toggleNavbar.bind(this);
         this.state = {
-          collapsed: true
+            isMenuOpen: false,
+            isSearchOpen: false
         };
+        this.toggleMenu = this.toggleMenu.bind(this);
+        this.toggleSearch = this.toggleSearch.bind(this);
     }
-        
-    toggleNavbar() {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
+
+    toggleMenu(){
+        this.setState({isMenuOpen: !this.state.isMenuOpen});
+    }
+
+    toggleSearch(){
+        this.setState({isSearchOpen: !this.state.isSearchOpen});        
     }
 
     render() {
 	    return (
-	        <div className="menu-wrapper mobile-menu">
-                <Navbar color="faded" light>
-                    <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                    <Collapse isOpen={!this.state.collapsed} navbar>
-                    <Nav navbar>
-                        <ListGroup>
-                            <ListGroupItem>Cras justo odio</ListGroupItem>
-                            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                            <ListGroupItem>Morbi leo risus</ListGroupItem>
-                            <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-                            <ListGroupItem>Vestibulum at eros</ListGroupItem>
-                        </ListGroup>
-                    </Nav>
-                    </Collapse>
-                </Navbar>
+	        <div className="menu-wrapper mobile-menu">       
+                <div className={"mobile-opener " + (this.state.isMenuOpen ? "open" : "")} onClick={() => this.toggleMenu()}>
+                    <IconButton icon="menu" />	
+                </div>
+                <div className="mobile-logo">
+                    <Link to={pagePath.home}>
+                        <img src={config.logoUrl} />
+                    </Link>
+                </div>
+                <div className={"search-icon " + (this.state.isSearchOpen ? "open" : "")} onClick={() => this.toggleSearch()}>
+                    <IconButton icon="search" />	
+                </div>
+
+                <div className={"mobile-search-wrapper " + (this.state.isSearchOpen ? "open" : "")}>
+                    <SearchField />
+                </div>
+                <div className={"mobile-slider " + (this.state.isMenuOpen ? "open" : "")}>
+                    mobile slider
+                </div>
 			</div>
 		)
     }

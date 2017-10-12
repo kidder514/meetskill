@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ShowErrorDialog } from "./uiAction";
-import strings from "../String"
+import string from "../String"
 import config from "../config"
 
 function apiCall(query, action, errorMessage){
@@ -23,7 +23,7 @@ export const loadData = (data) => {
 }
 
 export const loadDataCall = (query) => {
-	return apiCall(query, loadData, strings.ErrorNotAbleToLoadCourse);
+	return apiCall(query, loadData, string.ErrorNotAbleToLoadCourse);
 }
 
 export const loadCategory = (category) => {
@@ -34,6 +34,6 @@ export const loadCategory = (category) => {
 }
 
 export const loadCategoryCall = () => {
-	return apiCall("category", loadCategory, strings.ErrorNotAbleToLoadCategory);	
+	return apiCall("category", loadCategory, string.ErrorNotAbleToLoadCategory);	
 }
 

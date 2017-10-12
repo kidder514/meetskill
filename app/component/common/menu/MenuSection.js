@@ -4,7 +4,7 @@ import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import LoadingSpinner from "../../../helper/uicomponent/LoadingSpinner"
 import IconButton from "../../../helper/uicomponent/IconButton";
 import SearchField from "../../../container/common/menu/SearchField"
-import strings from "../../../String"
+import string from "../../../String"
 import CategoryPopOver from "../../../container/common/menu/CategoryPopOver"
 import CartItemPopOver from "../../../container/common/menu/CartItemPopOver"
 import ProfilePopOver from "../../../container/common/menu/ProfilePopOver"
@@ -34,7 +34,7 @@ class MenuSection extends Component {
 	        	)
 		} else{
 			return (
-				<a className="menu-item login-button" onClick={ () => this.props.showDialog("login")}>{strings.MenuLoginSignup}</a>
+				<a className="menu-item login-button" onClick={ () => this.props.showDialog("login")}>{string.MenuLoginSignup}</a>
 			)
 		}
 	}
@@ -47,7 +47,7 @@ class MenuSection extends Component {
 	        	</Link>
 
 		        <div className="menu-item" >
-		        	<a>{strings.MenuCategory}</a>
+		        	<a>{string.MenuCategory}</a>
 					<div className="popover">
 						<CategoryPopOver />
 					</div>
@@ -55,7 +55,7 @@ class MenuSection extends Component {
 
 		        <SearchField className="menu-item no-hover-effect "/>
 				<Link className="menu-item instructor-link" to={pagePath.instructordashboard}>
-		        		<span>{strings.MenuBeAnInstructor}</span>
+		        		<span>{string.MenuBeAnInstructor}</span>
 				</Link>
 				
 				<div className="menu-item cart-icon">

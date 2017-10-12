@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, ListGroup, ListGroupItem } from 'reactstrap';
-import strings from "../../../String"
+import string from "../../../String"
 
 class MobileMenuSection extends Component {
 	constructor(props) {
