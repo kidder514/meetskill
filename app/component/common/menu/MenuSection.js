@@ -23,7 +23,7 @@ class MenuSection extends Component {
 		if (this.props.userState.isLoggedIn){
 			return (
 				<div className="menu-item no-hover-effect">
-					<Link to={pagePath.account} key="profile_icon" className="profile-icon">
+					<Link to={pagePath.Account} className="profile-icon">
 						<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
 					</Link>
 					<div className="popover">
@@ -42,7 +42,7 @@ class MenuSection extends Component {
     render() {
 	    return (
 	        <div className="menu-wrapper desktop-menu">
-	        	<Link to={pagePath.home} className="menu-item logo-wrapper">
+	        	<Link to={pagePath.Home} className="menu-item logo-wrapper">
 					<img src={config.logoUrl} />
 	        	</Link>
 
@@ -54,12 +54,12 @@ class MenuSection extends Component {
 		        </div>
 
 		        <SearchField className="menu-item no-hover-effect "/>
-				<Link className="menu-item instructor-link" to={pagePath.instructordashboard}>
+				<Link className="menu-item instructor-link" to={pagePath.Instructordashboard}>
 		        		<span>{string.MenuBeAnInstructor}</span>
 				</Link>
 				
 				<div className="menu-item cart-icon">
-					<Link to={pagePath.shoppingcart}>
+					<Link to={pagePath.ShoppingCart}>
 						<IconButton icon="shopping_cart" />
 					</Link>
 					<div className="popover">

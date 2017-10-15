@@ -13,12 +13,12 @@ import pagePath from "./pagePath";
 export default (
 	<Route component={OutterWrapper}>
 		<Route component={Wrapper}>
-			<Route path={pagePath.home} component={Home} />
-			<Route path={pagePath.mycourse} component={MyCourse} />
-			<Route path={pagePath.account} component={Account} />
-			<Route path={pagePath.shoppingcart} component={ShoppingCart} />
-			<Route path={pagePath.notification} component={Notification} />
-			<Route path={pagePath.instructordashboard} component={InstructorDashboard} />
+			<Route path={pagePath.Home} component={Home} />
+			<Route path={pagePath.Mycourse} component={MyCourse} />
+			<Route path={pagePath.Account} component={Account} />
+			<Route path={pagePath.ShoppingCart} component={ShoppingCart} />
+			<Route path={pagePath.Notification} component={Notification} />
+			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
 		</Route>
 	</Route>
 )

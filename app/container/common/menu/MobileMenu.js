@@ -5,6 +5,7 @@ import MobileMenuSection from "../../../component/common/menu/MobileMenuSection"
 const mapStateToProps = (state) => {
 	return {
 		userState: state.userState,
+		category: state.data.category
 	}
 }
 
