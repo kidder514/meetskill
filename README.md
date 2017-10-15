@@ -2,6 +2,7 @@
 
 ### Recent task break down ###
 
+just fixed mobile sliding, next need to show the correct subcategory page, and need to fix the url, 
 
 2.3 Mobile Menu
 3. set up auth first

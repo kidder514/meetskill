@@ -14,6 +14,7 @@ const string = new LocalizedString({
         PurchaseHistory:"Purchase History",
         InstructorDashboard: "Instructor Dashboard",
         LogOut:"Log Out",
+        Back: "Back",
         ErrorNotAbleToLoadCourse:"Unable to load course from server.",
         ErrorNotAbleToLoadCategory:"Unable to load category from server.",
         SearchEnterKeyWord:"Enter a keywork. etc. Math, English."
