@@ -45,7 +45,7 @@ class MobileMenuSection extends Component {
         }
     }
 
-    renderCategory(category, parentLayerCount){
+    renderCategory(category, parentCategory, parentLayerCount){
         var currentLayerCount = parentLayerCount + 1;
         return (
             <ul className="subcategory">
@@ -63,13 +63,14 @@ class MobileMenuSection extends Component {
                                     {subcategory.name}
                                     <span className="pull-right">></span>                            
                                 </Link>
-                                { this.renderCategory(subcategory.subcategory, currentLayerCount) }
+                                { this.renderCategory(subcategory.subcategory, parentCategory + subcategory.path, currentLayerCount) }
                             </li>
                         );
                     } else {
+                        var path = parentCategory + subcategory.path;
                         return (
                             <li key={"key-" + currentLayerCount + "-" + index}>
-                                <Link to={subcategory.path}>{subcategory.name}</Link>
+                                <Link to={path}>{subcategory.name}</Link>
                             </li>
                         );
                     }
@@ -99,7 +100,7 @@ class MobileMenuSection extends Component {
                             {string.MenuCategory}
                             <span className="pull-right">></span>
                         </Link>
-                        { this.renderCategory(this.props.category, 0) }
+                        { this.renderCategory(this.props.category, pagePath.Category, 0) }
                     </li>
                 </ul>
             </div>,

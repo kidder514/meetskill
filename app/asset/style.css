@@ -282,6 +282,10 @@ input {
 	display: block;
 }
 
+.search-icon.input-group-addon{
+	height:100%;
+}
+
 .mobile-opener,
 .search-icon{
 	padding: 0.2em;
