@@ -17,7 +17,6 @@ class MobileMenuSection extends Component {
         };
         this.layerCount = 0;
         
-        
         this.toggleMenu = this.toggleMenu.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
         this.renderMenuItem = this.renderMenuItem.bind(this);
@@ -34,8 +33,16 @@ class MobileMenuSection extends Component {
         this.setState({isSearchOpen: !this.state.isSearchOpen});        
     }
 
-    slideTo(count){
+    slideTo(e, count, isBack){
         this.setState({left: "-" + count * 100 + "vw"});
+        if (isBack){
+            var ulNode  = e.target.parentNode.parentNode;
+            console.log(ulNode);
+            ulNode.className = ulNode.className.replace(" top-layer", "");
+        } else {
+            var siblingNode = e.target.parentNode.childNodes[1];
+            siblingNode.className = siblingNode.className + " top-layer";
+        }
     }
 
     renderCategory(category, parentLayerCount){
@@ -43,16 +50,16 @@ class MobileMenuSection extends Component {
         return (
             <ul className="subcategory">
                 <li >
-                    <Link className="mobile-menu-back" onClick={() => this.slideTo(parentLayerCount)}>
+                    <Link className="mobile-menu-back" onClick={(e) => this.slideTo(e, parentLayerCount, true)}>
                         {string.Back}
-                        <span className="pull-right">{"<"}</span>                            
+                        <span className="pull-right">{"<"}</span>                    
                     </Link>
                 </li>
                 {category.map((subcategory, index) => {
                     if( !!subcategory.subcategory ){
                         return (
-                            <li key={"key-" + this.nextLayerCount + "-" + index}>
-                                <Link onClick={ () => this.slideTo(currentLayerCount + 1)}>
+                            <li key={"key-" + currentLayerCount + "-" + index}>
+                                <Link onClick={(e) => this.slideTo(e, currentLayerCount + 1, false)}>
                                     {subcategory.name}
                                     <span className="pull-right">></span>                            
                                 </Link>
@@ -88,7 +95,7 @@ class MobileMenuSection extends Component {
             >
                 <ul>
                     <li>
-                        <Link onClick={ ()=> this.slideTo(1) }>
+                        <Link onClick={ (e) => this.slideTo(e, 1, false) }>
                             {string.MenuCategory}
                             <span className="pull-right">></span>
                         </Link>

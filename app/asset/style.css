@@ -211,7 +211,7 @@ input {
 	top: -100vh;
 	z-index:2;
 	left: 0;
-    -webkit-transition: top 0.5s, visibility 0s linear 0.5s, left 0.5s; /* Safari */
+    -webkit-transition: top 0.5s, visibility 0s linear 0.5s, left 0.5s;
 	transition: top 0.5s, visibility 0s linear 0.5s, left 0.5s;
 }
 
@@ -222,12 +222,21 @@ input {
 
 #mobile-slider ul.subcategory{
 	position: absolute;
+	visibility: hidden;
 	left: 100%;
 	width:100%;
 	height: 100vh;
 	padding-top: 40px;
 	top: 0;
 	background: #fff;
+	-webkit-transition: visibility 0s linear 0.5s; 
+	transition: visibility 0s linear 0.5s;
+}
+
+#mobile-slider ul.subcategory.top-layer{
+	visibility: visible;
+	-webkit-transition: visibility 0s linear 0s; 
+	transition: visibility 0s linear 0s;
 }
 
 #mobile-slider ul li a{
@@ -241,7 +250,7 @@ input {
 	display: block;
 	visibility: visible;
 	top:0;
-    -webkit-transition: top 0.5s, left 0.5s; /* Safari */
+    -webkit-transition: top 0.5s, left 0.5s;
 	transition: top 0.5s, left 0.5s;
 }
 
