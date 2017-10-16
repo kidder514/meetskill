@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import FooterSection from "../../component/common/FooterSection"
+import FullCategoryPage from "../../component/page/FullCategoryPage"
 
 const mapStateToProps = (state) => {
 	return {
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(FooterSection);
+export default connect(mapStateToProps)(FullCategoryPage);

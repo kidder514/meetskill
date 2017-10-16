@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CategoryPage extends Component{
+class FullCategoryPage extends Component{
 	constructor(props){
 		super(props);
 	}
@@ -8,10 +8,10 @@ class CategoryPage extends Component{
     render(){
 	    return (
 	    	<div>
-	    		<h1>CategoryPage</h1>
+	    		<h1>FullCategoryPage</h1>
 	    	</div>
 	    )
   	}
 }
 
-export default CategoryPage;
+export default FullCategoryPage;
