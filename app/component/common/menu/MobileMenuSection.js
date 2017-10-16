@@ -69,7 +69,7 @@ class MobileMenuSection extends Component {
                     } else {
                         var path = parentCategory + subcategory.path;
                         return (
-                            <li key={"key-" + currentLayerCount + "-" + index}>
+                            <li onClick={() => this.toggleMenu()} key={"key-" + currentLayerCount + "-" + index}>
                                 <Link to={path}>{subcategory.name}</Link>
                             </li>
                         );
@@ -107,15 +107,15 @@ class MobileMenuSection extends Component {
             <hr key="hr2"></hr>,            
             <div key="mobile-menu-section" className="mobile-menu-section">
                 <ul>
-                    <li><Link to={pagePath.Mycourse}>{string.Mycourse}</Link></li>
-                    <li><Link to={pagePath.Notification}>{string.Notification}</Link></li>
-                    <li><Link to={pagePath.Message}>{string.Messages}</Link></li>                        
-                    <li><Link to={pagePath.InstructorDashboard}>{string.InstructorDashboard}</Link></li>
-                    <li><Link to={pagePath.Settings}>{string.Settings}</Link></li>
-                    <li><Link to={pagePath.Help}>{string.Help}</Link></li>
-                    <li><Link to={pagePath.Wallet}>{string.Wallet}</Link></li>
-                    <li><Link to={pagePath.PurchaseHistory}>{string.PurchaseHistory}</Link></li>
-                    <li><Link>{string.LogOut}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Mycourse}>{string.Mycourse}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Notification}>{string.Notification}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Message}>{string.Messages}</Link></li>                        
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.InstructorDashboard}>{string.InstructorDashboard}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Settings}>{string.Settings}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Help}>{string.Help}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Wallet}>{string.Wallet}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.PurchaseHistory}>{string.PurchaseHistory}</Link></li>
+                    <li onClick={() => this.toggleMenu()}><Link>{string.LogOut}</Link></li>
                 </ul>
             </div>
         ])
