@@ -15,6 +15,12 @@ function apiCall(query, action, errorMessage){
 	}	
 }
 
+export const cleanData = () => {
+	return {
+		type: "CLEAN_DATA"
+	}
+}
+
 export const loadData = (data) => {
     return {
     	type: "LOAD_DATA",
