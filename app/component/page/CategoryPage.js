@@ -14,7 +14,7 @@ class CategoryPage extends Component{
 
 	componentDidMount(){
 		if (this.props.data.length > 0){
-			console.log(" we have data");
+
 		} else {
 			this.props.loadData("");
 		}

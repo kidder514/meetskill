@@ -78,6 +78,10 @@ button{
 	display: none !important;
 }
 
+.clearfix{
+	clear: both;
+}
+
 .clearfix:after {
     display: block;
     content: "";
@@ -470,6 +474,18 @@ a.menu-item.cart-icon{
 	text-align: right;
 	color: #88BBD6;
 	font-weight: 500;
+}
+
+.pagination-wrapper{
+	text-align: center;
+	padding-top: 2em;
+}
+
+.pagination{
+	padding-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
 }
 
 /* 4.4 single category */

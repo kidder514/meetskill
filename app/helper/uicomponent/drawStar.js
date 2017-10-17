@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-export const drawStar = (rating, amount) => {
+export const DrawStar = (rating, amount) => {
 	var starsNodes = [];
 
 	if (rating == undefined){
