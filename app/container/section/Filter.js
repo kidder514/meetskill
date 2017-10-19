@@ -4,7 +4,8 @@ import FilterSection from "../../component/section/FilterSection"
 
 const mapStateToProps = (state) => {
 	return {
-		userState: state.userState
+		userState: state.userState,
+		search: state.search
 	}
 }
 

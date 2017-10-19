@@ -97,6 +97,11 @@ input {
 }
 /*=====================2.0 General===========================*/
 
+.global-config-text{
+	text-align: center;
+	padding-top: 3em;
+}
+
 .outter-wrapper{
 	overflow-x: hidden;
 	min-height: 100vh;

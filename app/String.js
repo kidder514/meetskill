@@ -17,8 +17,10 @@ const string = new LocalizedString({
         Back: "Back",
         Of: "of",
         PagesInTotal: "pages in total",
+        InitializingApp: " Initializing App ...",
         ErrorNotAbleToLoadCourse:"Unable to load course from server.",
         ErrorNotAbleToLoadCategory:"Unable to load category from server.",
+        ErrorNotAbleToLoadSearchOptions: "Unable to load search options from server.",
         SearchEnterKeyWord:"Enter a keywork. etc. Math, English."
     },
     it: {

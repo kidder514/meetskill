@@ -1,6 +1,6 @@
 import React from "react"
 import {Route, IndexRoute} from "react-router"
-import OutterWrapper from "./component/OutterWrapper"
+import Outter from "./container/Outter"
 import Wrapper from "./component/Wrapper"
 import Home from "./container/page/Home"
 import FullCategory from "./container/page/FullCategory"
@@ -14,7 +14,7 @@ import NotFoundPage from "./component/page/NotFoundPage"
 import pagePath from "./pagePath";
 
 export default (
-	<Route component={OutterWrapper}>
+	<Route component={Outter}>
 		<Route component={Wrapper}>
 			<Route path={pagePath.Home} component={Home} />
 			<Route path={pagePath.Category}>

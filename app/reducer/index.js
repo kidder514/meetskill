@@ -3,12 +3,16 @@ import { combineReducers } from 'redux'
 import userState from "./userStateReducer"
 import ui from "./uiReducer"
 import data from "./dataReducer"
+import search from "./searchReducer"
+import app from "./appReducer"
 
 const rootReducer = combineReducers({
+	app,
 	userState,
 	routing,
 	ui,
-	data
+	data,
+	search
 });
 
 export default rootReducer

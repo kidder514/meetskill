@@ -6,16 +6,14 @@ var initialUserState = {
 	email:"",
 	firstName: "Duo",
 	lastName: "Lu",
-	coordinate:[],
     token: "",
-    userAddress:{},
-    currentAddress:{},
+    country: "",
+    language: "",
     likes:[],
     settings:{},
     order:{},
     currentPage:"",
     isLoggedIn: false,
-    hasAddress: false,
     rememberLogin: false
 }
 
@@ -30,46 +28,26 @@ function userState(state = initialUserState, action) {
 					email:action.data.email,
 					firstName: action.data.firstName,
 					lastName: action.data.lastName,
-					coordinate: action.data.coordinate,
 				    token: action.data.jwtoken,
-				    userAddress: action.data.address,
-				    currentAddress:action.data.address,
+				    location: action.data.location,
+				    language: action.data.language,
 				    likes:action.data.likes,
 				    settings:action.data.settings,
 				    order:action.data.order,
 				    currentPage:"",
 				    isLoggedIn: true,
-				    hasAddress: action.data.address != {} && action.data.address != undefined,
 				    rememberLogin: action.data.rememberLogin
 				};
-
-	    	//store user data into localstorage if user choose to remember login
-			if (typeof(Storage) !== "undefined" && action.data.rememberLogin) {
-				if (localStorage.user !== undefined){
-					localStorage.removeItem("user");
-				}
-				localStorage.setItem("user", JSON.stringify(user));
-			}
-
 	    	return user;
 	    case "LOGOUT":
-			if (typeof(Storage) !== "undefined") {
-				if(localStorage.user !== undefined){
-					localStorage.removeItem("user");
-				}
-			}
 	        return initialUserState;
 	    case "LOCATE":
 	    	return { ...state, 
-	    			hasAddress: true, 
-	    			currentAddress: action.address, 
-	    			coordinate: action.coordinate 
+	    			location: action.location
 	    		};
 	    case "UNLOCATE":
 	        return { ...state, 
-	        		hasAddress: false, 
-	        		currentAddress: "", 
-	        		coordinate: ""
+	        		location: "", 
 	        	};
 	    default:
 	    	return state

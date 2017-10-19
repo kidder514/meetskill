@@ -2,13 +2,16 @@
 
 ### Recent task break down ###
 
-just fixed mobile sliding, next need to show the correct subcategory page, and need to fix the url, 
-
-2.3 Mobile Menu
-3. set up auth first
+1. create the entire search component, all list must be displayed accroding to a search options.
+2. create category in desktop
 
 ### Backlog tasks ###
-1. add "become an instructor" link to profile popover section, login and signup page 
+how to init app.
+1. check localstorage, get user info
+2.1. if user exist, use user lanuage and location.
+2.2 if no user exist , hit the server and get location and language.
+3. based on user info, load search options.
+4. contine on with loading page. 
 
 
 ### How do I get set up? ###
