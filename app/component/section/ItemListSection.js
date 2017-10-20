@@ -9,8 +9,6 @@ import ListPagination from "../../helper/uicomponent/ListPagination"
 class ItemListSection extends Component{
 
     render(){
-		console.log("render");
-
 	    return (
 	    	<Container className="item-list">
 				<Row>

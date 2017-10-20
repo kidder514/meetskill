@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {InitApp} from "../action/appAction"
+import {InitAppCall} from "../action/appAction"
 import OutterWrapper from "../component/OutterWrapper"
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        InitApp: () => {dispatch(InitApp())},
+        InitAppCall: () => {dispatch(InitAppCall())},
     };
 };
 

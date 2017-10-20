@@ -2,18 +2,7 @@ import axios from "axios";
 import { ShowErrorDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
-
-function apiCall(query, action, errorMessage){
-	return dispatch => {
-		axios.get(config.APIserver,query)
-		.then(function (res) {
-			dispatch(action(res.data));
-	  	})
-	  	.catch(function (error) {
-			dispatch(ShowErrorDialog(errorMessage));
-	  	});
-	}	
-}
+import { getApiCall } from "./appAction"
 
 export const cleanData = () => {
 	return {
@@ -29,7 +18,7 @@ export const loadData = (data) => {
 }
 
 export const loadDataCall = (query) => {
-	return apiCall(query, loadData, string.ErrorNotAbleToLoadCourse);
+	return getApiCall(query, loadData, string.ErrorNotAbleToLoadCourse);
 }
 
 export const loadCategory = (category) => {
@@ -40,6 +29,6 @@ export const loadCategory = (category) => {
 }
 
 export const loadCategoryCall = () => {
-	return apiCall("category", loadCategory, string.ErrorNotAbleToLoadCategory);	
+	return getApiCall("category", loadCategory, string.ErrorNotAbleToLoadCategory);	
 }
 

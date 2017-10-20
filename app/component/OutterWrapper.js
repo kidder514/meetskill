@@ -13,28 +13,29 @@ class OutterWrapper extends Component{
 
 	componentDidMount(){
 		if(!this.props.app.isInitialized){
-			this.props.InitApp();
+			this.props.InitAppCall();
 		}
 	}
 
 	renderComponent(){
+		if (!this.props.app.isInitialized)
 		return ([
-			<MenuWrapper />,
-			<DialogBox />,
-			this.props.children,
-			<Footer />
+			<LoadingSpinner key="Loading-spinner"/>,
+			<div key="global-config-text" className="global-config-text">{string.InitializingApp}</div>
+		]);
+
+		return ([
+				<MenuWrapper key="menu-wrapper"/>,
+				<DialogBox key="dialog-box"/>,
+				<div key="outter-wrapper-children">{this.props.children}</div>,
+				<Footer key="footer"/>
 		]);
 	}
 
     render(){
 	    return (
 	    	<div className="outter-wrapper clearfix">
-			{this.props.app.isInitialized ? (this.renderComponent) : (
-				<div>
-					<LoadingSpinner/>
-					<div className="global-config-text">{string.InitializingApp}</div>
-				</div>
-			)}
+				{this.renderComponent()}
 	    	</div>
 	    )
   	}

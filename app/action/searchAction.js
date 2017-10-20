@@ -2,7 +2,7 @@ import axios from "axios";
 import { ShowErrorDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
-import { apiCall } from "./appAction"
+import { getApiCall } from "./appAction"
 
 export const resetSearch = () => {
 	return {
@@ -10,8 +10,11 @@ export const resetSearch = () => {
 	}
 }
 
-export const loadOptionCall = () => {
-	return apiCall("searchOptions", setSearchOptions, string.ErrorNotAbleToLoadSearchOptions);
+export const loadSearchOptionCall = (location, language) => {
+    return postApiCall("searchOptions",
+        {"location": location, "language": language},
+        setSearchOptions,
+        string.ErrorNotAbleToLoadSearchOptions);
 }
 
 export const setSearchOptions = (options) =>{
@@ -30,7 +33,6 @@ export const setSearch = (options) =>{
 
 export const searchCall = (query) => {
     dispatch(setSearch(query));
-    return apiCall(query, loadData, string.ErrorNotAbleToLoadCourse )
+    return getApiCall(query, loadData, string.ErrorNotAbleToLoadCourse )
 }
-
 
