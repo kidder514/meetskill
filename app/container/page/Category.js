@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import CategoryPage from "../../component/page/CategoryPage"
-import {cleanData, loadDataCall} from "../../action/dataAction"
+import {cleanList, loadListCall} from "../../action/dataAction"
 const mapStateToProps = (state) => {
 	return {
         userState: state.userState,
-        data: state.data.data
+        list: state.data.list
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadData: (query) => {dispatch(loadDataCall(query))},
-        cleanData: (query) => {dispatch(cleanData())},        
+        loadList: (query) => {dispatch(loadListCall(query))},
+        cleanList: (query) => {dispatch(cleanList())},        
     };
 };
 

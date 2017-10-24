@@ -1,23 +1,17 @@
 # README #
 
 ### Recent task break down ###
-
-1. create the entire search component, all list must be displayed accroding to a search options.
-2. create category in desktop
+1. need to double check all action workflow when start building api
+2. need to add fake course data.
 
 ### Backlog tasks ###
-how to init app.
-1. check localstorage, get user info
-2.1. if user exist, use user lanuage and location.
-2.2 if no user exist , hit the server and get location and language.
-3. based on user info, load search options.
-4. contine on with loading page. 
 
 
 ### How do I get set up? ###
-1. clone the repo into local
+1. clone the repo into local and go to that folder
 2. npm install
 3. npm start
+4. go to http://localhost:8080/
 
 ### main components ###
 1. server and domain setup

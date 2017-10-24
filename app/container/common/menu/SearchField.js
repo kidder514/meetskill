@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import { loadDataCall } from "../../../action/dataAction"
+import { loadListCall } from "../../../action/dataAction"
 import SearchFieldSection from "../../../component/common/menu/SearchFieldSection"
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       	loadData: (keywork) => {dispatch(loadDataCall(keywork))}
+       	loadList: (keywork) => {dispatch(loadListCall(keywork))}
     };
 };
 

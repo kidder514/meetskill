@@ -4,7 +4,7 @@ import ProfilePopOverSection from "../../../component/common/menu/ProfilePopOver
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.data.data
+		list: state.data.list
 	}
 }
 

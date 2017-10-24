@@ -16,13 +16,13 @@ class ItemListSection extends Component{
 					return (
 						<Col key={item.id} className="item" xs="12" sm="6" md="4" lg="3" xl="2">
 							<div className="item-inner">
-								<Link className="item-image" to={pagePath.SingleCourse + item.url}>
+								<Link className="item-image" to={pagePath.SingleCourse + "/" + item.id}>
 									<img src={item.image_240x135}/>
 								</Link>
 
 								<div className="item-info-wrapper">
 									<h6 className="item-title" title={item.title} >
-										<Link to={pagePath.SingleCourse + item.url}>
+										<Link to={pagePath.SingleCourse + "/" + item.id}>
 											{item.title}
 										</Link>
 									</h6>

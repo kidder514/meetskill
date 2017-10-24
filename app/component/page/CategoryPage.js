@@ -8,15 +8,11 @@ class CategoryPage extends Component{
 		super(props);
 	}
 
-	componentWillMount(){
-		this.props.cleanData();
-	}
-
 	componentDidMount(){
-		if (this.props.data.length > 0){
+		if (this.props.list.length > 0){
 
 		} else {
-			this.props.loadData("");
+			this.props.loadList("");
 		}
 	}
 
@@ -24,7 +20,7 @@ class CategoryPage extends Component{
 	    return (
 	    	<div className="category-page">
 	    		<Filter/>
-				{this.props.data.length > 0 ? <ItemList items={this.props.data}/> : <LoadingSpinner />}
+				{this.props.list.length > 0 ? <ItemList items={this.props.list}/> : <LoadingSpinner />}
 	    	</div>
 	    )
   	}

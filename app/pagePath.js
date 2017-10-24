@@ -7,6 +7,7 @@ const pagePath = {
     Message:"/message",
     Settings:"/settings",
     Category: "/category",
+    Course: "/course",
     Help:"/help",
     Wallet:"/wallet",
     PurchaseHistory:"/purchasehistory",

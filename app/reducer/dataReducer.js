@@ -1,5 +1,5 @@
 var initialUserState = {
-	data: [
+	list: [
 		{
 			"_class": "course",
 			"id": 625204,
@@ -1312,26 +1312,45 @@ var initialUserState = {
 				}
 			]
 		},
-	]
+	],
+	course: {}
 }
 
-function dataList(state = initialUserState, action) {
+function data(state = initialUserState, action) {
 	switch (action.type) {
-		case "LOAD_DATA":
+		case "LOAD_LIST":
 			return {
 				...state,
-				data: action.data
+				list: action.list
 			};
-		case "LOAD_CATEGORIES":
+		case "LOAD_CATEGORY":
 			return {
 				...state,
 				category: action.category
 			};
-		case "CLEAN_DATA":
-			return initialUserState;
+		case "LOAD_COURSE":
+			return {
+				...state,
+				course: action.course
+			};
+		case "CLEAN_LIST":
+			return {
+				...state,
+				list: []
+			};
+		case "CLEAN_CATEGORY":
+			return {
+				...state,
+				category:[]
+			};
+		case "CLEAN_COURSE":
+			return {
+				...state,
+				course: {}
+			};
 		default:
 			return state
 	}
 }
 
-export default dataList
+export default data

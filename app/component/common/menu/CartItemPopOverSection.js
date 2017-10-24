@@ -15,7 +15,7 @@ class CartItemPopOverSection extends Component {
 	}
 
     render() {
-		if( this.props.data.length <= 0){
+		if( this.props.list.length <= 0){
 			return <LoadingSpinner />;
 		} else {
 			return (this.renderComponent());

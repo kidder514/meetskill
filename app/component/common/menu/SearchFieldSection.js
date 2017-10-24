@@ -11,7 +11,7 @@ class SearchSection extends Component {
 	}
 
 	search(){
-		this.props.loadData("should be the key word here");
+		this.props.loadList("should be the key word here");
 	}
 
     render() {
