@@ -494,7 +494,32 @@ a.menu-item.cart-icon{
 }
 
 /* 4.4 single category */
+
 /* 4.5 single course */
+
+.single-course-main{
+	color: #fff;
+	background-color: #505763;
+	padding: 4em 0;
+}
+
+.single-course-main div.row{
+	position: relative;	
+}
+
+.single-course-board{
+	overflow: hidden;
+	box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+    border-radius: 4px;
+    color: #505763;
+	padding: 3px;
+	position: absolute;
+	right:0;
+	top:0;
+}
+
 /* 4.6 Dashboard */
 /* 4.7 instructor Dashboard */
 /* 4.8 payment */
