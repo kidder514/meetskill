@@ -23,6 +23,7 @@
     "react": "^16.0.0",
     "react-async-script": "^0.9.1",
     "react-dom": "^16.0.0",
+    "react-google-login": "^3.0.2",
     "react-google-recaptcha": "^0.9.7",
     "react-localization": "^0.1.2",
     "react-redux": "^4.4.5",

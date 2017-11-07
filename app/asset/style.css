@@ -2,8 +2,9 @@
 
 html,
 body,
-input[type="text"]{
-	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+input
+{
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif !important;
 	position:relative;
 	font-weight: 300;
 	font-size: 14px;
@@ -462,7 +463,7 @@ a.menu-item.cart-icon{
 .login-section input,
 .login-section button{
 	display: block;
-	width: 100%;
+	width: 100% !important;
 	height: 100%;
 }
 
