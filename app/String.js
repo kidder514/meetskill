@@ -3,6 +3,14 @@ import LocalizedString from 'react-localization';
 const string = new LocalizedString({
     en:{
         MenuLoginSignup: "Login/Signup",
+        LoginDialogHeader: "Login with your email",
+        ErrorDialogHeader: "Error",
+        UnknownDialogHeader: "Unknown",
+        LoginWithGoogle: "Continue with Google",
+        LoginWithFacebook: "Continue with Facebook",
+        Email: "Your email",
+        Password: "Password",
+        Submit: "Submit",
         MenuCategory:"Cateogories",
         MenuBeAnInstructor:"Be an Instructor",
         Messages:"Messages",
@@ -39,6 +47,7 @@ const string = new LocalizedString({
         ErrorNotAbleToLoadCourse:"Unable to load course from server.",
         ErrorNotAbleToLoadCategory:"Unable to load category from server.",
         ErrorNotAbleToLoadSearchOptions: "Unable to load search options from server.",
+        ErrorNotAbleToLogin: "Unable to Login",
         SearchEnterKeyWord:"Enter a keywork. etc. Math, English."
     },
     it: {

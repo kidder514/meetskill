@@ -5,7 +5,13 @@
 2. need to add fake course data.
 
 ### Backlog tasks ###
-
+hardik tasks:
+-  Sign in
+-  Sign in with facebook
+-  Sign in with google 
+-  Forget password
+-  Instructor register
+-  User profile managment
 
 ### How do I get set up? ###
 1. clone the repo into local and go to that folder

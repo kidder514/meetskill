@@ -4,13 +4,25 @@ import { hideDialog } from "../../action/uiAction"
 import Login from "../../container/section/Login"
 import ErrorSection from "../../component/common/ErrorSection"
 import IconButton from  "./IconButton"
-
+import string from "../../String"
 class DialogBox extends Component{
 	constructor(props){
 		super(props);
 		this.renderComponent = this.renderComponent.bind(this);
+		this.renderHeader = this.renderHeader.bind(this);		
 	}
 
+	renderHeader(){
+		switch (this.props.dialogType) {
+			case "login":
+				return string.LoginDialogHeader
+			case "error":
+				return string.ErrorDialogHeader
+			default:
+				return string.UnknownDialogHeader;
+		}
+	}	
+	
 	renderComponent(){
 		switch (this.props.dialogType) {
 			case "login":
@@ -31,8 +43,10 @@ class DialogBox extends Component{
 	    				icon="highlight_off" 
 	    				onClick={this.props.hide}
 	    			/>
+					<div className="dialog-header">
+						{this.renderHeader()}
+					</div>
 	    			{this.renderComponent()}
-	    			{"this is dialog box"}
 	    		</div>
 	    	</div>
 	    )

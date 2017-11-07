@@ -20,7 +20,6 @@ class MobileMenuSection extends Component {
         this.toggleMenu = this.toggleMenu.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
         this.renderMenuItem = this.renderMenuItem.bind(this);
-        this.renderMenuItem = this.renderMenuItem.bind(this);
         this.slideTo = this.slideTo.bind(this);     
         this.renderCategory = this.renderCategory.bind(this);
     }

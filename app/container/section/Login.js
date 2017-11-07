@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import LoginSection from '../../component/section/LoginSection'
+import { loginCall } from "../../action/userAction" 
 
 const mapStateToProps = (state) => {
 	return {
-		section: state.userState,
+		userState: state.userState,
 	}
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         updateDish: (query) => {dispatch(dishListCall(query))},
-//     };
-// };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginCall: (query) => {dispatch(loginCall(query))}
+    };
+};
 
-export default connect(mapStateToProps)(LoginSection);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginSection);

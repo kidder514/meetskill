@@ -48,7 +48,7 @@ class MenuSection extends Component {
 
 		        <div className="menu-item" >
 		        	<a>{string.MenuCategory}</a>
-					<div className="popover">
+					<div className="category-pop-over popover">
 						<CategoryPopOver />
 					</div>
 		        </div>
