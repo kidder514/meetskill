@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import string from "../../String";
 import config from "../../config"
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 class LoginSection extends Component {
 	constructor(props) {
@@ -14,6 +15,12 @@ class LoginSection extends Component {
 		};
 		this.submit = this.submit.bind(this);
 		this.gLoginSuccess = this.gLoginSuccess.bind(this);
+		this.fbButtonClicked = this.fbButtonClicked.bind(this);
+		this.responseFb = this.responseFb.bind(this);
+		
+	}
+
+	componentDidMount(){
 	}
 
 	gLoginSuccess(googleUser){
@@ -34,6 +41,14 @@ class LoginSection extends Component {
 	    auth2.signOut().then(function () {
 	    	// google signout callback
 	    });
+	}
+	
+	fbButtonClicked(){
+		console.log("fb button cliced");
+	}
+
+	responseFb(){
+		console.log("responseFb");
 	}
 
 	submit() {
@@ -66,7 +81,12 @@ class LoginSection extends Component {
 						/>
 				</div>
 				<div className="input-item">
-					<button type="button">{string.LoginWithFacebook}</button>
+					<FacebookLogin
+						appId={config.FBAppId}
+						autoLoad={false}
+						fields="name,email,picture"
+						onClick={this.fbButtonClicked}
+						callback={this.responseFb} />
 				</div>
 			</div>
 		)
