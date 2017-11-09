@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router";
 import string from "../../String";
 import config from "../../config"
 import GoogleLogin from 'react-google-login';
@@ -69,7 +70,7 @@ class LoginSection extends Component {
 				</div>
 				<div className="input-item">
 					<input type="submit" onClick={this.submit} value="Submit" placeholder={string.Submit} />
-					<span></span>
+					<Link onClick={ () => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
 				</div>
 				<hr />
 				<div className="input-item">
