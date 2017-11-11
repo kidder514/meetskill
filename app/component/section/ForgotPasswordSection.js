@@ -25,7 +25,7 @@ class ForgotPasswordSection extends Component {
 					<span>{string.EnterEmailToResetPassword}</span>
 				</div>
 				<div className="input-item">
-					<input type="submit" onClick={this.submit} value="Submit" placeholder={string.Submit} />
+					<input type="submit" onClick={this.submit} value={string.ResetPassword} />
 				</div>
 			</div>
 		)

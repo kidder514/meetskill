@@ -69,10 +69,13 @@ class LoginSection extends Component {
 					<span></span>
 				</div>
 				<div className="input-item">
-					<input type="submit" onClick={this.submit} value="Submit" placeholder={string.Submit} />
-					<Link onClick={ () => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
+					<input type="submit" onClick={this.submit} value={string.Login} />
+					<Link onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
 				</div>
 				<hr />
+				<div className="input-item">
+					<input onClick={() => this.props.showDialog("signup")} type="submit" value={string.Signup} />
+				</div>
 				<div className="input-item">
 					<GoogleLogin
 						    clientId={config.googleLoginClientId}

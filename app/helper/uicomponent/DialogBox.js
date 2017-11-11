@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { hideDialog } from "../../action/uiAction"
 import Login from "../../container/section/Login"
 import ForgotPassword from "../../container/section/ForgotPassword"
+import Signup from "../../container/section/Signup"
 import ErrorSection from "../../component/common/ErrorSection"
 import IconButton from  "./IconButton"
 import string from "../../String"
@@ -22,6 +23,8 @@ class DialogBox extends Component{
 				return string.ErrorDialogHeader
 			case "forgotPassword":
 				return string.ForgotPasswordDialogHeader
+			case "signup":
+				return string.Signup
 			default:
 				return string.UnknownDialogHeader;
 		}
@@ -35,6 +38,8 @@ class DialogBox extends Component{
 				return <ErrorSection errorMessage={this.props.errorMessage} />
 			case "forgotPassword":
 				return <ForgotPassword />
+			case "signup":
+				return <Signup />
 			default:
 				 return (<div></div>);
 		}
