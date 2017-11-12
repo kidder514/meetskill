@@ -11,6 +11,7 @@ import Account from "./container/page/Account"
 import ShoppingCart from "./container/page/ShoppingCart"
 import Notification from "./container/page/Notification"
 import InstructorDashboard from "./container/page/InstructorDashboard"
+import ResetPassword from "./container/page/ResetPassword"
 import NotFoundPage from "./component/page/NotFoundPage"
 import pagePath from "./pagePath";
 
@@ -28,6 +29,7 @@ export default (
 			<Route path={pagePath.ShoppingCart} component={ShoppingCart} />
 			<Route path={pagePath.Notification} component={Notification} />
 			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
+			<Route path={pagePath.ResetPassword} component={ResetPassword} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>
 	</Route>
