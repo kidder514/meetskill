@@ -54,7 +54,7 @@ class MenuSection extends Component {
 		        </div>
 
 		        <SearchField className="menu-item no-hover-effect "/>
-				<Link className="menu-item instructor-link" to={pagePath.Instructordashboard}>
+				<Link className="menu-item instructor-link" to={pagePath.InstructorDashboard}>
 		        		<span>{string.MenuBeAnInstructor}</span>
 				</Link>
 				

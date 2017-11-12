@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Jumbotron, Button, Container, Row, Col} from 'reactstrap'
+import string from "../../String"
 
 class InstructorDashboardPage extends Component{
 	constructor(props){
@@ -7,9 +9,17 @@ class InstructorDashboardPage extends Component{
 
     render(){
 	    return (
-	    	<div>
-	    		<h1>InstructorDashboardPage</h1>
-	    	</div>
+			<Container>
+				<Row>
+					<Col>
+						<Jumbotron>
+							<h1>{string.CreateCourseTitle}</h1>
+							<p>{string.CreateCourseContent}</p>
+							<Button>{string.CreateNewCourse}</Button>
+						</Jumbotron>
+					</Col>
+				</Row>
+			</Container>
 	    )
   	}
 }

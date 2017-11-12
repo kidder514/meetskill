@@ -13,7 +13,7 @@ const pagePath = {
     PurchaseHistory:"/purchasehistory",
     ShoppingCart:"/shoppingcart",
     Notification:"/notification",
-    Instructordashboard:"/instructordashboard",
+    InstructorDashboard:"/instructordashboard",
     ResetPassword: "/resetpassword"
 };
 
