@@ -20,13 +20,13 @@ class MenuSection extends Component {
 	}
 	
 	renderUserSection(){
-		if (this.props.userState.isLoggedIn){
+		if (!this.props.userState.isLoggedIn){
 			return (
 				<div className="menu-item no-hover-effect">
 					<Link to={pagePath.Account} className="profile-icon">
 						<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
 					</Link>
-					<div className="popover">
+					<div className="profile-popover popover">
 						<ProfilePopOver />
 					</div>
 				</div>

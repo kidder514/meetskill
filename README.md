@@ -1,8 +1,10 @@
 # README #
 
 ### Recent task break down ###
-1. need to double check all action workflow when start building api
-2. need to add fake course data.
+<!-- 1. need to continue on account popover -->
+2. need to work on account pages
+2. need to double check all action workflow when start building api
+
 
 ### Backlog tasks ###
 hardik tasks:

@@ -3,7 +3,7 @@ var initialUserState = {
 	userId: "",
 	avatarUrl: "",
 	userName: "",
-	email:"",
+	email: "kidder5142@gmail.com",
 	firstName: "Duo",
 	lastName: "Lu",
     token: "",

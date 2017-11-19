@@ -2,7 +2,8 @@
 
 html,
 body,
-input
+input,
+.popover
 {
 	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif !important;
 	position:relative;
@@ -393,6 +394,16 @@ input {
 	left: 0 !important;
 }
 
+.menu-item .profile-popover{
+	position: absolute;
+	background-color: #fff;
+	left: -166px;
+	top: 44px;
+	width: 360px;
+	height: auto;
+	border: solid 1px rgb(243, 243, 243);
+}
+
 .category-pop-over ul{
 	width: 200px;
 	height: auto;
@@ -449,6 +460,48 @@ a.menu-item.cart-icon{
 .profile-icon img{
 	width: 45px;
 	height: auto;
+}
+
+.profile-main{
+	padding: 1em 1.5em 1em 1.5em;
+	height:auto;
+	width:100%;
+	border-bottom: 1px solid rgb(243, 243, 243); 
+}
+
+.user-initials{
+	float: left;
+	display: inline-block;
+    line-height: 3em;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    vertical-align: middle;
+	text-align: center;
+	border: 1px solid;
+	margin-right: 0.5em;
+}
+
+.name-email{
+	width: auto;
+}
+
+.name-email div{
+	line-height: 1.5em;
+}
+
+.profile-menu ul{
+	list-style: none;
+	padding: 0.5em 0;
+	margin-bottom: 0;
+}
+
+.profile-menu ul li{
+	padding: 0.5em 1.5em;
+}
+
+.second-section{
+	background-color: #f2f3f5;
 }
 
 /*=====================4.0 Body===========================*/

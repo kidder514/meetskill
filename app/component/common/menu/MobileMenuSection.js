@@ -73,7 +73,6 @@ class MobileMenuSection extends Component {
                             </li>
                         );
                     }
-
                 })}
             </ul>
         )
