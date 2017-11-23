@@ -1,9 +1,20 @@
 # README #
 
 ### Recent task break down ###
-<!-- 1. need to continue on account popover -->
-2. need to work on account pages
-2. need to double check all action workflow when start building api
+<!-- 1. make login and signup working  -->
+2. correct all the reducer according to the data
+<!-- 3. hide the login or singup page after successfully login or signup -->
+4. add recaptcha in login and signup page
+5. add input validation in login and signup page.
+6. login with google
+7. login with facebook
+8. forget password
+9. instructor registration
+10. compare mobile menu and desktop menu and decide what to remove
+11. remember password
+
+- need to work on account pages
+- need to double check all action workflow when start building api
 
 
 ### Backlog tasks ###

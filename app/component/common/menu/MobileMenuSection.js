@@ -81,11 +81,6 @@ class MobileMenuSection extends Component {
 
     renderMenuItem(){
         return ([
-            <div key="mobile-account-section" className="mobile-account-section">
-                <Link to={pagePath.Account}>
-                    { getInitial(this.props.userState.firstName, this.props.userState.lastName) }
-                </Link> 
-            </div>,
             <hr key="hr1"></hr>,
             <div 
                 key="mobile-category" 
@@ -143,6 +138,12 @@ class MobileMenuSection extends Component {
                     id={"mobile-slider"} 
                     className={(this.state.isMenuOpen ? "open" : "")} 
                     style={{left: this.state.left}}>
+                    {(!!this.props.userState.isLoggedin) && 
+                    <div key="mobile-account-section" className="mobile-account-section">
+                        <Link to={pagePath.Account}>
+                            { getInitial(this.props.userState.firstName, this.props.userState.lastName) }
+                        </Link> 
+                    </div>}
                     {this.renderMenuItem()}
                 </div>
 			</div>

@@ -59,7 +59,7 @@ export function getApiCall(query, action, errorMessage) {
 
 export function postApiCall(resource, param, action, errorMessage) {
 	return dispatch => {
-		axios.post(config.APIserver + resource, param)
+		axios.post(config.tempAPIserver + resource, param)
 			.then(function (res) {
 				dispatch(action(res.data));
 			})

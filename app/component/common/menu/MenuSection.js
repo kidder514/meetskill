@@ -20,7 +20,7 @@ class MenuSection extends Component {
 	}
 	
 	renderUserSection(){
-		if (!this.props.userState.isLoggedIn){
+		if ((!!this.props.userState.isLoggedin)){
 			return (
 				<div className="menu-item no-hover-effect">
 					<Link to={pagePath.Account} className="profile-icon">

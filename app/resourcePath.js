@@ -1,9 +1,9 @@
 const resourcePath = {
-    auth: "/auth/",
-    init:"/init/",
-    course: "/course/",
-    user: "/course/",
-    search: "/search/"
+    signup: "/api/model/signup",
+    login: "/api/model/login",
+    googleLogin: "/auth/google",
+    facebookLogin: "/auth/facebook",
+    init:"/init"
 };
 
 export default resourcePath;

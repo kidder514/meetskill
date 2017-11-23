@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import SignupSection from '../../component/section/SignupSection'
 import { signupCall } from "../../action/userAction" 
+import { hideDialog } from "../../action/uiAction"
 
 const mapStateToProps = (state) => {
 	return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginCall: (query) => {dispatch(loginCall(query))},
+        signupCall: (data) => {dispatch(signupCall(data))},
+        hideDialog: () => {dispatch(hideDialog())}        
     };
 };
 

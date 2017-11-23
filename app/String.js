@@ -9,6 +9,8 @@ const string = new LocalizedString({
         UnknownDialogHeader: "Unknown",
         LoginWithGoogle: "Continue with Google",
         LoginWithFacebook: "Continue with Facebook",
+        FirstName: "First name",
+        LastName: "Last name",
         Email: "Your email",
         Password: "Password",
         ConfirmPassword: "Retype your password here.",
@@ -63,7 +65,9 @@ const string = new LocalizedString({
         ErrorNotAbleToLoadCategory:"Unable to load category from server.",
         ErrorNotAbleToLoadSearchOptions: "Unable to load search options from server.",
         ErrorNotAbleToLogin: "Unable to Login",
-        SearchEnterKeyWord:"Enter a keywork. etc. Math, English."
+        ErrorNotAbleToSignup: "Unable to Sign up",        
+        SearchEnterKeyWord:"Enter a keywork. etc. Math, English.",
+        YouAreAlreadyLoggedIn: "You are already logged in"
     },
     it: {
     }

@@ -13,7 +13,6 @@ class ProfilePopOverSection extends Component {
 	}
 	
 	renderComponent(){
-		console.log(this.props.userState);
 		return (
 			<div className="profile-popover-container">
 				<Link to={pagePath.Account}>
@@ -62,7 +61,7 @@ class ProfilePopOverSection extends Component {
 							</Link>
 						</li>
 						<li>
-							<Link onClick={()=>{}}>
+							<Link onClick={()=>{this.props.logout()}}>
 								{string.LogOut}
 							</Link>
 						</li>

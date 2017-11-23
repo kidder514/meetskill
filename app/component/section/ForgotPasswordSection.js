@@ -20,7 +20,7 @@ class ForgotPasswordSection extends Component {
 		return (
 			<div className="login-section">
 				<div className="input-item">
-					<input type="text" name="email" placeholder={string.email} />
+					<input type="text" name="email" placeholder={string.Email} />
 					<span></span>
 					<span>{string.EnterEmailToResetPassword}</span>
 				</div>

@@ -3,6 +3,7 @@ import { ShowErrorDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
 import {postApiCall} from "./appAction"
+import resourcePath from "../resourcePath"
 
 export const login = (data) => {
 	return {
@@ -11,9 +12,11 @@ export const login = (data) => {
 	}
 }
 
-
-export const loginCall = (query) => {
-	return postApiCall("auth/login", query, login, string.ErrorNotAbleToLogin);
+export const signup = (data) => {
+    return {
+        type: "SIGNUP",
+        data: data
+    }
 }
 
 export const logout = () => {
@@ -35,3 +38,10 @@ export const unlocate = () => {
     }
 }
 
+export const loginCall = (data) => {
+	return postApiCall(resourcePath.login, data, login, string.ErrorNotAbleToLogin);
+}
+
+export const signupCall = (data) => {
+    return postApiCall(resourcePath.signup, data, login, string.ErrorNotAbleToSignup);
+}

@@ -513,6 +513,17 @@ a.menu-item.cart-icon{
 	padding: 10px 1.5em;
 }
 
+.recaptcha-wrapper{
+	height: auto;
+    padding: 10px 1.5em;
+}
+
+#login-recaptcha > div ,
+#signup-recaptcha > div{
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .login-section input,
 .login-section button{
 	display: block;
