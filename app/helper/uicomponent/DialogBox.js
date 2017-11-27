@@ -50,7 +50,7 @@ class DialogBox extends Component{
 	    	<div className={"dialog-box-Wrapper " + (this.props.isShown ? "":"hidden")}>
 	    		<div className="dialog-box">
 	    			<IconButton 
-	    				className="text-right" 
+	    				className="text-right close-icon" 
 	    				icon="highlight_off" 
 	    				onClick={this.props.hide}
 	    			/>

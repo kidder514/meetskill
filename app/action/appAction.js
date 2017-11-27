@@ -1,5 +1,5 @@
 import axios from "axios";
-import { showErrorDialog } from "./uiAction";
+import { showErrorDialog, updateServerError, hideDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
 import { getStoredState } from 'redux-persist'
@@ -21,7 +21,7 @@ export const InitAppCall = () => {
 					dispatch(initApp());
 				})
 				.catch(function (error) {
-					dispatch(ShowErrorDialog(string.ErrorNotAbleToInitApp))
+					dispatch(showErrorDialog(string.ErrorNotAbleToInitApp))
 				});
 			} else {
 				axios.post(config.APIserver + resourcePath.init, {})
@@ -31,7 +31,7 @@ export const InitAppCall = () => {
 					dispatch(initApp());
 				})
 				.catch(function (error) {
-					dispatch(ShowErrorDialog(string.ErrorNotAbleToInitApp))
+					dispatch(showErrorDialog(string.ErrorNotAbleToInitApp))
 				});
 			}
 		}
@@ -52,19 +52,27 @@ export function getApiCall(query, action, errorMessage) {
 				if(callback != undefined){callback();}
 			})
 			.catch(function (error) {
-				dispatch(ShowErrorDialog(errorMessage));
+				dispatch(showErrorDialog(errorMessage));
 			});
 	}
 }
 
-export function postApiCall(resource, param, action, errorMessage) {
+
+// resource: api resource
+// query: query paremeters
+// success: success action
+// successParam: if it is not null or undefined, pass it to the success action
+// failure: failure action
+// failureParam: if it is not null or undefined, pass it to the failure action
+export function authPostApiCall(resource, query, success) {
 	return dispatch => {
-		axios.post(config.tempAPIserver + resource, param)
+		axios.post(config.tempAPIserver + resource, query)
 			.then(function (res) {
-				dispatch(action(res.data));
+				dispatch(success(res.data));
+				dispatch(hideDialog());
 			})
 			.catch(function (error) {
-				dispatch(ShowErrorDialog(errorMessage))
+				dispatch(updateServerError(error.response.data.Error.Message))									
 			});
 	}
 }

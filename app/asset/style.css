@@ -120,7 +120,8 @@ input {
 	padding-top: 65px;
 }
 
-.dialog-box-Wrapper{
+.dialog-box-Wrapper,
+.error-dialog-box-Wrapper{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -133,15 +134,25 @@ input {
 	z-index:10;
 }
 
-.dialog-box{
-	width: 380px;
-	max-height: 80vh; 
+.dialog-box-Wrapper{z-index: 10;}
+.error-dialog-box-Wrapper{z-index: 11;}
+
+.dialog-box,
+.error-dialog-box{
+	height: auto; 
 	background-color: #fff;
 	border-radius: 6px;
 	padding: 1em;
 	-moz-box-shadow: -1px 1px 5px #2e2e2e;
 	-webkit-box-shadow: -1px 1px 5px #2e2e2e;
 	box-shadow: -1px 1px 5px #2e2e2e;
+}
+
+.dialog-box{width: 380px;}
+.error-dialog-box{width: 300px;}
+
+.close-icon{
+	cursor: pointer;
 }
 
 .loading-spinner {

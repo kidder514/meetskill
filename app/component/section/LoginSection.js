@@ -4,23 +4,31 @@ import string from "../../String";
 import config from "../../config"
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import validator from "validator"
 
 class LoginSection extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
+		this.initialState = {
 			email: '',
 			errorEmail: '',
 			password: '',
-			errorPassword: ''
+			errorPassword: '',
+			recaptcha:'',
+			errorRecaptcha: '',
+			rememberLogin: ''
 		};
+
+		this.state = this.initialState;
 		this.submit = this.submit.bind(this);
+		this.gotoSignup = this.gotoSignup.bind(this);
+		
 		this.tickRecaptcha = this.tickRecaptcha.bind(this);
+		this.recaptchaExpired = this.recaptchaExpired.bind(this);		
 		this.onChange = this.onChange.bind(this);		
 		this.gLoginSuccess = this.gLoginSuccess.bind(this);
 		this.fbButtonClicked = this.fbButtonClicked.bind(this);
 		this.responseFb = this.responseFb.bind(this);
-		
 	}
 
 	onChange(e){
@@ -32,20 +40,27 @@ class LoginSection extends Component {
 			'badge' : "bottomright",
 			'sitekey' : config.recaptchaSiteKey,
 			'callback' : this.tickRecaptcha,
-			'data-size': "invisible"
+			'data-size': "invisible",
+			'expired-callback': this.recaptchaExpired,
 		});
 	}
 
-	componentDidUpdate(){
-		if (this.props.userState.isLoggedin){
-			this.props.hideDialog();			
+	componentWillReceiveProps(nextProps){
+		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){
+			this.props.resetServerError();
+			this.setState(this.initialState);
 		}
+	}
+
+	gotoSignup(){
+		this.props.showDialog("signup");
+		this.props.resetServerError();
+		this.setState(this.initialState);
 	}
 
 	gLoginSuccess(googleUser){
 		if (googleUser !== undefined && googleUser.getAuthResponse().id_token !== ""){
-			console.log(googleUser);
-			console.log(googleUser.getAuthResponse());
+
 			// this.props.gValidationCall(googleUser.getAuthResponse().id_token);
 			// this.props.login(googleUser.getAuthResponse().id_token, this.state.rememberLogin);
 		}
@@ -63,23 +78,60 @@ class LoginSection extends Component {
 	}
 	
 	fbButtonClicked(){
-		console.log("fb button cliced");
+
 	}
 
 	responseFb(){
-		console.log("responseFb");
+
 	}
 
 	tickRecaptcha(token){
-		console.log("here is the token")
-		console.log(token);		
+		//TODO: need to add backend support for google recaptcha, 
+		//now it doesn't pass the token from loginCall() to the backend bacause backend does not support it yet.
+		this.setState({recaptcha: token});
+	}
+
+	recaptchaExpired(){
+		this.setState({recaptcha: ''})
 	}
 
 	submit(token) {
-		this.props.loginCall({
-			email: this.state.email,
-			password: this.state.password
-		});
+		var stateCache = {};
+		var isValid = true;
+		if(this.state.email == ""){
+			stateCache.errorEmail = string.NoEmail;
+			var isValid = false;		
+		} else if(!validator.isEmail(this.state.email)){
+			stateCache.errorEmail = string.InvalidEmail;
+			var isValid = false;		
+		}else{
+			stateCache.errorEmail = "";
+		}
+
+		if(this.state.password == ""){
+			stateCache.errorPassword = string.NoPassword;
+			var isValid = false;		
+		}else{
+			stateCache.errorPassword = "";
+		}
+
+		if(this.state.recaptcha == ""){
+			stateCache.errorRecaptcha = string.InvalidRecaptcha;
+			var isValid = false;		
+		}else{
+			stateCache.errorRecaptcha = "";
+		}
+
+		stateCache.rememberLogin = this.state.rememberLogin;
+
+		if(isValid){
+			stateCache.recaptcha = this.state.recaptcha;
+			this.setState(stateCache,
+				this.props.loginCall({"email": this.state.email, "password": this.state.password}, this.state.rememberLogin)
+			);
+		}else{
+			this.setState(stateCache);
+		}
 	}
 	
 	render() {
@@ -90,22 +142,24 @@ class LoginSection extends Component {
 				<div className="login-section">
 					<div className="input-item">
 						<input type="text" name="email" onChange={this.onChange} value={this.state.email} placeholder={string.Email} />
-						<span></span>
+						<span>{this.state.errorEmail}</span>
 					</div>
 					<div className="input-item">
 						<input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder={string.Password} />
-						<span></span>
+						<span>{this.state.errorPassword}</span>
 					</div>
 					<div className="recaptcha-wrapper">
-						<div id="login-recaptcha"></div>					
+						<div id="login-recaptcha"></div>
+						<span>{this.state.errorRecaptcha}</span>											
 					</div>
 					<div className="input-item">
+						<span>{this.props.ui.serverError}</span>
 						<input id="login-submit" type="submit" onClick={this.submit} value={string.Login} />
-						<Link onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
+						<Link className="forgot-password-link" onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
 					</div>
 					<hr />
 					<div className="input-item">
-						<input onClick={() => this.props.showDialog("signup")} type="submit" value={string.Signup} />
+						<input onClick={this.gotoSignup} type="submit" value={string.Signup} />
 					</div>
 					<div className="input-item">
 						<GoogleLogin

@@ -2,27 +2,34 @@
 const initialState = {
 	showDialogBox: false,
 	dialogType: "",
-	errorMessage: ""
+	showErrorDialogBox: false,
+	errorMessage: "",
+	serverError: "",
 };
 
-function userState(state = initialState, action) {
+function ui(state = initialState, action) {
   	switch (action.type){
   		case "SHOW_DIALOG":
 	    	return { ...state, 
     			showDialogBox: true, 
     			dialogType: action.dialogType
     		};
-    	case "SHOW_ERROR":
-	    	return { ...state, 
-    			showDialogBox: true, 
-    			dialogType: action.dialogType,
-    			errorMessage: action.errorMessage
-    		};
   		case "HIDE_DIALOG":
-  			return initialState;
+			return { ...state, showDialogBox: false};
+		case "SHOW_ERROR":
+			return { ...state, 
+				showErrorDialogBox: true,
+				errorMessage: action.errorMessage
+			};
+		case "HIDE_ERROR":
+			return {...state, showErrorDialogBox: false}
+		case "UPDATE_SERVER_ERROR":
+			return {...state, serverError: action.serverError}
+		case "RESET_SERVER_ERROR":
+			return {...state, serverError: ""}	
 	    default:
 	    	return state;
     }
 }
 
-export default userState
+export default ui

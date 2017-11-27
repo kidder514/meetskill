@@ -1,9 +1,9 @@
 import axios from "axios";
-import { ShowErrorDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
-import {postApiCall} from "./appAction"
+import {authPostApiCall} from "./appAction"
 import resourcePath from "../resourcePath"
+import {updateServerError} from "./uiAction"
 
 export const login = (data) => {
 	return {
@@ -39,9 +39,9 @@ export const unlocate = () => {
 }
 
 export const loginCall = (data) => {
-	return postApiCall(resourcePath.login, data, login, string.ErrorNotAbleToLogin);
+	return authPostApiCall(resourcePath.login, data, login);
 }
 
 export const signupCall = (data) => {
-    return postApiCall(resourcePath.signup, data, login, string.ErrorNotAbleToSignup);
+    return authPostApiCall(resourcePath.signup, data, login);
 }

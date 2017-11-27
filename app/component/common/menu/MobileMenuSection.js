@@ -36,7 +36,6 @@ class MobileMenuSection extends Component {
         this.setState({left: "-" + count * 100 + "vw"});
         if (isBack){
             var ulNode  = e.target.parentNode.parentNode;
-            console.log(ulNode);
             ulNode.className = ulNode.className.replace(" top-layer", "");
         } else {
             var siblingNode = e.target.parentNode.childNodes[1];

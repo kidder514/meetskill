@@ -20,7 +20,6 @@ class TitleWithTooltip extends React.Component {
     }
 
     render() {
-        console.log('Tooltip-' + this.props.id);
         return (
             <h6 key={"header-" + this.props.id} className="item-title" id={'Tooltip-' + this.props.id}>
                 <Link to={pagePath.SingleCourse + this.props.url}>

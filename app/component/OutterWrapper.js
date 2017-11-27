@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DialogBox from "../helper/uicomponent/DialogBox"
+import ErrorDialogBox from "../helper/uicomponent/ErrorDialogBox"
 import MenuWrapper from "./common/menu/MenuWrapper"
 import Footer from "../container/common/Footer"
 import LoadingSpinner from "../helper/uicomponent/LoadingSpinner"
@@ -27,6 +28,7 @@ class OutterWrapper extends Component{
 		return ([
 				<MenuWrapper key="menu-wrapper"/>,
 				<DialogBox key="dialog-box"/>,
+				<ErrorDialogBox key="error-dialog-box"/>,
 				<div key="outter-wrapper-children">{this.props.children}</div>,
 				<Footer key="footer"/>
 		]);
