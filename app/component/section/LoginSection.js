@@ -60,29 +60,22 @@ class LoginSection extends Component {
 
 	gLoginSuccess(googleUser){
 		if (googleUser !== undefined && googleUser.getAuthResponse().id_token !== ""){
-
-			// this.props.gValidationCall(googleUser.getAuthResponse().id_token);
-			// this.props.login(googleUser.getAuthResponse().id_token, this.state.rememberLogin);
+			this.props.googleLoginCall({'id_token': googleUser.getAuthResponse().id_token});
 		}
 	}
 	
 	gLoginFail(){
-		// login fail
+		// handle google login fail	
 	}
 
-	gSignout(){
-	    var auth2 = gapi.auth2.getAuthInstance();
-	    auth2.signOut().then(function () {
-	    	// google signout callback
-	    });
-	}
-	
-	fbButtonClicked(){
+	fbButtonClicked(e){
 
 	}
 
-	responseFb(){
-
+	responseFb(res){
+		if (res.accessToken){
+			this.props.facebookLoginCall({'access_token': res.accessToken});
+		}
 	}
 
 	tickRecaptcha(token){
@@ -127,7 +120,7 @@ class LoginSection extends Component {
 		if(isValid){
 			stateCache.recaptcha = this.state.recaptcha;
 			this.setState(stateCache,
-				this.props.loginCall({"email": this.state.email, "password": this.state.password}, this.state.rememberLogin)
+				this.props.loginCall({"email": this.state.email, "password": this.state.password})
 			);
 		}else{
 			this.setState(stateCache);

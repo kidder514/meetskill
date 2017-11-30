@@ -13,6 +13,8 @@
 11. remember password
 12. review ALL your code 
 13. account menu clickable area wrong.
+14. account page
+15. instructor activation page
 
 - need to work on account pages
 - need to double check all action workflow when start building api

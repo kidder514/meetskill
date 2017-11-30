@@ -45,3 +45,11 @@ export const loginCall = (data) => {
 export const signupCall = (data) => {
     return authPostApiCall(resourcePath.signup, data, login);
 }
+
+export const googleLoginCall = (data) => {
+    return authPostApiCall(resourcePath.googleLogin, data, login);    
+}
+
+export const facebookLoginCall = (data) => {
+    return authPostApiCall(resourcePath.facebookLogin, data, login);    
+}
