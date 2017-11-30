@@ -47,14 +47,13 @@ class LoginSection extends Component {
 
 	componentWillReceiveProps(nextProps){
 		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){
-			this.props.resetServerError();
+			this.props.resetAllServerError();			
 			this.setState(this.initialState);
 		}
 	}
 
 	gotoSignup(){
 		this.props.showDialog("signup");
-		this.props.resetServerError();
 		this.setState(this.initialState);
 	}
 
@@ -65,6 +64,7 @@ class LoginSection extends Component {
 	}
 	
 	gLoginFail(){
+
 		// handle google login fail	
 	}
 
@@ -146,7 +146,7 @@ class LoginSection extends Component {
 						<span>{this.state.errorRecaptcha}</span>											
 					</div>
 					<div className="input-item">
-						<span>{this.props.ui.serverError}</span>
+						<span>{this.props.ui.serverLoginError}</span>
 						<input id="login-submit" type="submit" onClick={this.submit} value={string.Login} />
 						<Link className="forgot-password-link" onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
 					</div>
@@ -155,6 +155,7 @@ class LoginSection extends Component {
 						<input onClick={this.gotoSignup} type="submit" value={string.Signup} />
 					</div>
 					<div className="input-item">
+						<span>{this.props.ui.serverGoogleLoginError}</span>
 						<GoogleLogin
 								clientId={config.googleLoginClientId}
 								buttonText={string.LoginWithGoogle}
@@ -163,6 +164,7 @@ class LoginSection extends Component {
 							/>
 					</div>
 					<div className="input-item">
+					<span>{this.props.ui.serverFacebookLoginError}</span>
 						<FacebookLogin
 							appId={config.FBAppId}
 							autoLoad={false}

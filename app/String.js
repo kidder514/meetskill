@@ -19,6 +19,8 @@ const string = new LocalizedString({
         Submit: "Submit",
         Login: "Login",
         Signup: "Sign up",
+        SignupStudentAccount: "Sign up as a student",
+        SignupInstructorAccount: "Sign up as a instructor",
         Inbox: "Inbox",
         MyCourses: "My Courses",
         MyCart: "My Cart",

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import LoginSection from '../../component/section/LoginSection'
 import { loginCall, googleLoginCall,facebookLoginCall } from "../../action/userAction" 
-import { showDialog, hideDialog,resetServerError } from "../../action/uiAction"
+import { showDialog, hideDialog,resetAllServerError } from "../../action/uiAction"
 
 const mapStateToProps = (state) => {
 	return {
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         googleLoginCall: (data) => {dispatch(googleLoginCall(data))},
         facebookLoginCall: (data) => {dispatch(facebookLoginCall(data))},                
         showDialog: (content) => {dispatch(showDialog(content))},
-        resetServerError: () => {dispatch(resetServerError())}
+        resetAllServerError: () => {dispatch(resetAllServerError())},
     };
 };
 

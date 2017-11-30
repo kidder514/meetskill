@@ -3,9 +3,15 @@ import { showErrorDialog, updateServerError, hideDialog } from "./uiAction";
 import string from "../String"
 import config from "../config"
 import { getStoredState } from 'redux-persist'
-import {locate} from "./userAction"
+import { locate } from "./userAction"
 import resourcePath from "../resourcePath"
-import {setSearchOptions} from "./searchAction"
+import { setSearchOptions } from "./searchAction"
+
+export const initApp = () =>{
+    return {
+        type: "INIT_APP"
+    }
+}
 
 export const InitAppCall = () => {
 	return (dispatch, getState) => {
@@ -38,12 +44,6 @@ export const InitAppCall = () => {
 	}
 }
 
-export const initApp = () =>{
-    return {
-        type: "INIT_APP"
-    }
-}
-
 export function getApiCall(query, action, errorMessage) {
 	return dispatch => {
 		axios.get(config.APIserver, query)
@@ -72,7 +72,17 @@ export function authPostApiCall(resource, query, success) {
 				dispatch(hideDialog());
 			})
 			.catch(function (error) {
-				dispatch(updateServerError(error.response.data.Error.Message))									
+				// check the resouce to find out what api call it is triggering
+				// then in turn update the server error
+				if (resource.indexOf("login")){
+					dispatch(updateServerLoginError(error.response.data.Error.Message))									
+				} else if (resource.indexOf("google")) {
+					dispatch(updateServerGoogleError(error.response.data.Error.Message))									
+				} else if (resource.indexOf("facebook")) {
+					dispatch(updateServerFacebookError(error.response.data.Error.Message))									
+				} else if (resource.indexOf("signup")) {
+					dispatch(updateServerSignupError(error.response.data.Error.Message))									
+				}
 			});
 	}
 }

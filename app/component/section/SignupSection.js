@@ -30,7 +30,7 @@ class SignupSection extends Component {
 	}
 
 	componentDidMount(){
-		this.props.resetServerError();
+		this.props.resetAllServerError();
 		grecaptcha.render("signup-recaptcha", {
 			'badge' : "bottomright",
 			'sitekey' : config.recaptchaSiteKey,
@@ -42,7 +42,7 @@ class SignupSection extends Component {
 
 	componentWillReceiveProps(nextProps){	
 		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){	
-			this.props.resetServerError();
+			this.props.resetAllServerError();			
 			this.setState(this.initialState);
 		}
 	}
@@ -61,7 +61,7 @@ class SignupSection extends Component {
 		this.setState({recaptcha: ''})
 	}
 
-	submit() {
+	submit(isInstructor) {
 		var stateCache = {};
 		var isValid = true;
 		if (this.state.firstName == "") {
@@ -127,7 +127,7 @@ class SignupSection extends Component {
 				this.props.signupCall({
 					firstname: this.state.firstName,
 					lastname: this.state.lastName,
-					usertype: "student",
+					usertype: isInstructor ? "instructor" : "student",
 					email: this.state.email,
 					password: this.state.password,
 					confirmPassword: this.state.confirmPassword
@@ -167,7 +167,10 @@ class SignupSection extends Component {
 				</div>
 				<div className="input-item">
 					<span>{this.props.ui.serverError}</span>
-					<input type="submit" onClick={this.submit} value={string.Signup} />
+					<input type="submit" onClick={() => this.submit(false)} value={string.SignupStudentAccount} />
+				</div>
+				<div className="input-item">
+					<input type="submit" onClick={() => this.submit(true)} value={string.SignupInstructorAccount} />
 				</div>
 			</div>
 		)
