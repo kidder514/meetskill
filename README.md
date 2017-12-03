@@ -5,12 +5,12 @@
 2.4. make sure backend check the password strength
 
 <!-- 5. add input validation in login and signup page. -->
-16. fix serverError, use a single in one place.
+<!-- 16. fix serverError, use a single in one place. -->
 1. signup (need backend fix)
 6. login with google(need backend fix)
 7. login with facebook(need backend fix)
-8. forget password (need backend fix)
-8.1 reset password page
+8. forget password ( need backend fix)
+8.1 reset password page (what url is this gonna be?)
 9. instructor registration(need backend fix)
 10. compare mobile menu and desktop menu and decide what to remove
 11. remember password

@@ -4,10 +4,10 @@ const initialState = {
 	dialogType: "",
 	showErrorDialogBox: false,
 	errorMessage: "",
-	serverLoginError:"",
-	serverSignupError: "",
-	serverGoogleLoginError:"",
-	serverFacebookLoginError: "",
+	serverErrorType:"",
+	serverErrorMessage: "",
+	serverSuccessType:"",
+	serverSuccessMessage:""
 };
 
 function ui(state = initialState, action) {
@@ -26,29 +26,21 @@ function ui(state = initialState, action) {
 			};
 		case "HIDE_ERROR":
 			return {...state, showErrorDialogBox: false}
-		case "UPDATE_LOGIN_ERROR":
-			return {...state, serverLoginError: action.serverLoginError}
-		case "RESET_LOGIN_ERROR":
-			return {...state, serverLoginError:''}
-		case "UPDATE_SIGNUP_ERROR":
-			return {...state, serverSignupError: action.serverSignupError}
-		case "RESET_SIGNUP_ERROR":
-			return {...state, serverSignupError:''}
-		case "UPDATE_GOOGLE_LOGIN_ERROR":
-			return {...state, serverGoogleLoginError: action.serverGoogleLoginError}
-		case "RESET_GOOGLE_LOGIN_ERROR":
-			return {...state, serverGoogleLoginError:''}
-		case "UPDATE_FACEBOOK_LOGIN_ERROR":
-			return {...state, serverFacebookLoginError: action.serverFacebookLoginError}
-		case "RESET_FACEBOOK_LOGIN_ERROR":
-			return {...state, serverFacebookLoginError:''}
-		case "RESET_ALL_SERVER_ERROR":
+		case "UPDATE_SERVER_ERROR":
+			return {...state, serverErrorType: action.resource, serverErrorMessage: action.serverErrorMessage}
+		case "RESET_SERVER_ERROR":
+			return {...state, serverErrorType: "", serverErrorMessage: ""}		
+		case "UPDATE_SERVER_SUCCESS":
+			return {...state, serverSuccessType: action.resource, serverSuccessMessage: action.serverSuccessMessage}
+		case "RESET_SERVER_SUCCESS":
+			return {...state, serverSuccessType: "", serverSuccessMessage: ""}
+		case "RESET_ALL_SERVER_MESSAGE":
 			return {...state, 
-				serverLoginError:'', 
-				serverSignupError:'',
-				serverGoogleLoginError:'',
-				serverFacebookLoginError:''
-			}	
+				serverErrorType: "",
+				serverErrorMessage: "",
+				serverSuccessType: "",
+				serverSuccessMessage: ""
+			}
 	    default:
 	    	return state;
     }

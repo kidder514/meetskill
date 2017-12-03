@@ -4,6 +4,7 @@ import string from "../../String";
 import config from "../../config"
 import validator from "validator"
 import passwordChecker from "../../helper/passwordChecker"
+import resourcePath from "../../resourcePath"
 
 class SignupSection extends Component {
 	constructor(props) {
@@ -38,6 +39,10 @@ class SignupSection extends Component {
 			'data-size': "invisible",
 			'expired-callback': this.recaptchaExpired			
 		});
+	}
+
+	componentWillUnmount(){
+		this.props.resetAllServerError();		
 	}
 
 	componentWillReceiveProps(nextProps){	
@@ -166,7 +171,7 @@ class SignupSection extends Component {
 					<span>{this.state.errorRecaptcha}</span>
 				</div>
 				<div className="input-item">
-					<span>{this.props.ui.serverError}</span>
+					<span>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</span>
 					<input type="submit" onClick={() => this.submit(false)} value={string.SignupStudentAccount} />
 				</div>
 				<div className="input-item">

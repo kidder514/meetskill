@@ -5,6 +5,7 @@ import config from "../../config"
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import validator from "validator"
+import resourcePath from "../../resourcePath"
 
 class LoginSection extends Component {
 	constructor(props) {
@@ -36,6 +37,7 @@ class LoginSection extends Component {
 	}
 
 	componentDidMount(){
+		this.props.resetAllServerError();
 		grecaptcha.render("login-recaptcha", {
 			'badge' : "bottomright",
 			'sitekey' : config.recaptchaSiteKey,
@@ -45,9 +47,13 @@ class LoginSection extends Component {
 		});
 	}
 
+	componentWillUnmount(){
+		this.props.resetAllServerError();		
+	}
+
 	componentWillReceiveProps(nextProps){
 		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){
-			this.props.resetAllServerError();			
+			this.props.resetAllServerError();
 			this.setState(this.initialState);
 		}
 	}
@@ -128,7 +134,8 @@ class LoginSection extends Component {
 	}
 	
 	render() {
-		if(this.props.userState.isLoggedIn){
+		var {ui, userState} = this.props;		
+		if(userState.isLoggedIn){
 			return (<div className="login-section">{string.YouAreAlreadyLoggedIn}</div>)
 		}else{
 			return (
@@ -146,7 +153,7 @@ class LoginSection extends Component {
 						<span>{this.state.errorRecaptcha}</span>											
 					</div>
 					<div className="input-item">
-						<span>{this.props.ui.serverLoginError}</span>
+						<span>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</span>
 						<input id="login-submit" type="submit" onClick={this.submit} value={string.Login} />
 						<Link className="forgot-password-link" onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
 					</div>
@@ -155,7 +162,7 @@ class LoginSection extends Component {
 						<input onClick={this.gotoSignup} type="submit" value={string.Signup} />
 					</div>
 					<div className="input-item">
-						<span>{this.props.ui.serverGoogleLoginError}</span>
+						<span>{ui.serverErrorType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
 						<GoogleLogin
 								clientId={config.googleLoginClientId}
 								buttonText={string.LoginWithGoogle}
@@ -164,7 +171,7 @@ class LoginSection extends Component {
 							/>
 					</div>
 					<div className="input-item">
-					<span>{this.props.ui.serverFacebookLoginError}</span>
+					<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
 						<FacebookLogin
 							appId={config.FBAppId}
 							autoLoad={false}

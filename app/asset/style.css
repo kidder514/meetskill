@@ -546,6 +546,10 @@ a.menu-item.cart-icon{
 .login-section button:hover{
 	cursor: pointer;
 }
+
+.forgot-password-link{
+	cursor: pointer;
+}
 /* 4.2 home */
 /* 4.3 category list */
 .item{

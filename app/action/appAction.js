@@ -1,5 +1,9 @@
 import axios from "axios";
-import { showErrorDialog, updateServerError, hideDialog } from "./uiAction";
+import { 
+	showErrorDialog,
+	updateServerError, 
+	hideDialog, 
+	updateServerSuccess } from "./uiAction";
 import string from "../String"
 import config from "../config"
 import { getStoredState } from 'redux-persist'
@@ -72,24 +76,31 @@ export function authPostApiCall(resource, query, success) {
 				dispatch(hideDialog());
 			})
 			.catch(function (error) {
-				// check the resouce to find out what api call it is triggering
-				// then in turn update the server error
-				if (resource.indexOf("login")){
-					dispatch(updateServerLoginError(error.response.data.Error.Message))									
-				} else if (resource.indexOf("google")) {
-					dispatch(updateServerGoogleError(error.response.data.Error.Message))									
-				} else if (resource.indexOf("facebook")) {
-					dispatch(updateServerFacebookError(error.response.data.Error.Message))									
-				} else if (resource.indexOf("signup")) {
-					dispatch(updateServerSignupError(error.response.data.Error.Message))									
-				}
+				dispatch(updateServerError(resource, error.response.data.Error.Message ));
+			});
+	}
+}
+
+export function postApiCall(resource, query, success, fail, successMessage, errorMessage) {
+	return dispatch => {
+		axios.post(config.tempAPIserver + resource, query)
+			.then(function (res) {
+				if (success != null){dispatch(success(res.data));}
+				if (successMessage != null) {dispatch(updateServerSuccess(resource, successMessage))}
+			})
+			.catch(function (error) {
+				if (fail != null){dispatch(fail());}
+				if (errorMessage != null) {
+					dispatch(updateServerError(resource, errorMessage))
+				} else {
+					dispatch(updateServerError(resource, error.response.data.Error.Message))					
+				}				
 			});
 	}
 }
 
 export function deleteApiCall(resource, param, action, errorMessage) {
 	return dispatch => {};
-
 }
 
 export function putApiCall(resource, param, action, errorMessage) {

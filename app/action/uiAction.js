@@ -25,50 +25,30 @@ export const hideErrorDialog = () => {
     }
 }
 
-export const updateServerLoginError = (serverLoginError) => {
+export const updateServerError = (resource, serverErrorMessage) => {
     return {
-    	type: "UPDATE_LOGIN_ERROR",
-    	serverLoginError: serverLoginError
+    	type: "UPDATE_SERVER_ERROR",
+        resource: resource,
+        serverErrorMessage: serverErrorMessage
     }
 }
 
-export const resetServerLoginError = () => {
-    return { type: "RESET_LOGIN_ERROR" }
+export const resetServerError = () => {
+    return { type: "RESET_SERVER_ERROR" }
 }
 
-export const updateServerSignupError = (serverSignupError) => {
+export const updateServerSuccess = (resource, serverErrorMessage) => {
     return {
-    	type: "UPDATE_SIGNUP_ERROR",
-    	serverSignupError: serverSignupError
+        type: "UPDATE_SERVER_SUCCESS",
+        resource: resource,
+    	serverSuccessMessage: serverErrorMessage
     }
 }
 
-export const resetServerSignupError = () => {
-    return { type: "RESET_SIGNUP_ERROR" }
-}
-
-export const updateServerGoogleLoginError = (serverGoogleLoginError) => {
-    return {
-    	type: "UPDATE_GOOGLE_LOGIN_ERROR",
-    	serverGoogleLoginError: serverGoogleLoginError
-    }
-}
-
-export const resetServerGoogleLoginError = () => {
-    return { type: "RESET_GOOGLE_LOGIN_ERROR" }
-}
-
-export const updateServerFacebookLoginError = (serverFacebookLoginError) => {
-    return {
-    	type: "UPDATE_FACEBOOK_LOGIN_ERROR",
-    	serverFacebookLoginError: serverFacebookLoginError
-    }
-}
-
-export const resetServerFacebookLoginError = () => {
-    return { type: "RESET_FACEBOOK_LOGIN_ERROR" }
+export const resetServerSuccess = () => {
+    return { type: "RESET_SERVER_SUCCESS" }
 }
 
 export const resetAllServerError = () => {
-    return { type: "RESET_ALL_SERVER_ERROR" }
+    return { type: "RESET_ALL_SERVER_MESSAGE" }
 }

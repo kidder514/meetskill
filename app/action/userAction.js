@@ -1,7 +1,7 @@
 import axios from "axios";
 import string from "../String"
 import config from "../config"
-import {authPostApiCall} from "./appAction"
+import {authPostApiCall, postApiCall} from "./appAction"
 import resourcePath from "../resourcePath"
 import {updateServerError} from "./uiAction"
 
@@ -52,4 +52,14 @@ export const googleLoginCall = (data) => {
 
 export const facebookLoginCall = (data) => {
     return authPostApiCall(resourcePath.facebookLogin, data, login);    
+}
+
+export const recoverPasswordCall = (data) => {
+    return postApiCall(
+        resourcePath.recoverPassword,
+        data,
+        null,
+        null, 
+        string.EmailSentToRecoverPassword, 
+        string.ErrorUnknown );
 }

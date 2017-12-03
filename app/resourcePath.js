@@ -3,6 +3,7 @@ const resourcePath = {
     login: "/api/model/login",
     googleLogin: "/auth/google",
     facebookLogin: "/auth/facebook",
+    recoverPassword:"/api/model/recover-password",
     init:"/init"
 };
 
