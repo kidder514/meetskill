@@ -10,14 +10,19 @@
 6. login with google(need backend fix)
 7. login with facebook(need backend fix)
 8. forget password ( need backend fix)
-8.1 reset password page (what url is this gonna be?)
+8.1. reset password page (what url is this gonna be?)
 9. instructor registration(need backend fix)
-10. compare mobile menu and desktop menu and decide what to remove
-11. remember password
-12. review ALL your code 
-13. account menu clickable area wrong.
-14. account page
-15. instructor activation page
+10. account menu need to change
+11. account page side menu
+12. All account pages
+13. routing
+14. able to update any content.
+15. account menu clickable area wrong.
+16. compare mobile menu and desktop menu and decide what to remove
+17. remember password
+18. review ALL your code 
+19. instructor activation page
+20. remove sign up as instructor button, there is no such feature in the backend
 
 - need to work on account pages
 - need to double check all action workflow when start building api

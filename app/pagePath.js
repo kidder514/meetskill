@@ -11,7 +11,12 @@ const pagePath = {
     Help:"/help",
     Wallet:"/wallet",
     Inbox: "/inbox",
+    ViewPublicProfile: "/viewpublicprofile",    
+    Profile: "/profile",
     MyCourses: "/mycourses",
+    Account: "/account",
+    Payment:"/payment",
+    Preference:"/preference",
     MyCart: "/mycart",
     PaymentAndOrder:"/paymentorder",
     Settings:"/settings",
@@ -20,7 +25,7 @@ const pagePath = {
     ShoppingCart:"/shoppingcart",
     Notification:"/notification",
     InstructorDashboard:"/instructordashboard",
-    ResetPassword: "/resetpassword"
+    ResetPassword: "/resetpassword",
 };
 
 export default pagePath;

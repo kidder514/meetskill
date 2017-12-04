@@ -81,7 +81,13 @@ const string = new LocalizedString({
         InvalidConfirmPassword: "The two passwords you entered does not match",
         InvalidRecaptcha: "If you are not a robot, tick the box or complete the challenge",
         SearchEnterKeyWord:"Enter a keywork. etc. Math, English.",
-        YouAreAlreadyLoggedIn: "You are already logged in"
+        YouAreAlreadyLoggedIn: "You are already logged in",
+        AccountViewPublicProfile: "View public Profile",
+        AccountMyCourses: "My Courses",
+        AccountProfile: "Profile",
+        AccountAccount: "Account",
+        AccountPayment: "Payment",
+        AccountPreference: "Preference"
     },
     it: {
     }
