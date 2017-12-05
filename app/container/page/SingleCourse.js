@@ -5,6 +5,7 @@ import SingleCoursePage from "../../component/page/SingleCoursePage"
 const mapStateToProps = (state) => {
 	return {
 		userState: state.userState,
+		course: state.data.course
 	}
 }
 

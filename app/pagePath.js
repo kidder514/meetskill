@@ -2,6 +2,7 @@ const pagePath = {
     Home: "/",
     SingleCourse: "/course",
     Author: "/author",
+    Categories: "/categories",
     Category: "/category",
     Help:"/help",
     Inbox: "/inbox",

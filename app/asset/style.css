@@ -482,6 +482,17 @@ a.menu-item.cart-icon{
 	height: auto;
 }
 
+.profile-icon .user-initials{
+	display: inline-block;
+    line-height: 3em;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    vertical-align: middle;
+	text-align: center;
+	border: 1px solid;
+}
+
 .profile-main{
 	padding: 1em 1.5em 1em 1.5em;
 	height:auto;

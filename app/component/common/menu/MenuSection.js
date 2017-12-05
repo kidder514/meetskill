@@ -10,6 +10,7 @@ import CartItemPopOver from "../../../container/common/menu/CartItemPopOver"
 import ProfilePopOver from "../../../container/common/menu/ProfilePopOver"
 import config from "../../../config"
 import pagePath from "../../../pagePath"
+import getInitial from "../../../helper/getInitial"
 
 class MenuSection extends Component {
 	constructor(props) {
@@ -20,11 +21,12 @@ class MenuSection extends Component {
 	}
 	
 	renderUserSection(){
-		if ((!!this.props.userState.isLoggedin)){
+		var user = this.props.userState;
+		if ((!!user.isLoggedin)){
 			return (
 				<div className="menu-item no-hover-effect">
 					<Link to={pagePath.Account} className="profile-icon">
-						<img className="img-circle" src={"http://www.newsshare.in/wp-content/uploads/2017/04/Miniclip-8-Ball-Pool-Avatar-16.png"} />				
+						{(!!user.photo) ? <img className="img-circle" src={user.photo} /> : <div className="user-initials">{ getInitial(user.firstName, user.lastName) }</div>}				
 					</Link>
 					<div className="profile-popover popover">
 						<ProfilePopOver />
@@ -47,7 +49,7 @@ class MenuSection extends Component {
 	        	</Link>
 
 		        <div className="menu-item" >
-		        	<a>{string.MenuCategory}</a>
+					<Link to={pagePath.Categories}>{string.MenuCategory}</Link>
 					<div className="category-pop-over popover">
 						<CategoryPopOver />
 					</div>

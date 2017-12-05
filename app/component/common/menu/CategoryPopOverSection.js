@@ -3,17 +3,17 @@ import {Link} from "react-router";
 import IconButton from "../../../helper/uicomponent/IconButton";
 import string from "../../../String"
 import LoadingSpinner from "../../../helper/uicomponent/LoadingSpinner";
+import pagePath from "../../../pagePath"
 
 class CategoryPopOverSection extends Component {
 	constructor(props) {
 		super(props);
-		this.renderComponent = this.renderComponent.bind(this);
 		this.renderCategory = this.renderCategory.bind(this);
 	}
 	
 	renderCategory(categories, parentPath){
 		return (
-			<ul className={parentPath != "" ? "subcategory" : ""}>
+			<ul className={parentPath == pagePath.Category ? "" : "subcategory"}>
 				{categories.map((category)=>{
 					if (!!category.subcategory){
 						return (
@@ -41,19 +41,15 @@ class CategoryPopOverSection extends Component {
 
 	}
 
-	renderComponent(){
-		return (
-			<div>
-				{this.renderCategory(this.props.category, "")}
-			</div>
-		);
-	}
-
     render() {
 		if( this.props.category.length <= 0){
 			return <LoadingSpinner />;
 		} else {
-			return (this.renderComponent());
+			return (
+			<div>
+				{this.renderCategory(this.props.category, pagePath.Category)}
+			</div>
+			)
 		}
     }
 }

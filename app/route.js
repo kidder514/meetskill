@@ -46,7 +46,7 @@ export default (
 			<Route path={pagePath.Notification} component={Notification} />
 			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
 			<Route path={pagePath.ResetPassword} component={ResetPassword} />
-			<Route path={pagePath.Course + "/:id"} component={SingleCourse} />
+			<Route path={pagePath.SingleCourse + "/:id"} component={SingleCourse} />
 			<Route path={pagePath.Mycourses} component={MyCourse} />
 			<Route path={pagePath.Author + "/:id"} component={Author} />
 			<Route path={pagePath.Inbox} component={Inbox} />

@@ -6,19 +6,15 @@
 
 <!-- 5. add input validation in login and signup page. -->
 <!-- 16. fix serverError, use a single in one place. -->
-15. account menu clickable area wrong.
 1. signup (need backend fix)
 6. login with google(need backend fix)
 7. login with facebook(need backend fix)
 8. forget password ( need backend fix)
 8.1. reset password page (what url is this gonna be?)
-9. instructor registration(need backend fix)
-10. account menu need to change
-11. account page side menu
+9. instructor registration(need front-end verification)
+
 12. All account pages
-13. routing
-14. able to update any content.
-16. compare mobile menu and desktop menu and decide what to remove
+14. able to update any user account settings.
 17. remember password
 18. review ALL your code 
 19. instructor activation page
