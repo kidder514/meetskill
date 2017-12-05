@@ -27,10 +27,10 @@ class ProfilePopOverSection extends Component {
 					</div>
 				</Link>
 				<div className="profile-menu">
-					<ul>
-						<li className="first-section">
-							<Link to={pagePath.Inbox}>
-								{string.Inbox}
+					<ul className="first-section">
+						<li>
+							<Link to={pagePath.MyCart}>
+								{string.MyCart}
 							</Link>
 						</li>
 						<li>
@@ -38,19 +38,14 @@ class ProfilePopOverSection extends Component {
 								{string.MyCourses}
 							</Link>
 						</li>
-						<li>
-							<Link to={pagePath.MyCart}>
-								{string.MyCart}
+						<li >
+							<Link to={pagePath.Inbox}>
+								{string.Inbox}
 							</Link>
 						</li>
 						<li>
-							<Link to={pagePath.Account + pagePath.PaymentAndOrder}>
-								{string.PaymentAndOrder}
-							</Link>
-						</li>
-						<li>
-							<Link to={pagePath.Account + pagePath.Settings}>
-								{string.Settings}
+							<Link to={pagePath.Notification}>
+								{string.Notification}
 							</Link>
 						</li>
 					</ul>

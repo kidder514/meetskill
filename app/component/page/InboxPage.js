@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
-class SingleCoursePage extends Component{
+class InboxPage extends Component{
 	constructor(props){
 		super(props);
 	}
 
+
     render(){
 	    return (
-	    	<div>
-	    		<h1>SingleCoursePage</h1>
+	    	<div className="inbox-page">
+	    		InboxPage
 	    	</div>
 	    )
   	}
 }
 
-export default SingleCoursePage;
+export default InboxPage;

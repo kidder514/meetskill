@@ -6,6 +6,7 @@
 
 <!-- 5. add input validation in login and signup page. -->
 <!-- 16. fix serverError, use a single in one place. -->
+15. account menu clickable area wrong.
 1. signup (need backend fix)
 6. login with google(need backend fix)
 7. login with facebook(need backend fix)
@@ -17,13 +18,12 @@
 12. All account pages
 13. routing
 14. able to update any content.
-15. account menu clickable area wrong.
 16. compare mobile menu and desktop menu and decide what to remove
 17. remember password
 18. review ALL your code 
 19. instructor activation page
 20. remove sign up as instructor button, there is no such feature in the backend
-
+21. handle the senario that we as a visitor, enter an link that has authenticated content, it shows error because something like userState is empty.(solution: add "you need to log in to see this content" section to all authenticated content page, )
 - need to work on account pages
 - need to double check all action workflow when start building api
 
@@ -49,7 +49,7 @@ hardik tasks:
 3. Localization Ready
 4. Forum component
 5. Zendesk support
-6. News and Blog Component 
+6. News and Blog Component
 
 7. User Authentication (including login with google and login with facebook)
 8. Instructor registration page

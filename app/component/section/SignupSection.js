@@ -66,7 +66,7 @@ class SignupSection extends Component {
 		this.setState({recaptcha: ''})
 	}
 
-	submit(isInstructor) {
+	submit() {
 		var stateCache = {};
 		var isValid = true;
 		if (this.state.firstName == "") {
@@ -132,7 +132,7 @@ class SignupSection extends Component {
 				this.props.signupCall({
 					firstname: this.state.firstName,
 					lastname: this.state.lastName,
-					usertype: isInstructor ? "instructor" : "student",
+					usertype: "student",
 					email: this.state.email,
 					password: this.state.password,
 					confirmPassword: this.state.confirmPassword
@@ -172,10 +172,7 @@ class SignupSection extends Component {
 				</div>
 				<div className="input-item">
 					<span>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</span>
-					<input type="submit" onClick={() => this.submit(false)} value={string.SignupStudentAccount} />
-				</div>
-				<div className="input-item">
-					<input type="submit" onClick={() => this.submit(true)} value={string.SignupInstructorAccount} />
+					<input type="submit" onClick={() => this.submit(false)} value={string.Signup} />
 				</div>
 			</div>
 		)

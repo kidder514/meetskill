@@ -52,9 +52,6 @@ class AccountPage extends Component{
 								<li className="side-menu-item">
 									<Link activeClassName="active" to={pagePath.Account + pagePath.Preference}>{string.AccountPreference}</Link>
 								</li>
-								<li className="side-menu-item">
-									<Link >{string.LogOut}</Link>
-								</li>
 							</ul>
 						</Col>
 						<Col className="account-sub-page" xs="12" sm="9">

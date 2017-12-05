@@ -48,7 +48,7 @@ class MobileMenuSection extends Component {
         return (
             <ul className="subcategory">
                 <li >
-                    <Link className="mobile-menu-back" onClick={(e) => this.slideTo(e, parentLayerCount, true)}>
+                    <Link activeClassName="active" className="mobile-menu-back" onClick={(e) => this.slideTo(e, parentLayerCount, true)}>
                         {string.Back}
                         <span className="pull-right">{"<"}</span>                    
                     </Link>
@@ -57,7 +57,7 @@ class MobileMenuSection extends Component {
                     if( !!subcategory.subcategory ){
                         return (
                             <li key={"key-" + currentLayerCount + "-" + index}>
-                                <Link onClick={(e) => this.slideTo(e, currentLayerCount + 1, false)}>
+                                <Link activeClassName="active" onClick={(e) => this.slideTo(e, currentLayerCount + 1, false)}>
                                     {subcategory.name}
                                     <span className="pull-right">></span>                            
                                 </Link>
@@ -68,14 +68,13 @@ class MobileMenuSection extends Component {
                         var path = parentCategory + subcategory.path;
                         return (
                             <li onClick={() => this.toggleMenu()} key={"key-" + currentLayerCount + "-" + index}>
-                                <Link to={path}>{subcategory.name}</Link>
+                                <Link activeClassName="active" to={path}>{subcategory.name}</Link>
                             </li>
                         );
                     }
                 })}
             </ul>
         )
-
     }
 
     renderMenuItem(){
@@ -99,14 +98,40 @@ class MobileMenuSection extends Component {
             <hr key="hr2"></hr>,            
             <div key="mobile-menu-section" className="mobile-menu-section">
                 <ul>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Mycourse}>{string.Mycourse}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Notification}>{string.Notification}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Message}>{string.Messages}</Link></li>                        
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.InstructorDashboard}>{string.InstructorDashboard}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Settings}>{string.Settings}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Help}>{string.Help}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Wallet}>{string.Wallet}</Link></li>
-                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.PurchaseHistory}>{string.PurchaseHistory}</Link></li>
+                    <li onClick={() => this.toggleMenu()}>
+                        <Link activeClassName="active" to={pagePath.ShoppingCart}>{string.MyCart}</Link>
+                        </li>                    
+                    <li onClick={() => this.toggleMenu()}>
+                        <Link activeClassName="active" to={pagePath.Mycourse}>{string.Mycourse}</Link>
+                    </li>
+                    <li onClick={() => this.toggleMenu()}>
+                        <Link activeClassName="active" to={pagePath.Inbox}>{string.Inbox}</Link>
+                    </li>
+                    <li onClick={() => this.toggleMenu()}>
+                        <Link activeClassName="active" to={pagePath.Notification}>{string.Notification}</Link>
+                    </li>
+                </ul>
+                {(!!this.props.userState.isLoggedin) && 
+                    <ul className="mobile-account-menu">
+                        <li  onClick={() => this.toggleMenu()}>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.ViewPublicProfile}>{string.AccountViewPublicProfile}</Link>
+                        </li>
+                        <li onClick={() => this.toggleMenu()}>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.Profile}>{string.AccountProfile}</Link>
+                        </li>
+                        <li onClick={() => this.toggleMenu()}>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.Account}>{string.AccountAccount}</Link>
+                        </li>
+                        <li onClick={() => this.toggleMenu()}>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.Payment}>{string.AccountPayment}</Link>
+                        </li>
+                        <li onClick={() => this.toggleMenu()}>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.Preference}>{string.AccountPreference}</Link>
+                        </li>
+                    </ul>
+                }
+                <ul className="second-section">
+                    <li onClick={() => this.toggleMenu()}><Link to={pagePath.Help}>{string.Help}</Link></li>                    
                     <li onClick={() => this.toggleMenu()}><Link>{string.LogOut}</Link></li>
                 </ul>
             </div>

@@ -297,6 +297,10 @@ input {
 	cursor: pointer;
 }
 
+#mobile-slider ul li a.active{
+	background-color: #E9E9E9;
+}
+
 #mobile-slider.open{
 	display: block;
 	visibility: visible;
@@ -327,6 +331,11 @@ input {
 	vertical-align: middle;
 	color: #fff !important;
 	text-align: center;
+}
+
+.mobile-account-menu{
+	padding-top: 1em;
+	border-top: 1px solid #E9E9E9;
 }
 
 .mobile-menu .material-icons{
@@ -507,7 +516,9 @@ a.menu-item.cart-icon{
 	margin-bottom: 0;
 }
 
-.profile-menu ul li{
+.profile-menu ul li a{
+	display:inline-block;
+	width:100%;
 	padding: 0.5em 1.5em;
 }
 
@@ -702,10 +713,7 @@ a.menu-item.cart-icon{
 	padding: 0.5em 1em;
 }
 
-.account-page .side-menu-item a.active{
-	background-color: #E9E9E9;	
-}
-
+.account-page .side-menu-item a.active,
 .account-page .side-menu-item a:hover{
 	background-color: #E9E9E9;
 }
