@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import AccountProfilePage from "../../../component/page/account/AccountProfilePage"
+import { updateProfileCall } from "../../../action/userAction"
 
 const mapStateToProps = (state) => {
 	return {
@@ -9,11 +10,10 @@ const mapStateToProps = (state) => {
 	}
 }
 
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-//         // recoverPasswordCall: (data) => {dispatch(recoverPasswordCall(data))},
-//         // resetAllServerError: () => {dispatch(resetAllServerError())},
-// 	}
-// }
+const mapDispatchToProps = (dispatch) => {
+	return {
+        updateProfileCall: (data) => {dispatch(updateProfileCall(data))},
+	}
+}
 
-export default connect(mapStateToProps)(AccountProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountProfilePage);

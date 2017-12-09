@@ -1,14 +1,346 @@
 import React, { Component } from 'react';
+import { 
+	Button, 
+	Form, 
+	FormGroup, 
+	Label, 
+	Input, 
+	FormText, 
+	InputGroup,
+	InputGroupAddon,
+	FormFeedback
+} from 'reactstrap';
+import string from "../../../String"
+import validator from "validator"
+
+const MAX_HEADLINE_CHAR = 60;
+const MAX_BIOGRAPHY_CHAR = 250;
 
 class AccountProfilePage extends Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			firstName: "",
+			errorFirstName:"",
+			lastName:"",
+			errorLastName:"",
+			headline:"",
+			errorHeadline:"",
+			headlineCount: MAX_HEADLINE_CHAR,
+			biography:"",
+			biographyCount: MAX_BIOGRAPHY_CHAR,
+			errorBiography:"",
+			language:"",
+			errorLanguage:"",
+			link: "",
+			errorLink:"",
+			google:"",
+			errorGoogle:"",
+			facebook:"",
+			errorFacebook:"",
+			twitter:"",
+			errorTwitter:"",
+			linkedin:"",
+			errorLinkedin:"",
+			youtube:"",
+			errorYoutube:""
+		}
+
+		this.onChange = this.onChange.bind(this);
+		this.submit = this.submit.bind(this);		
+	}
+
+	componentWillMount(){
+		this.setState(this.props.userState);
+	}
+
+	componentWillUnmount(){
+		this.setState(this.props.userState);		
+	}
+
+	onChange(e){
+		this.setState({[e.target.name]: e.target.value});
+		
+		if (e.target.name == "headline"){
+			this.setState({headlineCount: MAX_HEADLINE_CHAR - e.target.value.length});
+		}
+
+		if (e.target.name == "biography"){
+			this.setState({biographyCount: MAX_BIOGRAPHY_CHAR - e.target.value.length});
+		}
+	}
+
+	submit(){
+		console.log("submit");
+		var stateCache = {};
+		var errorCache = {};
+		var isValid = true;
+		if (this.state.firstName == "" || this.state.firstName == null){
+			errorCache.errorFirstName = string.NoFirstName;
+			isValid = false;
+		} else if (!validator.isAlpha(this.state.firstName)) {
+			errorCache.errorFirstName = string.ErrorNameFormat;
+			isValid = false;
+		} else {
+			errorCache.errorFirstName = "";
+			stateCache.firstName = this.state.firstName;
+		}
+
+		if (this.state.lastName == "" || this.state.lastName == null){
+			errorCache.errorLastName = string.NoLastName;		
+			isValid = false;
+		} else if (!validator.isAlpha(this.state.lastName)) {
+			errorCache.errorLastName = string.ErrorNameFormat;		
+			isValid = false;			
+		} else {
+			errorCache.errorLastName = "";
+			stateCache.lastName = this.state.lastName;
+		}
+
+		if (this.state.headline == "" || 
+			this.state.headline == null ||
+			this.state.headline.length <= MAX_HEADLINE_CHAR)
+		{
+			errorCache.errorHeadline = "";
+			stateCache.headline = validator.escape(this.state.headline);
+		} else {
+			errorCache.errorHeadline = string.ExceedLengthLimit;
+			isValid = false;
+		}
+
+		if (this.state.biography == "" || 
+			this.state.biography == null ||
+			this.state.biography.length <= MAX_BIOGRAPHY_CHAR)
+		{		
+			errorCache.errorBiography = "";
+			stateCache.biography = validator.escape(this.state.biography);
+		} else {
+			errorCache.errorBiography = string.ExceedLengthLimit;
+			isValid = false;
+		}
+
+		if (this.state.language != "" && this.state.language != null){
+			stateCache.language = validator.escape(this.state.language);
+		}
+
+		if (this.state.link == "" || 
+			this.state.link == null || 
+			validator.isURL(this.state.link, {allow_underscores: true}))
+		{
+			errorCache.errorLink = "";
+			stateCache.link = validator.escape(this.state.link);
+		} else {
+			errorCache.errorLink = string.WebsiteWrongFormat;
+			isValid = false;
+		}
+
+
+		if (this.state.google != "" && this.state.google != null){
+			stateCache.google = validator.escape(this.state.google);
+		}
+		
+
+		if (this.state.facebook != "" && this.state.facebook != null){
+			stateCache.facebook = validator.escape(this.state.facebook);
+		}
+
+
+		if (this.state.twitter != "" && this.state.twitter != null){
+			stateCache.twitter = validator.escape(this.state.twitter);
+		}
+
+
+		if (this.state.linkedin != "" && this.state.linkedin != null){
+			stateCache.linkedin = validator.escape(this.state.linkedin);
+		}
+
+
+		if (this.state.youtube != "" && this.state.youtube != null){
+			stateCache.youtube = validator.escape(this.state.youtube);
+		}
+
+		if (isValid){
+			this.setState(errorCache, () => {
+				var user = stateCache;
+				user["x-user-id"] = this.props.userState.uid;
+				user["x-access-token"] = this.props.userState.token;
+				this.props.updateProfileCall(user);
+			});
+		}else {
+			this.setState(errorCache);
+		}
 	}
 
     render(){
 	    return (
 	    	<div className="account-profile-page">
-	    		AccountProfilePage
+				<div className="account-page-header">
+					<h1>{string.AccountProfile}</h1>
+					<p>{string.AccountProfileSubheading}</p>
+				</div>
+
+				<Form>
+					<FormGroup>
+						<Label for="firstName">{string.FirstName}</Label>
+						<Input 
+							type="text" 
+							name="firstName" 
+							value={this.state.firstName || ""}
+							valid={this.state.errorFirstName == ""}
+							onChange={this.onChange} 
+							placeholder={string.InputYourFirstName} 
+						/>
+						<FormFeedback>{this.state.errorFirstName}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label for="lastName">{string.LastName}</Label>
+						<Input 
+							type="text" 
+							name="lastName" 
+							value={this.state.lastName || ""} 
+							valid={this.state.errorLastName == ""}
+							onChange={this.onChange} 
+							placeholder={string.InputYourLastName} 
+						/>
+						<FormFeedback>{this.state.errorLastName}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label for="headline">{string.Headline}</Label>
+						<InputGroup>
+							<Input 
+								type="textarea"
+								name="headline"
+								valid={this.state.errorHeadline == ""}
+								value={this.state.headline || ""}
+								onChange={this.onChange} 
+								placeholder={string.InputYourHeadline} 
+							/>
+							<InputGroupAddon>{this.state.headlineCount}</InputGroupAddon>
+						</InputGroup>
+						<FormFeedback>{this.state.errorHeadline}</FormFeedback>
+						<FormText>{string.HeadlineHint}</FormText>
+					</FormGroup>
+					<FormGroup>
+						<Label for="biography">{string.Biography}</Label>
+						<InputGroup>
+							<Input
+								type="textarea" 
+								name="biography" 
+								valid={this.state.errorBiography == ""}
+								value={this.state.biography || ""}
+								onChange={this.onChange} 
+							/>
+							<InputGroupAddon>{this.state.biographyCount}</InputGroupAddon>							
+						</InputGroup>
+						<FormFeedback>{this.state.errorBiography}</FormFeedback>																			
+						<FormText>{string.BiographyHint}</FormText>						
+					</FormGroup>
+					<FormGroup>
+						<Label for="language">{string.Language}</Label>
+						<Input 
+							type="select" 
+							name="language" 
+							value={this.state.language || ""}
+							onChange={this.onChange} 
+							valid={this.state.errorLanguage == ""}
+						>
+							<option>{"English"}</option>
+							<option>{"French"}</option>
+							<option>{"Chinese"}</option>
+							<option>{"Portuguese"}</option>
+						</Input>
+						<FormFeedback>{this.state.errorLanguage}</FormFeedback>
+					</FormGroup>
+					<hr />
+					<FormGroup>
+						<Label for="link">{string.Website}</Label>
+						<Input 
+							type="text"
+							name="link" 
+							valid={this.state.errorLink == ""}
+							value={this.state.link || ""}
+							onChange={this.onChange}
+							placeholder={string.WebsiteHint}
+						/>
+						<FormFeedback>{this.state.errorLink}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label for="google">{string.GooglePlus}</Label>
+						<InputGroup>
+							<InputGroupAddon>{string.GooglePlusUrl}</InputGroupAddon>						
+							<Input 
+								type="text"
+								name="google" 
+								valid={this.state.errorGoogle == ""}
+								value={this.state.google || ""}
+								onChange={this.onChange}
+								placeholder={string.GooglePlusHint}
+							/>
+						</InputGroup>
+						<FormFeedback>{this.state.errorGoogle}</FormFeedback>							
+					</FormGroup>
+					<FormGroup>
+						<Label for="facebook">{string.Facebook}</Label>
+						<InputGroup>
+							<InputGroupAddon>{string.FacebookUrl}</InputGroupAddon>						
+							<Input 
+								type="text"
+								name="facebook" 
+								valid={this.state.errorFacebook == ""}
+								value={this.state.facebook || ""}
+								onChange={this.onChange}
+								placeholder={string.FacebookHint}
+							/>
+						</InputGroup>
+						<FormFeedback>{this.state.errorFacebook}</FormFeedback>						
+					</FormGroup>
+					<FormGroup>
+						<Label for="twitter">{string.Twitter}</Label>
+						<InputGroup>
+							<InputGroupAddon>{string.TwitterUrl}</InputGroupAddon>						
+							<Input 
+								type="text"
+								name="twitter" 
+								valid={this.state.errorTwitter == ""}
+								value={this.state.twitter || ""}
+								onChange={this.onChange}
+								placeholder={string.TwitterHint}
+							/>
+						</InputGroup>
+						<FormFeedback>{this.state.errorTwitter}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label for="linkedin">{string.Linkedin}</Label>
+						<InputGroup>
+							<InputGroupAddon>{string.LinkedinUrl}</InputGroupAddon>						
+							<Input 
+								type="text"
+								name="linkedin" 
+								valid={this.state.errorLinkedin == ""}
+								value={this.state.linkedin || ""}
+								onChange={this.onChange}
+								placeholder={string.LinkedinHint}
+							/>
+						</InputGroup>
+						<FormFeedback>{this.state.errorLinkedin}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label for="youtube">{string.Youtube}</Label>
+						<InputGroup>
+							<InputGroupAddon>{string.YoutubeUrl}</InputGroupAddon>						
+							<Input 
+								type="text"
+								name="youtube" 
+								valid={this.state.errorYoutube == ""}
+								value={this.state.youtube || ""}
+								onChange={this.onChange}
+								placeholder={string.YoutubeHint}
+							/>
+						</InputGroup>
+						<FormFeedback>{this.state.errorYoutube}</FormFeedback>
+					</FormGroup>
+					<Button onClick={() => this.submit()}>{string.Signup}</Button>
+				</Form>
 	    	</div>
 	    )
   	}

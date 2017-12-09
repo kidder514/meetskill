@@ -9,17 +9,21 @@
 1. signup (need backend fix)
 6. login with google(need backend fix)
 7. login with facebook(need backend fix)
-8. forget password ( need backend fix)
+8. forget password (need backend fix)
 8.1. reset password page (what url is this gonna be?)
+8.2 update user profile (need to confirm with hardik how to implemented)
 9. instructor registration(need front-end verification)
-
 12. All account pages
-14. able to update any user account settings.
 17. remember password
+17.1. pass in browser default language
 18. review ALL your code 
 19. instructor activation page
 20. remove sign up as instructor button, there is no such feature in the backend
+22. check all the authenticated call that should require token, see if they still work without token.
 21. handle the senario that we as a visitor, enter an link that has authenticated content, it shows error because something like userState is empty.(solution: add "you need to log in to see this content" section to all authenticated content page, )
+22. refactor the signup and login section with reactstrap, probably.
+23. you need to support multi-language, so in all the forms, you can only validate whether a string has invalid character, instead allow it only to be  alphabetic characters only.
+24. for security, double check everything you receive user input!!!! we can do it later.
 - need to work on account pages
 - need to double check all action workflow when start building api
 

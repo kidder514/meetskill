@@ -7,17 +7,11 @@ function userState(state = {}, action) {
 	    	return user;
 	    case "LOGOUT":
 	        return {};
-	    case "LOCATE":
-	    	// return { ...state, 
-			// 		location: action.data.location,
-			// 		language: action.data.language
-			// 	};
-			return state;
-	    case "UNLOCATE":
-	        return { ...state, 
-					location: "", 
-					language: ""
-	        	};
+
+	    case "UPDATE_PROFILE":
+				var user = action.data.Data;
+				user.isLoggedin = true;
+			return user;
 	    default:
 	    	return state
     }

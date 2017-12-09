@@ -25,16 +25,10 @@ export const logout = () => {
     }
 }
 
-export const locate = (data) => {
+export const updateProfile = (data) => {
     return {
-        type: "LOCATE",
+        type: "UPDATE_PROFILE",
         data: data
-    }
-}
-
-export const unlocate = () => {
-    return {
-    	type: "UNLOCATE"
     }
 }
 
@@ -44,6 +38,10 @@ export const loginCall = (data) => {
 
 export const signupCall = (data) => {
     return authPostApiCall(resourcePath.signup, data, login);
+}
+
+export const updateProfileCall = (data) => {
+	return authPostApiCall(resourcePath.update, data, updateProfile);
 }
 
 export const googleLoginCall = (data) => {

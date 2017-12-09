@@ -172,7 +172,7 @@ class SignupSection extends Component {
 				</div>
 				<div className="input-item">
 					<span>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</span>
-					<input type="submit" onClick={() => this.submit(false)} value={string.Signup} />
+					<input type="submit" onClick={() => this.submit()} value={string.Signup} />
 				</div>
 			</div>
 		)
