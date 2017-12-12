@@ -47,7 +47,8 @@ class AccountProfilePage extends Component{
 		}
 
 		this.onChange = this.onChange.bind(this);
-		this.submit = this.submit.bind(this);		
+		this.submit = this.submit.bind(this);
+		this.sanitizer = this.sanitizer.bind(this);	
 	}
 
 	componentWillMount(){
@@ -56,6 +57,14 @@ class AccountProfilePage extends Component{
 
 	componentWillUnmount(){
 		this.setState(this.props.userState);		
+	}
+
+	sanitizer(string){
+		if (string == null || string == ""){
+			return "";
+		} else {
+			return validator.escape(string);
+		}
 	}
 
 	onChange(e){
@@ -71,7 +80,6 @@ class AccountProfilePage extends Component{
 	}
 
 	submit(){
-		console.log("submit");
 		var stateCache = {};
 		var errorCache = {};
 		var isValid = true;
@@ -102,7 +110,7 @@ class AccountProfilePage extends Component{
 			this.state.headline.length <= MAX_HEADLINE_CHAR)
 		{
 			errorCache.errorHeadline = "";
-			stateCache.headline = validator.escape(this.state.headline);
+			stateCache.headline = this.sanitizer(this.state.headline);
 		} else {
 			errorCache.errorHeadline = string.ExceedLengthLimit;
 			isValid = false;
@@ -113,14 +121,14 @@ class AccountProfilePage extends Component{
 			this.state.biography.length <= MAX_BIOGRAPHY_CHAR)
 		{		
 			errorCache.errorBiography = "";
-			stateCache.biography = validator.escape(this.state.biography);
+			stateCache.biography = this.sanitizer(this.state.biography);
 		} else {
 			errorCache.errorBiography = string.ExceedLengthLimit;
 			isValid = false;
 		}
 
 		if (this.state.language != "" && this.state.language != null){
-			stateCache.language = validator.escape(this.state.language);
+			stateCache.language = this.sanitizer(this.state.language);
 		}
 
 		if (this.state.link == "" || 
@@ -128,43 +136,23 @@ class AccountProfilePage extends Component{
 			validator.isURL(this.state.link, {allow_underscores: true}))
 		{
 			errorCache.errorLink = "";
-			stateCache.link = validator.escape(this.state.link);
+			stateCache.link = this.sanitizer(this.state.link);
 		} else {
 			errorCache.errorLink = string.WebsiteWrongFormat;
 			isValid = false;
 		}
 
-
-		if (this.state.google != "" && this.state.google != null){
-			stateCache.google = validator.escape(this.state.google);
-		}
-		
-
-		if (this.state.facebook != "" && this.state.facebook != null){
-			stateCache.facebook = validator.escape(this.state.facebook);
-		}
-
-
-		if (this.state.twitter != "" && this.state.twitter != null){
-			stateCache.twitter = validator.escape(this.state.twitter);
-		}
-
-
-		if (this.state.linkedin != "" && this.state.linkedin != null){
-			stateCache.linkedin = validator.escape(this.state.linkedin);
-		}
-
-
-		if (this.state.youtube != "" && this.state.youtube != null){
-			stateCache.youtube = validator.escape(this.state.youtube);
-		}
+		stateCache.google = this.sanitizer(this.state.google);
+		stateCache.facebook = this.sanitizer(this.state.facebook);
+		stateCache.twitter = this.sanitizer(this.state.twitter);
+		stateCache.linkedin = this.sanitizer(this.state.linkedin);
+		stateCache.youtube = this.sanitizer(this.state.youtube);
 
 		if (isValid){
-			this.setState(errorCache, () => {
-				var user = stateCache;
-				user["x-user-id"] = this.props.userState.uid;
-				user["x-access-token"] = this.props.userState.token;
-				this.props.updateProfileCall(user);
+			this.setState(errorCache);
+			this.props.updateProfileCall(stateCache, {
+				"x-user-id": this.props.userState.uid,
+				"x-access-token": this.props.userState.token					
 			});
 		}else {
 			this.setState(errorCache);

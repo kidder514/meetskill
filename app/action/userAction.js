@@ -1,7 +1,7 @@
 import axios from "axios";
 import string from "../String"
 import config from "../config"
-import {authPostApiCall, postApiCall} from "./appAction"
+import {authPostApiCall, authPostApiCallWithHeader, postApiCall} from "./appAction"
 import resourcePath from "../resourcePath"
 import {updateServerError} from "./uiAction"
 
@@ -32,6 +32,13 @@ export const updateProfile = (data) => {
     }
 }
 
+export const updatePhoto = (data) => {
+    return {
+        type: "UPDATE_PHOTO",
+        data: data
+    }
+}
+
 export const loginCall = (data) => {
 	return authPostApiCall(resourcePath.login, data, login);
 }
@@ -40,8 +47,12 @@ export const signupCall = (data) => {
     return authPostApiCall(resourcePath.signup, data, login);
 }
 
-export const updateProfileCall = (data) => {
-	return authPostApiCall(resourcePath.update, data, updateProfile);
+export const updatePhotoCall = (data, headers) => {
+	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, headers);
+}
+
+export const updateProfileCall = (data, headers) => {
+	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, headers);
 }
 
 export const googleLoginCall = (data) => {

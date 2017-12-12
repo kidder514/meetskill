@@ -44,6 +44,9 @@ class AccountPage extends Component{
 									<Link activeClassName="active" to={pagePath.Account + pagePath.Profile}>{string.AccountProfile}</Link>
 								</li>
 								<li className="side-menu-item">
+									<Link activeClassName="active" to={pagePath.Account + pagePath.Photo}>{string.AccountPhoto}</Link>
+								</li>
+								<li className="side-menu-item">
 									<Link activeClassName="active" to={pagePath.Account + pagePath.Account}>{string.AccountAccount}</Link>
 								</li>
 								<li className="side-menu-item">

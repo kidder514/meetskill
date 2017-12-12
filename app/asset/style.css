@@ -766,8 +766,37 @@ a.menu-item.cart-icon{
 	border-bottom: 1px solid #E9E9E9;
 }
 
-/* 4.7 instructor Dashboard */
-/* 4.8 payment */
+/* 4.7 Photo */
+.account-photo-page{
+	position: relative;
+}
+
+.account-photo-page .cropper-wrapper{
+	width: 100%;
+	height: 13em;
+}
+
+.photo-preview{
+	width: 100%;
+	height: 13em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #E9E9E9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.photo-preview img{
+	vertical-align: middle;
+	height: 100%;
+	width: auto;
+}
+
+/* 4.8 instructor Dashboard */
+/* 4.9 payment */
 
 
 /*=====================5.0 footer===========================*/

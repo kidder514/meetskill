@@ -22,6 +22,7 @@
     "bootstrap": "^4.0.0-beta",
     "react": "^16.0.0",
     "react-async-script": "^0.9.1",
+    "react-cropper": "^1.0.1",
     "react-dom": "^16.0.0",
     "react-facebook-login": "^3.6.2",
     "react-google-login": "^3.0.2",

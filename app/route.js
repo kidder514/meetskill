@@ -13,6 +13,7 @@ import AccountPurchaseHistory from "./container/page/AccountPurchaseHistory"
 import Help from "./container/page/Help"
 import Inbox from "./container/page/Inbox"
 import AccountViewPublicProfile from "./container/page/account/AccountViewPublicProfile"
+import AccountPhoto from "./container/page/account/AccountPhoto"
 import AccountProfile from "./container/page/account/AccountProfile"
 import AccountAccount from "./container/page/account/AccountAccount"
 import AccountPayment from "./container/page/account/AccountPayment"
@@ -37,6 +38,7 @@ export default (
 				<IndexRoute component={AccountProfile} />
 				<Route path={pagePath.Account + pagePath.Profile} component={AccountProfile} />				
 				<Route path={pagePath.Account + pagePath.ViewPublicProfile} component={AccountViewPublicProfile} />
+				<Route path={pagePath.Account + pagePath.Photo} component={AccountPhoto} />				
 				<Route path={pagePath.Account + pagePath.Account} component={AccountAccount} />
 				<Route path={pagePath.Account + pagePath.Payment} component={AccountPayment} />
 				<Route path={pagePath.Account + pagePath.PurchaseHistory} component={AccountPurchaseHistory} />				

@@ -81,6 +81,20 @@ export function authPostApiCall(resource, query, success) {
 	}
 }
 
+export function authPostApiCallWithHeader(resource, data, success, postHeaders) {
+	return dispatch => {
+		axios.post(config.tempAPIserver + resource, {"data": data}, {
+			headers: postHeaders})
+			.then(function (res) {
+				dispatch(success(res.data));
+				dispatch(hideDialog());
+			})
+			.catch(function (error) {
+				dispatch(updateServerError(resource, error.response));
+			});
+	}
+}
+
 export function postApiCall(resource, query, success, fail, successMessage, errorMessage) {
 	return dispatch => {
 		axios.post(config.tempAPIserver + resource, query)

@@ -8,6 +8,7 @@ const pagePath = {
     Inbox: "/inbox",
     ViewPublicProfile: "/viewpublicprofile",    
     Profile: "/profile",
+    Photo:"/photo",
     MyCourses: "/mycourses",
     Account: "/account",
     Payment:"/payment",

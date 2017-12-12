@@ -13,6 +13,7 @@
 8.1. reset password page (what url is this gonna be?)
 8.2 update user profile (need to confirm with hardik how to implemented)
 9. instructor registration(need front-end verification)
+
 12. All account pages
 17. remember password
 17.1. pass in browser default language
