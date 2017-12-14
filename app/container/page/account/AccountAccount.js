@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import AccountAccountPage from "../../../component/page/account/AccountAccountPage"
+import { changePasswordCall } from "../../../action/userAction"
+import { resetAllServerError } from "../../../action/uiAction"
 
 const mapStateToProps = (state) => {
 	return {
@@ -9,11 +11,11 @@ const mapStateToProps = (state) => {
 	}
 }
 
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-//         // recoverPasswordCall: (data) => {dispatch(recoverPasswordCall(data))},
-//         // resetAllServerError: () => {dispatch(resetAllServerError())},
-// 	}
-// }
+const mapDispatchToProps = (dispatch) => {
+	return {
+        changePasswordCall: (data, header) => {dispatch(changePasswordCall(data, header))},
+        resetAllServerError: () => {dispatch(resetAllServerError())},
+	}
+}
 
-export default connect(mapStateToProps)(AccountAccountPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountAccountPage);

@@ -7,6 +7,7 @@ const resourcePath = {
     googleLogin: "/auth/google",
     facebookLogin: "/auth/facebook",
     recoverPassword:"/api/model/recover-password",
+    changePassword:"/api/model/changepassword",
     init:"/init"
 };
 

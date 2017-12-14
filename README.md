@@ -27,6 +27,10 @@
 24. for security, double check everything you receive user input!!!! we can do it later.
 - need to work on account pages
 - need to double check all action workflow when start building api
+25. we should allow user to change their email
+26. we should add a username field so that user can login with either his email address or username
+27. create another file with all the const value of server error type, so that you can keep track of them.
+! make things easier for user, not for programmer.
 
 
 ### Backlog tasks ###

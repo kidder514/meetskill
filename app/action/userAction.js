@@ -47,12 +47,12 @@ export const signupCall = (data) => {
     return authPostApiCall(resourcePath.signup, data, login);
 }
 
-export const updatePhotoCall = (data, headers) => {
-	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, headers);
+export const updatePhotoCall = (data, header) => {
+	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, header);
 }
 
-export const updateProfileCall = (data, headers) => {
-	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, headers);
+export const updateProfileCall = (data, header) => {
+	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, header);
 }
 
 export const googleLoginCall = (data) => {
@@ -61,6 +61,11 @@ export const googleLoginCall = (data) => {
 
 export const facebookLoginCall = (data) => {
     return authPostApiCall(resourcePath.facebookLogin, data, login);    
+}
+
+
+export const changePasswordCall = (data, header) => {
+	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, header);
 }
 
 export const recoverPasswordCall = (data) => {

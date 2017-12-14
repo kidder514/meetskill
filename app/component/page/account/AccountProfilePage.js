@@ -149,13 +149,14 @@ class AccountProfilePage extends Component{
 		stateCache.youtube = this.sanitizer(this.state.youtube);
 
 		if (isValid){
-			this.setState(errorCache);
-			this.props.updateProfileCall(stateCache, {
-				"x-user-id": this.props.userState.uid,
-				"x-access-token": this.props.userState.token					
-			});
-		}else {
-			this.setState(errorCache);
+			this.setState(errorCache, 
+				this.props.updateProfileCall(stateCache, {
+					"x-user-id": this.props.userState.uid,
+					"x-access-token": this.props.userState.token					
+				})
+			);			
+		} else {
+			this.setState(errorCache);			
 		}
 	}
 

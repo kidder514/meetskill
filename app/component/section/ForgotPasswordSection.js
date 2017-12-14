@@ -30,7 +30,11 @@ class ForgotPasswordSection extends Component {
 	submit() {
 		this.props.resetAllServerError();
 		if(validator.isEmail(this.state.email)){
-			this.props.recoverPasswordCall(this.state.email);
+			this.props.recoverPasswordCall({email: this.state.email});
+		} else if (this.state.email == ""){	
+			this.setState({errorEmail: string.NoEmail});			
+		} else {	
+			this.setState({errorEmail: string.InvalidEmail});			
 		}
 	}
 
@@ -38,11 +42,10 @@ class ForgotPasswordSection extends Component {
 		var ui = this.props.ui;
 		return (
 			<div className="login-section">
+				<span>{string.EnterEmailToResetPassword}</span>				
 				<div className="input-item">
-					<span>{string.EnterEmailToResetPassword}</span>				
 					<input type="text" name="email" onChange={this.onChange} placeholder={string.Email} />
 					<span>{this.state.errorEmail}</span>
-					
 				</div>
 				<div className="input-item">
 					<span>{ui.serverErrorType == resourcePath.recoverPassword && ui.serverErrorMessage}</span>

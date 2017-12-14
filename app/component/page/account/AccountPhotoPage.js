@@ -80,6 +80,10 @@ class AccountPhotoPage extends Component{
     render(){
 	    return (
 	    	<div className="account-photo-page">
+				<div className="account-page-header">
+					<h1>{string.AccountPhoto}</h1>
+					<p>{string.AccountPhotoSubheading}</p>
+				</div>
 				<div className="cropper-wrapper">
 					<div className={this.state.showCropper ? "hidden" : "photo-preview"}>
 						<span>{string.ImagePreview} </span>
