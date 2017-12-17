@@ -22,7 +22,7 @@ class ProfilePopOverSection extends Component {
 						</div>
 						<div className="name-email">
 							<div className="name-email-name">{this.props.userState.firstName + " " + this.props.userState.lastName}</div>
-							<div className="name-email-email">{"sample@email.com"}</div>
+							<div className="name-email-email">{this.props.userState.email}</div>
 						</div>
 					</div>
 				</Link>

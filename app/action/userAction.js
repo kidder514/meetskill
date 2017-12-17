@@ -77,3 +77,15 @@ export const recoverPasswordCall = (data) => {
         string.EmailSentToRecoverPassword, 
         string.ErrorUnknown );
 }
+
+export const changeSettingCall = (data, header) => {
+    return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, header);
+}
+
+export const deleteAccountCall = (data, header) => {
+    return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, header);
+}
+
+export const activateInstructorCall = (data, header) => {
+    return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, header);
+}

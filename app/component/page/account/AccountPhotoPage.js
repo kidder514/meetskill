@@ -70,7 +70,7 @@ class AccountPhotoPage extends Component{
 		this.refs.canvas.getContext('2d').drawImage(this.refs.imageCache, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
 		var user = this.props.userState;		
 		this.props.updatePhotoCall({
-			"picture": this.refs.canvas.toDataURL()
+			"data": {"picture": this.refs.canvas.toDataURL()}
 		},{
 			"x-user-id": user.uid,
 			"x-access-token": user.token

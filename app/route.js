@@ -16,8 +16,8 @@ import AccountViewPublicProfile from "./container/page/account/AccountViewPublic
 import AccountPhoto from "./container/page/account/AccountPhoto"
 import AccountProfile from "./container/page/account/AccountProfile"
 import AccountAccount from "./container/page/account/AccountAccount"
-import AccountPayment from "./container/page/account/AccountPayment"
-import AccountPreference from "./container/page/account/AccountPreference"
+import AccountSetting from "./container/page/account/AccountSetting"
+import AccountDeleteAccount from "./container/page/account/AccountDeleteAccount"
 import ShoppingCart from "./container/page/ShoppingCart"
 import Notification from "./container/page/Notification"
 import InstructorDashboard from "./container/page/InstructorDashboard"
@@ -40,9 +40,9 @@ export default (
 				<Route path={pagePath.Account + pagePath.ViewPublicProfile} component={AccountViewPublicProfile} />
 				<Route path={pagePath.Account + pagePath.Photo} component={AccountPhoto} />				
 				<Route path={pagePath.Account + pagePath.Account} component={AccountAccount} />
-				<Route path={pagePath.Account + pagePath.Payment} component={AccountPayment} />
+				<Route path={pagePath.Account + pagePath.Setting} component={AccountSetting} />
 				<Route path={pagePath.Account + pagePath.PurchaseHistory} component={AccountPurchaseHistory} />				
-				<Route path={pagePath.Account + pagePath.Preference} component={AccountPreference} />
+				<Route path={pagePath.Account + pagePath.DeleteAccount} component={AccountDeleteAccount} />
 			</Route>				
 			<Route path={pagePath.ShoppingCart} component={ShoppingCart} />
 			<Route path={pagePath.Notification} component={Notification} />

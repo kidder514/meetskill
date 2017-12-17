@@ -151,8 +151,10 @@ class AccountProfilePage extends Component{
 		if (isValid){
 			this.setState(errorCache, 
 				this.props.updateProfileCall(stateCache, {
-					"x-user-id": this.props.userState.uid,
-					"x-access-token": this.props.userState.token					
+					"data": {
+						"x-user-id": this.props.userState.uid,
+						"x-access-token": this.props.userState.token
+					}
 				})
 			);			
 		} else {

@@ -8,6 +8,9 @@ const resourcePath = {
     facebookLogin: "/auth/facebook",
     recoverPassword:"/api/model/recover-password",
     changePassword:"/api/model/changepassword",
+    paymentAndSetting: "/api/model/usersettings",
+    deleteAccount:"/api/model/deleteuser",
+    activateInstructor: "/api/model/reginstructor",
     init:"/init"
 };
 

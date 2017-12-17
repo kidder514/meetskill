@@ -83,7 +83,7 @@ export function authPostApiCall(resource, query, success) {
 
 export function authPostApiCallWithHeader(resource, data, success, postHeaders) {
 	return dispatch => {
-		axios.post(config.tempAPIserver + resource, {"data": data}, {
+		axios.post(config.tempAPIserver + resource, data, {
 			headers: postHeaders})
 			.then(function (res) {
 				if(!!success) { dispatch(success(res.data)); }

@@ -6,8 +6,6 @@ import {
 	Label, 
 	Input, 
 	FormText, 
-	InputGroup,
-	InputGroupAddon,
 	FormFeedback
 } from 'reactstrap';
 import string from "../../../String"
@@ -81,10 +79,12 @@ class AccountAccountPage extends Component{
 		if (isValid){
 			this.setState(stateCache,
 				this.props.changePasswordCall({
-					"email": this.props.userState.email,
-					"current_password": this.state.currentPassword,
-					"new_password": this.state.newPassword,
-					"confirm_password": this.state.confirmNewPassword
+					"data": {
+						"email": this.props.userState.email,
+						"current_password": this.state.currentPassword,
+						"new_password": this.state.newPassword,
+						"confirm_password": this.state.confirmNewPassword
+					}
 				},{
 					"x-user-id": this.props.userState.uid,
 					"x-access-token": this.props.userState.token

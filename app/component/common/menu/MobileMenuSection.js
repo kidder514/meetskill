@@ -123,10 +123,10 @@ class MobileMenuSection extends Component {
                             <Link activeClassName="active" to={pagePath.Account + pagePath.Account}>{string.AccountAccount}</Link>
                         </li>
                         <li onClick={() => this.toggleMenu()}>
-                            <Link activeClassName="active" to={pagePath.Account + pagePath.Payment}>{string.AccountPayment}</Link>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.Setting}>{string.AccountSetting}</Link>
                         </li>
                         <li onClick={() => this.toggleMenu()}>
-                            <Link activeClassName="active" to={pagePath.Account + pagePath.Preference}>{string.AccountPreference}</Link>
+                            <Link activeClassName="active" to={pagePath.Account + pagePath.DeleteAccount}>{string.AccountDeleteAccount}</Link>
                         </li>
                     </ul>
                 }
