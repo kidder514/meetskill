@@ -7,12 +7,12 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './app/reducer';
-import route from "./app/route";
+import route from './app/route';
 import 'bootstrap/dist/css/bootstrap.css';
 import { persistStore, autoRehydrate } from 'redux-persist'
 
-require("./app/asset/style.css");
-require("./app/asset/responsive.css");
+require('./app/asset/style.css');
+require('./app/asset/responsive.css');
 
 const logger = createLogger();
 const store = compose(
@@ -26,14 +26,14 @@ const history = syncHistoryWithStore(browserHistory, store);
 // need to create a app to integrate with redux-persist.
 class App extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = { rehydrated: false }
 	}
 
 	componentWillMount() {
 		persistStore(store, { whitelist: ['userState'] }, () => {
 			this.setState({ rehydrated: true })
-		})
+		});
 	}
 
 	render() {

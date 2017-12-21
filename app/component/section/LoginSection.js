@@ -81,9 +81,9 @@ class LoginSection extends Component {
 		// handle google login fail 
 	}
 
-	// fbButtonClicked(e){
+	fbButtonClicked(){
 
-	// }
+	}
 
 	responseFb(res){
 		if (res.accessToken){
