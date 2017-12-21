@@ -2,45 +2,21 @@
 
 ### Recent task break down ###
 
-2.4. make sure backend check the password strength
-
-<!-- 5. add input validation in login and signup page. -->
-<!-- 16. fix serverError, use a single in one place. -->
-1. signup (need backend fix)
-6. login with google(need backend fix)
-7. login with facebook(need backend fix)
-8. forget password (need backend fix)
-8.1. reset password page (what url is this gonna be?)
-8.2 update user profile (need to confirm with hardik how to implemented)
-9. instructor registration(need front-end verification)
-看看发不出去api call是不是因为你把所有的props.userState都发过去了，造成parameter太多
-12. All account pages
+-- add eslint to check you javascript, but before that, have a look at what eslint can do 
+21. handle the senario that we as a visitor, enter an link that has authenticated content, it shows error because something like userState is empty.(solution: add "you need to log in to see this content" section to all authenticated content page, )
+22. add a overlay spinner that happens in every blocking API load
+23. so here is how it works, we place a in page spinner if we still allow user to do anything else while loading this api call. If they are not allow to do anythign else, we place a full screen spinner which is a overlay that covers entire page.
+18. review ALL your code
 17. remember password
 17.1. pass in browser default language
-18. review ALL your code 
-19. instructor activation page
-20. remove sign up as instructor button, there is no such feature in the backend
-22. check all the authenticated call that should require token, see if they still work without token.
-21. handle the senario that we as a visitor, enter an link that has authenticated content, it shows error because something like userState is empty.(solution: add "you need to log in to see this content" section to all authenticated content page, )
-22. refactor the signup and login section with reactstrap, probably.
+
 23. you need to support multi-language, so in all the forms, you can only validate whether a string has invalid character, instead allow it only to be  alphabetic characters only.
 24. for security, double check everything you receive user input!!!! we can do it later.
 - need to work on account pages
 - need to double check all action workflow when start building api
-25. we should allow user to change their email
 26. we should add a username field so that user can login with either his email address or username
 27. create another file with all the const value of server error type, so that you can keep track of them.
 ! make things easier for user, not for programmer.
-
-
-### Backlog tasks ###
-hardik tasks:
--  Sign in
--  Sign in with facebook
--  Sign in with google 
--  Forget password
--  Instructor register
--  User profile managment
 
 ### How do I get set up? ###
 1. clone the repo into local and go to that folder
@@ -55,9 +31,9 @@ hardik tasks:
 4. Forum component
 5. Zendesk support
 6. News and Blog Component
-
 7. User Authentication (including login with google and login with facebook)
 8. Instructor registration page
+
 9. Course Categories
 We only need 2 level category at the moment, but it should be expandable into 3, 4 levels deep.
 10. Different Course Categories and Videos According to country setting

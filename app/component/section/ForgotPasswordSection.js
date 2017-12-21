@@ -3,6 +3,16 @@ import {Link} from "react-router";
 import string from "../../String";
 import validator from "validator"
 import resourcePath from "../../resourcePath"
+import { 
+	Button, 
+	Form, 
+	FormGroup, 
+	Input, 
+	FormText, 
+	InputGroup,
+	InputGroupAddon,
+	FormFeedback
+} from 'reactstrap';
 
 class ForgotPasswordSection extends Component {
 	constructor(props) {
@@ -42,16 +52,23 @@ class ForgotPasswordSection extends Component {
 		var ui = this.props.ui;
 		return (
 			<div className="login-section">
-				<span>{string.EnterEmailToResetPassword}</span>				
-				<div className="input-item">
-					<input type="text" name="email" onChange={this.onChange} placeholder={string.Email} />
-					<span>{this.state.errorEmail}</span>
-				</div>
-				<div className="input-item">
-					<span>{ui.serverErrorType == resourcePath.recoverPassword && ui.serverErrorMessage}</span>
-					<span>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</span>
-					<input type="submit" onClick={this.submit} value={string.ResetPassword} />
-				</div>
+				<Form>
+					<FormText>{string.EnterEmailToResetPassword}</FormText>
+					<FormGroup>
+						<Input 
+							type="text" 
+							name="email" 
+							value={this.state.email || ""}
+							valid={this.state.erroEmail == ""}
+							onChange={this.onChange} 
+							placeholder={string.Email} 
+						/>
+						<FormFeedback>{this.state.errorEmail}</FormFeedback>
+						<FormFeedback>{ui.serverErrorType == resourcePath.recoverPassword && ui.serverErrorMessage}</FormFeedback>
+						<FormText>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</FormText>					
+						<Button onClick={() => this.submit()}>{string.ResetPassword}</Button>
+					</FormGroup>
+				</Form>
 			</div>
 		)
 	}

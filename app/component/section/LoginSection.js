@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from "react-router";
+import { 
+	Button, 
+	Form, 
+	FormGroup, 
+	Input, 
+	FormText, 
+	InputGroup,
+	InputGroupAddon,
+	FormFeedback
+} from 'reactstrap';
 import string from "../../String";
 import config from "../../config"
 import GoogleLogin from 'react-google-login';
@@ -140,27 +150,39 @@ class LoginSection extends Component {
 		}else{
 			return (
 				<div className="login-section">
-					<div className="input-item">
-						<input type="text" name="email" onChange={this.onChange} value={this.state.email} placeholder={string.Email} />
-						<span>{this.state.errorEmail}</span>
-					</div>
-					<div className="input-item">
-						<input type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder={string.Password} />
-						<span>{this.state.errorPassword}</span>
-					</div>
-					<div className="recaptcha-wrapper">
-						<div id="login-recaptcha"></div>
-						<span>{this.state.errorRecaptcha}</span>											
-					</div>
-					<div className="input-item">
-						<span>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</span>
-						<input id="login-submit" type="submit" onClick={this.submit} value={string.Login} />
+					<Form>
+						<FormGroup>
+							<Input 
+								type="text" 
+								name="email" 
+								value={this.state.email || ""}
+								valid={this.state.erroEmail == ""}
+								onChange={this.onChange} 
+								placeholder={string.Email} 
+							/>
+							<FormFeedback>{this.state.errorEmail}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Input 
+								type="password" 
+								name="password" 
+								value={this.state.password || ""}
+								valid={this.state.errorPassword == ""}
+								onChange={this.onChange} 
+								placeholder={string.Password} 
+							/>
+							<FormFeedback>{this.state.errorPassword}</FormFeedback>
+						</FormGroup>
+						<div className="recaptcha-wrapper">
+							<div id="login-recaptcha"></div>
+							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
+						</div>
+						<FormFeedback>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>					
+						<Button id="login-submit" onClick={() => this.submit()}>{string.Login}</Button>
 						<Link className="forgot-password-link" onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
-					</div>
-					<hr />
-					<div className="input-item">
-						<input onClick={this.gotoSignup} type="submit" value={string.Signup} />
-					</div>
+						<hr />
+						<Button onClick={() => this.gotoSignup()}>{string.Signup}</Button>
+					</Form>
 					<div className="input-item">
 						<span>{ui.serverErrorType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
 						<GoogleLogin
@@ -168,7 +190,7 @@ class LoginSection extends Component {
 								buttonText={string.LoginWithGoogle}
 								onSuccess={this.gLoginSuccess}
 								onFailure={this.gLoginFail}
-							/>
+							/>\
 					</div>
 					<div className="input-item">
 					<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>

@@ -5,6 +5,17 @@ import config from "../../config"
 import validator from "validator"
 import passwordChecker from "../../helper/passwordChecker"
 import resourcePath from "../../resourcePath"
+import { 
+	Button, 
+	Form, 
+	FormGroup, 
+	Label, 
+	Input, 
+	FormText, 
+	InputGroup,
+	InputGroupAddon,
+	FormFeedback
+} from 'reactstrap';
 
 class SignupSection extends Component {
 	constructor(props) {
@@ -136,6 +147,8 @@ class SignupSection extends Component {
 					email: this.state.email,
 					password: this.state.password,
 					confirmPassword: this.state.confirmPassword
+					// TODO add language field here when the backend is ready for it
+					// language: navigator.language,
 				})
 			);
 		}else{
@@ -146,34 +159,69 @@ class SignupSection extends Component {
 	render() {
 		return (
 			<div className="login-section">
-				<div className="input-item">
-					<input type="text" name="firstName" value={this.state.firstName} onChange={this.onChange} placeholder={string.FirstName} />
-					<span>{this.state.errorFirstName}</span>
-				</div>
-				<div className="input-item">
-					<input type="text" name="lastName" value={this.state.lastName} onChange={this.onChange} placeholder={string.LastName} />
-					<span>{this.state.errorLastName}</span>
-				</div>
-				<div className="input-item">
-					<input type="text" name="email" value={this.state.email} onChange={this.onChange} placeholder={string.Email} />
-					<span>{this.state.errorEmail}</span>
-				</div>
-				<div className="input-item">
-					<input type="password" name="password" value={this.state.password} onChange={this.onChange} placeholder={string.Password} />
-					<span>{this.state.errorPassword}</span>
-				</div>
-				<div className="input-item">
-					<input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.onChange} placeholder={string.ConfirmPassword} />
-					<span>{this.state.errorConfirmPassword}</span>
-				</div>
-				<div className="recaptcha-wrapper">
-					<div id="signup-recaptcha"></div>
-					<span>{this.state.errorRecaptcha}</span>
-				</div>
-				<div className="input-item">
-					<span>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</span>
-					<input type="submit" onClick={() => this.submit()} value={string.Signup} />
-				</div>
+				<Form>
+					<FormGroup>
+						<Input 
+							type="text" 
+							name="firstName" 
+							value={this.state.firstName || ""}
+							valid={this.state.errorFirstName == ""}
+							onChange={this.onChange} 
+							placeholder={string.FirstName} 
+						/>
+						<FormFeedback>{this.state.errorFirstName}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Input 
+							type="text" 
+							name="lastName" 
+							value={this.state.lastName || ""} 
+							valid={this.state.errorLastName == ""}
+							onChange={this.onChange} 
+							placeholder={string.LastName} 
+						/>
+						<FormFeedback>{this.state.errorLastName}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Input 
+							type="text" 
+							name="email" 
+							value={this.state.email || ""} 
+							valid={this.state.errorEmail == ""}
+							onChange={this.onChange} 
+							placeholder={string.Email} 
+						/>
+						<FormFeedback>{this.state.errorEmail}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Input 
+							type="password" 
+							name="password" 
+							value={this.state.password || ""} 
+							valid={this.state.errorPassword == ""}
+							onChange={this.onChange} 
+							placeholder={string.Password} 
+						/>
+						<FormFeedback>{this.state.errorPassword}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Input 
+							type="password" 
+							name="confirmPassword" 
+							value={this.state.confirmPassword || ""} 
+							valid={this.state.errorConfirmPassword == ""}
+							onChange={this.onChange} 
+							placeholder={string.ConfirmPassword} 
+						/>
+						<FormFeedback>{this.state.errorConfirmPassword}</FormFeedback>
+					</FormGroup>
+					<div className="recaptcha-wrapper">
+						<div id="signup-recaptcha"></div>
+						<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
+					</div>
+					<FormFeedback>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
+					<Button onClick={() => this.submit()}>{string.Signup}</Button>
+				</Form>
 			</div>
 		)
 	}

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { 
 	Button, 
 	Form, 
-	FormGroup, 
-	Label, 
+	FormGroup,
+	Label,
 	Input, 
 	FormText, 
 	InputGroup,
@@ -147,14 +147,16 @@ class AccountProfilePage extends Component{
 		stateCache.twitter = this.sanitizer(this.state.twitter);
 		stateCache.linkedin = this.sanitizer(this.state.linkedin);
 		stateCache.youtube = this.sanitizer(this.state.youtube);
-
+		stateCache.language = this.props.userState.language;
+		stateCache.showProfile = this.props.userState.showProfile;
+		stateCache.showCourse = this.props.userState.showCourse;
+		stateCache.emailNotification = this.props.userState.emailNotification;
+		
 		if (isValid){
 			this.setState(errorCache, 
-				this.props.updateProfileCall(stateCache, {
-					"data": {
-						"x-user-id": this.props.userState.uid,
-						"x-access-token": this.props.userState.token
-					}
+				this.props.updateProfileCall({"data" : stateCache}, {
+					"x-user-id": this.props.userState.uid,
+					"x-access-token": this.props.userState.token
 				})
 			);			
 		} else {
