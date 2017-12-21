@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Container, Row, Col} from "reactstrap"
-import {Link} from "react-router";
-import string from "../../String"
-import pagePath from "../../pagePath"
-import getInitial from "../../helper/getInitial"
+import {Container, Row, Col} from 'reactstrap';
+import {Link} from 'react-router';
+import string from '../../String';
+import pagePath from '../../pagePath';
+import getInitial from '../../helper/getInitial';
 
 class AccountPage extends Component{
 	constructor(props){
@@ -19,23 +19,23 @@ class AccountPage extends Component{
 				className="user-photo img-circle" 
 				src={user.photo} 
 				alt={getInitial(this.props.userState.firstName, this.props.userState.lastName)} 
-				/>
+			/>;
 		} else {
-			return <div className="user-initials">{getInitial(this.props.userState.firstName, this.props.userState.lastName)}</div>
+			return <div className="user-initials">{getInitial(this.props.userState.firstName, this.props.userState.lastName)}</div>;
 		}
 	}
 
-    render(){
+	render(){
 		var user = this.props.userState;
-	    return (
-	    	<div className="account-page">
-	    		<Container>
+		return (
+			<div className="account-page">
+				<Container>
 					<Row>
 						<Col className="account-side-menu" xs="12" sm="3">
 							<div className="profile-header">
-							{this.renderPhoto()}
+								{this.renderPhoto()}
 							</div>
-							<div className="name">{user.firstName + " " + user.lastName}</div>
+							<div className="name">{user.firstName + ' ' + user.lastName}</div>
 							<ul className="side-menu">
 								<li className="side-menu-item">
 									<Link activeClassName="active" to={pagePath.Account + pagePath.ViewPublicProfile}>{string.AccountViewPublicProfile}</Link>
@@ -62,9 +62,9 @@ class AccountPage extends Component{
 						</Col>
 					</Row>
 				</Container>
-	    	</div>
-	    )
-  	}
+			</div>
+		);
+	}
 }
 
 export default AccountPage;

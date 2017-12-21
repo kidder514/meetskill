@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import SingleCoursePage from "../../component/page/SingleCoursePage"
+import {connect} from 'react-redux';
+import SingleCoursePage from '../../component/page/SingleCoursePage';
 
 const mapStateToProps = (state) => {
 	return {
 		userState: state.userState,
 		course: state.data.course
-	}
-}
+	};
+};
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {

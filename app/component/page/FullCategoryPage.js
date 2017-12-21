@@ -5,13 +5,13 @@ class FullCategoryPage extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div>
-	    		<h1>FullCategoryPage</h1>
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div>
+				<h1>FullCategoryPage</h1>
+			</div>
+		);
+	}
 }
 
 export default FullCategoryPage;

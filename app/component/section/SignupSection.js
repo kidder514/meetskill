@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
-import string from "../../String";
-import config from "../../config"
-import validator from "validator"
-import passwordChecker from "../../helper/passwordChecker"
-import resourcePath from "../../resourcePath"
+import string from '../../String';
+import config from '../../config';
+import validator from 'validator';
+import passwordChecker from '../../helper/passwordChecker';
+import resourcePath from '../../resourcePath';
 import { 
 	Button, 
 	Form, 
 	FormGroup, 
-	Label, 
 	Input, 
-	FormText, 
-	InputGroup,
-	InputGroupAddon,
 	FormFeedback
 } from 'reactstrap';
 
@@ -43,28 +38,28 @@ class SignupSection extends Component {
 
 	componentDidMount(){
 		this.props.resetAllServerError();
-		grecaptcha.render("signup-recaptcha", {
-			'badge' : "bottomright",
+		window.grecaptcha.render('signup-recaptcha', {
+			'badge' : 'bottomright',
 			'sitekey' : config.recaptchaSiteKey,
 			'callback' : this.tickRecaptcha,
-			'data-size': "invisible",
-			'expired-callback': this.recaptchaExpired			
+			'data-size': 'invisible',
+			'expired-callback': this.recaptchaExpired           
 		});
 	}
 
 	componentWillUnmount(){
-		this.props.resetAllServerError();		
+		this.props.resetAllServerError();       
 	}
 
-	componentWillReceiveProps(nextProps){	
-		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){	
-			this.props.resetAllServerError();			
+	componentWillReceiveProps(nextProps){   
+		if (this.props.ui.showDialogBox && (!nextProps.ui.showDialogBox)){  
+			this.props.resetAllServerError();           
 			this.setState(this.initialState);
 		}
 	}
 
 	onChange(e){
-		this.setState({[e.target.name]: e.target.value});					
+		this.setState({[e.target.name]: e.target.value});                   
 	}
 
 	tickRecaptcha(token){
@@ -74,33 +69,33 @@ class SignupSection extends Component {
 	}
 
 	recaptchaExpired(){
-		this.setState({recaptcha: ''})
+		this.setState({recaptcha: ''});
 	}
 
 	submit() {
 		var stateCache = {};
 		var isValid = true;
-		if (this.state.firstName == "") {
+		if (this.state.firstName == '') {
 			stateCache.errorFirstName = string.NoFirstName;
 			isValid = false;
 		} else if (!validator.isAlpha(this.state.firstName)) {
 			stateCache.errorFirstName = string.ErrorNameFormat;
-			isValid = false;			
+			isValid = false;            
 		} else {
-			stateCache.errorFirstName = "";
+			stateCache.errorFirstName = '';
 		}
 
-		if (this.state.lastName == ""){
+		if (this.state.lastName == ''){
 			stateCache.errorLastName = string.NoLastName;
 			isValid = false;
 		} else if (!validator.isAlpha(this.state.lastName)) {
 			stateCache.errorLastName = string.ErrorNameFormat;
-			isValid = false;			
+			isValid = false;            
 		} else {
 			stateCache.errorLastName = '';
 		}
 
-		if (this.state.email == ""){
+		if (this.state.email == ''){
 			isValid = false;
 			stateCache.errorEmail = string.NoEmail;
 		} else if (!validator.isEmail(this.state.email)){
@@ -110,7 +105,7 @@ class SignupSection extends Component {
 			stateCache.errorEmail = '';
 		}
 
-		if (this.state.password == "") {
+		if (this.state.password == '') {
 			isValid = false;
 			stateCache.errorPassword = string.NoPassword;
 		} else if (!passwordChecker(this.state.password)){
@@ -120,7 +115,7 @@ class SignupSection extends Component {
 			stateCache.errorPassword = '';
 		}
 
-		if (this.state.confirmPassword == "") {
+		if (this.state.confirmPassword == '') {
 			isValid = false;
 			stateCache.errorConfirmPassword = string.NoConfirmPassword;
 		} else if (this.state.password != this.state.confirmPassword){
@@ -130,11 +125,11 @@ class SignupSection extends Component {
 			stateCache.errorConfirmPassword = '';
 		}
 
-		if (this.state.recaptcha == ""){
+		if (this.state.recaptcha == ''){
 			isValid = false;
 			stateCache.errorRecaptcha = string.InvalidRecaptcha;
 		} else {
-			stateCache.errorRecaptcha = "";
+			stateCache.errorRecaptcha = '';
 		}
 
 		if(isValid){
@@ -143,7 +138,7 @@ class SignupSection extends Component {
 				this.props.signupCall({
 					firstname: this.state.firstName,
 					lastname: this.state.lastName,
-					usertype: "student",
+					usertype: 'student',
 					email: this.state.email,
 					password: this.state.password,
 					confirmPassword: this.state.confirmPassword
@@ -164,8 +159,8 @@ class SignupSection extends Component {
 						<Input 
 							type="text" 
 							name="firstName" 
-							value={this.state.firstName || ""}
-							valid={this.state.errorFirstName == ""}
+							value={this.state.firstName || ''}
+							valid={this.state.errorFirstName == ''}
 							onChange={this.onChange} 
 							placeholder={string.FirstName} 
 						/>
@@ -175,8 +170,8 @@ class SignupSection extends Component {
 						<Input 
 							type="text" 
 							name="lastName" 
-							value={this.state.lastName || ""} 
-							valid={this.state.errorLastName == ""}
+							value={this.state.lastName || ''} 
+							valid={this.state.errorLastName == ''}
 							onChange={this.onChange} 
 							placeholder={string.LastName} 
 						/>
@@ -186,8 +181,8 @@ class SignupSection extends Component {
 						<Input 
 							type="text" 
 							name="email" 
-							value={this.state.email || ""} 
-							valid={this.state.errorEmail == ""}
+							value={this.state.email || ''} 
+							valid={this.state.errorEmail == ''}
 							onChange={this.onChange} 
 							placeholder={string.Email} 
 						/>
@@ -197,8 +192,8 @@ class SignupSection extends Component {
 						<Input 
 							type="password" 
 							name="password" 
-							value={this.state.password || ""} 
-							valid={this.state.errorPassword == ""}
+							value={this.state.password || ''} 
+							valid={this.state.errorPassword == ''}
 							onChange={this.onChange} 
 							placeholder={string.Password} 
 						/>
@@ -208,8 +203,8 @@ class SignupSection extends Component {
 						<Input 
 							type="password" 
 							name="confirmPassword" 
-							value={this.state.confirmPassword || ""} 
-							valid={this.state.errorConfirmPassword == ""}
+							value={this.state.confirmPassword || ''} 
+							valid={this.state.errorConfirmPassword == ''}
 							onChange={this.onChange} 
 							placeholder={string.ConfirmPassword} 
 						/>
@@ -223,7 +218,7 @@ class SignupSection extends Component {
 					<Button onClick={() => this.submit()}>{string.Signup}</Button>
 				</Form>
 			</div>
-		)
+		);
 	}
 }
 

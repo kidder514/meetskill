@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
-import {Link} from "react-router";
-import IconButton from "../../../helper/uicomponent/IconButton";
-import string from "../../../String"
-import pagePath from "../../../pagePath"
-import LoadingSpinner from "../../../helper/uicomponent/LoadingSpinner";
-import getInitial from "../../../helper/getInitial"
+import {Link} from 'react-router';
+import string from '../../../String';
+import pagePath from '../../../pagePath';
+import LoadingSpinner from '../../../helper/uicomponent/LoadingSpinner';
+import getInitial from '../../../helper/getInitial';
 
 class ProfilePopOverSection extends Component {
 	constructor(props) {
 		super(props);
 		this.renderComponent = this.renderComponent.bind(this);
 	}
-	
+    
 	renderComponent(){
 		return (
 			<div className="profile-popover-container">
@@ -21,7 +20,7 @@ class ProfilePopOverSection extends Component {
 							{ getInitial(this.props.userState.firstName, this.props.userState.lastName) }
 						</div>
 						<div className="name-email">
-							<div className="name-email-name">{this.props.userState.firstName + " " + this.props.userState.lastName}</div>
+							<div className="name-email-name">{this.props.userState.firstName + ' ' + this.props.userState.lastName}</div>
 							<div className="name-email-email">{this.props.userState.email}</div>
 						</div>
 					</div>
@@ -56,7 +55,7 @@ class ProfilePopOverSection extends Component {
 							</Link>
 						</li>
 						<li>
-							<Link onClick={()=>{this.props.logout()}}>
+							<Link onClick={()=>{this.props.logout();}}>
 								{string.LogOut}
 							</Link>
 						</li>
@@ -66,13 +65,13 @@ class ProfilePopOverSection extends Component {
 		);
 	}
 
-    render() {
+	render() {
 		if( this.props.list.length <= 0){
 			return <LoadingSpinner />;
 		} else {
 			return (this.renderComponent());
 		}
-    }
+	}
 }
 
 export default ProfilePopOverSection;

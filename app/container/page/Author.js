@@ -1,13 +1,11 @@
-
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import AuthorPage from "../../component/page/AuthorPage"
+import {connect} from 'react-redux';
+import AuthorPage from '../../component/page/AuthorPage';
 
 const mapStateToProps = (state) => {
 	return {
-        userState: state.userState,
-	}
-}
+		userState: state.userState,
+	};
+};
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {

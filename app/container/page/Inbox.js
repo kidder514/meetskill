@@ -1,13 +1,11 @@
-
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import InboxPage from "../../component/page/InboxPage"
+import {connect} from 'react-redux';
+import InboxPage from '../../component/page/InboxPage';
 
 const mapStateToProps = (state) => {
 	return {
-        userState: state.userState,
-	}
-}
+		userState: state.userState,
+	};
+};
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {

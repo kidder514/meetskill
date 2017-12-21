@@ -5,13 +5,13 @@ class AccountViewPublicProfilePage extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div className="account-profile-page">
-	    		AccountViewPublicProfilePage
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div className="account-profile-page">
+                AccountViewPublicProfilePage
+			</div>
+		);
+	}
 }
 
 export default AccountViewPublicProfilePage;

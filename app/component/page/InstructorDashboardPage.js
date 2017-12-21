@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Jumbotron, Button, Container, Row, Col} from 'reactstrap'
-import string from "../../String"
+import React, { Component } from 'react';
+import { Jumbotron, Button, Container, Row, Col} from 'reactstrap';
+import string from '../../String';
 
 class InstructorDashboardPage extends Component{
 	constructor(props){
@@ -10,13 +10,13 @@ class InstructorDashboardPage extends Component{
 
 	onActivate(){
 		this.props.activateInstructorCall({},{
-			"x-user-id": this.props.userState.uid,
-			"x-access-token": this.props.userState.token					
-		})
+			'x-user-id': this.props.userState.uid,
+			'x-access-token': this.props.userState.token                    
+		});
 	}
 
-    render(){
-	    return (
+	render(){
+		return (
 			<Container>
 				<Row>
 					<Col>
@@ -28,8 +28,8 @@ class InstructorDashboardPage extends Component{
 					</Col>
 				</Row>
 			</Container>
-	    )
-  	}
+		);
+	}
 }
 
 export default InstructorDashboardPage;

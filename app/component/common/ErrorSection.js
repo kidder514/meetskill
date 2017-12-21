@@ -5,14 +5,14 @@ class ErrorSection extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div>
-	    		<h1>Error</h1>
-	    		{ this.props.errorMessage}
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div>
+				<h1>Error</h1>
+				{ this.props.errorMessage}
+			</div>
+		);
+	}
 }
 
 export default ErrorSection;

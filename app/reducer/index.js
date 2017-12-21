@@ -1,10 +1,10 @@
-import { routerReducer as routing} from 'react-router-redux'
-import { combineReducers } from 'redux'
-import userState from "./userStateReducer"
-import ui from "./uiReducer"
-import data from "./dataReducer"
-import search from "./searchReducer"
-import app from "./appReducer"
+import { routerReducer as routing} from 'react-router-redux';
+import { combineReducers } from 'redux';
+import userState from './userStateReducer';
+import ui from './uiReducer';
+import data from './dataReducer';
+import search from './searchReducer';
+import app from './appReducer';
 
 const rootReducer = combineReducers({
 	app,
@@ -15,4 +15,4 @@ const rootReducer = combineReducers({
 	search
 });
 
-export default rootReducer
+export default rootReducer;

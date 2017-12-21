@@ -5,13 +5,13 @@ class NotificationPage extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div>
-	    		<h1>NotificationPage</h1>
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div>
+				<h1>NotificationPage</h1>
+			</div>
+		);
+	}
 }
 
 export default NotificationPage;

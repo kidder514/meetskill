@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LoadingSpinner from '../../helper/uicomponent/LoadingSpinner'
+import LoadingSpinner from '../../helper/uicomponent/LoadingSpinner';
 import { Button } from 'reactstrap';
 
 class HomePage extends Component{
@@ -7,20 +7,20 @@ class HomePage extends Component{
 		super(props);
 	}
 
-  	render(){
-  		return (
-  			<div>
-  				<div>
-  					<LoadingSpinner />
-		        <Button>
-		        	category
-		        </Button>
+	render(){
+		return (
+			<div>
+				<div>
+					<LoadingSpinner />
+					<Button>
+                    category
+					</Button>
 
-  				</div>
-  			</div>
-  		);
-  	}
-  		
+				</div>
+			</div>
+		);
+	}
+        
 }
 
 export default HomePage;

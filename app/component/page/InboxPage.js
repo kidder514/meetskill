@@ -6,13 +6,13 @@ class InboxPage extends Component{
 	}
 
 
-    render(){
-	    return (
-	    	<div className="inbox-page">
-	    		InboxPage
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div className="inbox-page">
+                InboxPage
+			</div>
+		);
+	}
 }
 
 export default InboxPage;

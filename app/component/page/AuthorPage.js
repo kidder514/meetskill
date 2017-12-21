@@ -6,13 +6,13 @@ class AuthorPage extends Component{
 	}
 
 
-    render(){
-	    return (
-	    	<div className="author-page">
-	    		AuthorPage
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div className="author-page">
+                AuthorPage
+			</div>
+		);
+	}
 }
 
 export default AuthorPage;

@@ -1,64 +1,62 @@
-import axios from "axios";
+import axios from 'axios';
 import { 
 	showErrorDialog,
 	updateServerError, 
 	hideDialog, 
-	updateServerSuccess } from "./uiAction";
-import string from "../String"
-import config from "../config"
-import { getStoredState } from 'redux-persist'
-import { locate } from "./userAction"
-import resourcePath from "../resourcePath"
-import { setSearchOptions } from "./searchAction"
+	updateServerSuccess } from './uiAction';
+import string from '../String';
+import config from '../config';
+import { locate } from './userAction';
+import resourcePath from '../resourcePath';
+import { setSearchOptions } from './searchAction';
 
 export const initApp = () =>{
-    return {
-        type: "INIT_APP"
-    }
-}
+	return {
+		type: 'INIT_APP'
+	};
+};
 
 export const InitAppCall = () => {
 	return (dispatch, getState) => {
 		const state = getState();
 		if (!state.app.isInitialized) {
 
-			if ((state.userState.location != "") && (state.userState.language != "")) {
+			if ((state.userState.location != '') && (state.userState.language != '')) {
 				axios.post(config.APIserver + resourcePath.init, {
-					"location": state.userState.location, "language": state.userState.language
+					'location': state.userState.location, 'language': state.userState.language
 				})
-				.then(function (res) {
-					dispatch(setSearchOptions(res.data.searchOptions));
-					dispatch(initApp());
-				})
-				.catch(function (error) {
-					dispatch(showErrorDialog(string.ErrorNotAbleToInitApp))
-				});
+					.then(function (res) {
+						dispatch(setSearchOptions(res.data.searchOptions));
+						dispatch(initApp());
+					})
+					.catch(function () {
+						dispatch(showErrorDialog(string.ErrorNotAbleToInitApp));
+					});
 			} else {
 				axios.post(config.APIserver + resourcePath.init, {})
-				.then(function (res) {
-					dispatch(locate(res.data.location));
-					dispatch(setSearchOptions(res.data.searchOptions));
-					dispatch(initApp());
-				})
-				.catch(function (error) {
-					dispatch(showErrorDialog(string.ErrorNotAbleToInitApp))
-				});
+					.then(function (res) {
+						dispatch(locate(res.data.location));
+						dispatch(setSearchOptions(res.data.searchOptions));
+						dispatch(initApp());
+					})
+					.catch(function () {
+						dispatch(showErrorDialog(string.ErrorNotAbleToInitApp));
+					});
 			}
 		}
-	}
-}
+	};
+};
 
 export function getApiCall(query, action, errorMessage) {
 	return dispatch => {
 		axios.get(config.APIserver, query)
 			.then(function (res) {
 				dispatch(action(res.data));
-				if(callback != undefined){callback();}
 			})
-			.catch(function (error) {
+			.catch(function () {
 				dispatch(showErrorDialog(errorMessage));
 			});
-	}
+	};
 }
 
 
@@ -78,7 +76,7 @@ export function authPostApiCall(resource, query, success) {
 			.catch(function (error) {
 				dispatch(updateServerError(resource, error.response.data.Error.Message ));
 			});
-	}
+	};
 }
 
 export function authPostApiCallWithHeader(resource, data, success, postHeaders) {
@@ -86,37 +84,37 @@ export function authPostApiCallWithHeader(resource, data, success, postHeaders) 
 		axios.post(config.tempAPIserver + resource, data, {
 			headers: postHeaders})
 			.then(function (res) {
-				if(!!success) { dispatch(success(res.data)); }
+				if(success) { dispatch(success(res.data)); }
 				dispatch(hideDialog());
 			})
 			.catch(function (error) {
 				dispatch(updateServerError(resource, error.response));
 			});
-	}
+	};
 }
 
 export function postApiCall(resource, query, success, fail, successMessage, errorMessage) {
 	return dispatch => {
 		axios.post(config.tempAPIserver + resource, query)
 			.then(function (res) {
-				if (!!success){dispatch(success(res.data));}
-				if (!!successMessage) {dispatch(updateServerSuccess(resource, successMessage))}
+				if (success){dispatch(success(res.data));}
+				if (successMessage) {dispatch(updateServerSuccess(resource, successMessage));}
 			})
 			.catch(function (error) {
-				if (!!fail){dispatch(fail());}
-				if (!!errorMessage) {
-					dispatch(updateServerError(resource, errorMessage))
+				if (fail){dispatch(fail());}
+				if (errorMessage) {
+					dispatch(updateServerError(resource, errorMessage));
 				} else {
-					dispatch(updateServerError(resource, error.response.data.Error.Message))					
-				}				
+					dispatch(updateServerError(resource, error.response.data.Error.Message));                   
+				}               
 			});
-	}
+	};
 }
 
-export function deleteApiCall(resource, param, action, errorMessage) {
-	return dispatch => {};
-}
+// export function deleteApiCall(resource, param, action, errorMessage) {
+//  return dispatch => {};
+// }
 
-export function putApiCall(resource, param, action, errorMessage) {
-	return dispatch => {};
-}
+// export function putApiCall(resource, param, action, errorMessage) {
+//  return dispatch => {};
+// }

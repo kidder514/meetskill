@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Filter from "../../container/section/Filter"
-import ItemList from "../../container/section/ItemList"
-import LoadingSpinner from "../../helper/uicomponent/LoadingSpinner"
+import Filter from '../../container/section/Filter';
+import ItemList from '../../container/section/ItemList';
+import LoadingSpinner from '../../helper/uicomponent/LoadingSpinner';
 
 class CategoryPage extends Component{
 	constructor(props){
@@ -9,21 +9,21 @@ class CategoryPage extends Component{
 	}
 
 	componentDidMount(){
-		if (this.props.list.length > 0){
+		// if (this.props.list.length > 0){
 
-		} else {
-			this.props.loadList("");
-		}
+		// } else {
+		// 	this.props.loadList('');
+		// }
 	}
 
-    render(){
-	    return (
-	    	<div className="category-page">
-	    		<Filter/>
+	render(){
+		return (
+			<div className="category-page">
+				<Filter/>
 				{this.props.list.length > 0 ? <ItemList items={this.props.list}/> : <LoadingSpinner />}
-	    	</div>
-	    )
-  	}
+			</div>
+		);
+	}
 }
 
 export default CategoryPage;

@@ -6,13 +6,13 @@ class AccountPurchaseHistoryPage extends Component{
 	}
 
 
-    render(){
-	    return (
-	    	<div className="purchase-history-page">
-	    		AccountPurchaseHistoryPage
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div className="purchase-history-page">
+                AccountPurchaseHistoryPage
+			</div>
+		);
+	}
 }
 
 export default AccountPurchaseHistoryPage;

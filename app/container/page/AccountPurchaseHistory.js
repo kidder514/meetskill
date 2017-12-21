@@ -1,13 +1,11 @@
-
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import AccountPurchaseHistoryPage from "../../component/page/AccountPurchaseHistoryPage"
+import {connect} from 'react-redux';
+import AccountPurchaseHistoryPage from '../../component/page/AccountPurchaseHistoryPage';
 
 const mapStateToProps = (state) => {
 	return {
-        userState: state.userState,
-	}
-}
+		userState: state.userState,
+	};
+};
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {

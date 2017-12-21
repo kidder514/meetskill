@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
-import string from "../../String";
-import validator from "validator"
-import resourcePath from "../../resourcePath"
+import string from '../../String';
+import validator from 'validator';
+import resourcePath from '../../resourcePath';
 import { 
 	Button, 
 	Form, 
 	FormGroup, 
 	Input, 
 	FormText, 
-	InputGroup,
-	InputGroupAddon,
 	FormFeedback
 } from 'reactstrap';
 
@@ -18,8 +15,8 @@ class ForgotPasswordSection extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			email: "",
-			errorEmail: ""
+			email: '',
+			errorEmail: ''
 		};
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
@@ -30,21 +27,21 @@ class ForgotPasswordSection extends Component {
 	}
 
 	componentWillUnmount(){
-		this.props.resetAllServerError();		
+		this.props.resetAllServerError();       
 	}
 
 	onChange(e){
-		this.setState({[e.target.name]: e.target.value});					
+		this.setState({[e.target.name]: e.target.value});                   
 	}
 
 	submit() {
 		this.props.resetAllServerError();
 		if(validator.isEmail(this.state.email)){
 			this.props.recoverPasswordCall({email: this.state.email});
-		} else if (this.state.email == ""){	
-			this.setState({errorEmail: string.NoEmail});			
-		} else {	
-			this.setState({errorEmail: string.InvalidEmail});			
+		} else if (this.state.email == ''){ 
+			this.setState({errorEmail: string.NoEmail});            
+		} else {    
+			this.setState({errorEmail: string.InvalidEmail});           
 		}
 	}
 
@@ -58,19 +55,19 @@ class ForgotPasswordSection extends Component {
 						<Input 
 							type="text" 
 							name="email" 
-							value={this.state.email || ""}
-							valid={this.state.erroEmail == ""}
+							value={this.state.email || ''}
+							valid={this.state.erroEmail == ''}
 							onChange={this.onChange} 
 							placeholder={string.Email} 
 						/>
 						<FormFeedback>{this.state.errorEmail}</FormFeedback>
 						<FormFeedback>{ui.serverErrorType == resourcePath.recoverPassword && ui.serverErrorMessage}</FormFeedback>
-						<FormText>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</FormText>					
+						<FormText>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</FormText>                  
 						<Button onClick={() => this.submit()}>{string.ResetPassword}</Button>
 					</FormGroup>
 				</Form>
 			</div>
-		)
+		);
 	}
 }
 

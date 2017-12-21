@@ -5,13 +5,13 @@ class ShoppingCartPage extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div>
-	    		<h1>ShoppingCartPage</h1>
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div>
+				<h1>ShoppingCartPage</h1>
+			</div>
+		);
+	}
 }
 
 export default ShoppingCartPage;

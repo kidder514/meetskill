@@ -1,13 +1,12 @@
 {
-  "name": "signatureDish",
+  "name": "meetskill",
   "version": "0.0.1",
   "private": false,
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --inline --history-api-fallback",
-    "test": "jest",
-    "build": "",
-    "flow": "flow"
+    "lint": "./node_modules/.bin/eslint",
+    "test:js": "./node_modules/.bin/eslint app"
   },
   "repository": {
     "type": "git",
@@ -38,12 +37,10 @@
     "validator": "^6.1.0"
   },
   "devDependencies": {
-    "babel-jest": "19.0.0",
-    "babel-preset-react-native": "1.9.1",
-    "jest": "19.0.2",
-    "react-test-renderer": "16.0.0-alpha.6",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.18.2",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "19.0.0",
     "babel-loader": "^6.2.7",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-polyfill": "^6.16.0",
@@ -51,10 +48,16 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-native": "1.9.1",
     "css-loader": "^0.25.0",
+    "eslint": "^4.13.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-react": "^7.5.1",
     "file-loader": "^0.9.0",
     "flow-bin": "^0.43.0",
     "image-webpack-loader": "^3.0.0",
+    "jest": "19.0.2",
+    "react-test-renderer": "16.0.0-alpha.6",
     "redux-logger": "^2.7.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",

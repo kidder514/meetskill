@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
+import {Link} from 'react-router';
 import { 
 	Button, 
 	Form, 
 	FormGroup, 
 	Input, 
-	FormText, 
-	InputGroup,
-	InputGroupAddon,
 	FormFeedback
 } from 'reactstrap';
-import string from "../../String";
-import config from "../../config"
+import string from '../../String';
+import config from '../../config';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-import validator from "validator"
-import resourcePath from "../../resourcePath"
+import validator from 'validator';
+import resourcePath from '../../resourcePath';
 
 class LoginSection extends Component {
 	constructor(props) {
@@ -33,32 +30,32 @@ class LoginSection extends Component {
 		this.state = this.initialState;
 		this.submit = this.submit.bind(this);
 		this.gotoSignup = this.gotoSignup.bind(this);
-		
+        
 		this.tickRecaptcha = this.tickRecaptcha.bind(this);
-		this.recaptchaExpired = this.recaptchaExpired.bind(this);		
-		this.onChange = this.onChange.bind(this);		
+		this.recaptchaExpired = this.recaptchaExpired.bind(this);       
+		this.onChange = this.onChange.bind(this);       
 		this.gLoginSuccess = this.gLoginSuccess.bind(this);
 		this.fbButtonClicked = this.fbButtonClicked.bind(this);
 		this.responseFb = this.responseFb.bind(this);
 	}
 
 	onChange(e){
-		this.setState({[e.target.name]: e.target.value});					
+		this.setState({[e.target.name]: e.target.value});                   
 	}
 
 	componentDidMount(){
 		this.props.resetAllServerError();
-		grecaptcha.render("login-recaptcha", {
-			'badge' : "bottomright",
+		window.grecaptcha.render('login-recaptcha', {
+			'badge' : 'bottomright',
 			'sitekey' : config.recaptchaSiteKey,
 			'callback' : this.tickRecaptcha,
-			'data-size': "invisible",
+			'data-size': 'invisible',
 			'expired-callback': this.recaptchaExpired,
 		});
 	}
 
 	componentWillUnmount(){
-		this.props.resetAllServerError();		
+		this.props.resetAllServerError();       
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -69,24 +66,24 @@ class LoginSection extends Component {
 	}
 
 	gotoSignup(){
-		this.props.showDialog("signup");
+		this.props.showDialog('signup');
 		this.setState(this.initialState);
 	}
 
 	gLoginSuccess(googleUser){
-		if (googleUser !== undefined && googleUser.getAuthResponse().id_token !== ""){
+		if (googleUser !== undefined && googleUser.getAuthResponse().id_token !== ''){
 			this.props.googleLoginCall({'id_token': googleUser.getAuthResponse().id_token});
 		}
 	}
-	
+    
 	gLoginFail(){
 
-		// handle google login fail	
+		// handle google login fail 
 	}
 
-	fbButtonClicked(e){
+	// fbButtonClicked(e){
 
-	}
+	// }
 
 	responseFb(res){
 		if (res.accessToken){
@@ -101,34 +98,34 @@ class LoginSection extends Component {
 	}
 
 	recaptchaExpired(){
-		this.setState({recaptcha: ''})
+		this.setState({recaptcha: ''});
 	}
 
-	submit(token) {
+	submit() {
 		var stateCache = {};
 		var isValid = true;
-		if(this.state.email == ""){
+		if(this.state.email == ''){
 			stateCache.errorEmail = string.NoEmail;
-			var isValid = false;		
+			isValid = false;        
 		} else if(!validator.isEmail(this.state.email)){
 			stateCache.errorEmail = string.InvalidEmail;
-			var isValid = false;		
+			isValid = false;        
 		}else{
-			stateCache.errorEmail = "";
+			stateCache.errorEmail = '';
 		}
 
-		if(this.state.password == ""){
+		if(this.state.password == ''){
 			stateCache.errorPassword = string.NoPassword;
-			var isValid = false;		
+			isValid = false;        
 		}else{
-			stateCache.errorPassword = "";
+			stateCache.errorPassword = '';
 		}
 
-		if(this.state.recaptcha == ""){
+		if(this.state.recaptcha == ''){
 			stateCache.errorRecaptcha = string.InvalidRecaptcha;
-			var isValid = false;		
+			isValid = false;        
 		}else{
-			stateCache.errorRecaptcha = "";
+			stateCache.errorRecaptcha = '';
 		}
 
 		stateCache.rememberLogin = this.state.rememberLogin;
@@ -136,17 +133,17 @@ class LoginSection extends Component {
 		if(isValid){
 			stateCache.recaptcha = this.state.recaptcha;
 			this.setState(stateCache,
-				this.props.loginCall({"email": this.state.email, "password": this.state.password})
+				this.props.loginCall({'email': this.state.email, 'password': this.state.password})
 			);
 		}else{
 			this.setState(stateCache);
 		}
 	}
-	
+    
 	render() {
-		var {ui, userState} = this.props;		
+		var {ui, userState} = this.props;       
 		if(userState.isLoggedIn){
-			return (<div className="login-section">{string.YouAreAlreadyLoggedIn}</div>)
+			return (<div className="login-section">{string.YouAreAlreadyLoggedIn}</div>);
 		}else{
 			return (
 				<div className="login-section">
@@ -155,8 +152,8 @@ class LoginSection extends Component {
 							<Input 
 								type="text" 
 								name="email" 
-								value={this.state.email || ""}
-								valid={this.state.erroEmail == ""}
+								value={this.state.email || ''}
+								valid={this.state.erroEmail == ''}
 								onChange={this.onChange} 
 								placeholder={string.Email} 
 							/>
@@ -166,8 +163,8 @@ class LoginSection extends Component {
 							<Input 
 								type="password" 
 								name="password" 
-								value={this.state.password || ""}
-								valid={this.state.errorPassword == ""}
+								value={this.state.password || ''}
+								valid={this.state.errorPassword == ''}
 								onChange={this.onChange} 
 								placeholder={string.Password} 
 							/>
@@ -177,23 +174,23 @@ class LoginSection extends Component {
 							<div id="login-recaptcha"></div>
 							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
 						</div>
-						<FormFeedback>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>					
+						<FormFeedback>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>                    
 						<Button id="login-submit" onClick={() => this.submit()}>{string.Login}</Button>
-						<Link className="forgot-password-link" onClick={() => this.props.showDialog("forgotPassword")}>{string.ForgotPassword}</Link>
+						<Link className="forgot-password-link" onClick={() => this.props.showDialog('forgotPassword')}>{string.ForgotPassword}</Link>
 						<hr />
 						<Button onClick={() => this.gotoSignup()}>{string.Signup}</Button>
 					</Form>
 					<div className="input-item">
 						<span>{ui.serverErrorType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
 						<GoogleLogin
-								clientId={config.googleLoginClientId}
-								buttonText={string.LoginWithGoogle}
-								onSuccess={this.gLoginSuccess}
-								onFailure={this.gLoginFail}
-							/>\
+							clientId={config.googleLoginClientId}
+							buttonText={string.LoginWithGoogle}
+							onSuccess={this.gLoginSuccess}
+							onFailure={this.gLoginFail}
+						/>\
 					</div>
 					<div className="input-item">
-					<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
+						<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
 						<FacebookLogin
 							appId={config.FBAppId}
 							autoLoad={false}
@@ -202,7 +199,7 @@ class LoginSection extends Component {
 							callback={this.responseFb} />
 					</div>
 				</div>
-			)
+			);
 		}
 	}
 }

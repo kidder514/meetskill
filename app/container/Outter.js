@@ -1,18 +1,17 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
-import {InitAppCall} from "../action/appAction"
-import OutterWrapper from "../component/OutterWrapper"
+import {connect} from 'react-redux';
+import {InitAppCall} from '../action/appAction';
+import OutterWrapper from '../component/OutterWrapper';
 
 const mapStateToProps = (state) => {
 	return {
 		app: state.app
-	}
-}
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        InitAppCall: () => {dispatch(InitAppCall())},
-    };
+	return {
+		InitAppCall: () => {dispatch(InitAppCall());},
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OutterWrapper);

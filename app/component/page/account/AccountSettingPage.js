@@ -5,10 +5,8 @@ import {
 	FormGroup, 
 	Label, 
 	Input, 
-	FormText, 
-	FormFeedback
 } from 'reactstrap';
-import string from "../../../String"
+import string from '../../../String';
 
 class AccountSettingPage extends Component{
 	constructor(props){
@@ -18,7 +16,7 @@ class AccountSettingPage extends Component{
 			showProfile: false,
 			showCourse: false,
 			emailNotification: false
-		}
+		};
 
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
@@ -26,50 +24,43 @@ class AccountSettingPage extends Component{
 
 	componentWillMount(){
 		this.setState({
-			"saveCard": this.props.userState.saveCard,
-			"showProfile": this.props.userState.showProfile,
-			"showCourse": this.props.userState.showCourse,
-			"emailNotification": this.props.userState.emailNotification
+			'saveCard': this.props.userState.saveCard,
+			'showProfile': this.props.userState.showProfile,
+			'showCourse': this.props.userState.showCourse,
+			'emailNotification': this.props.userState.emailNotification
 		});
 	}
 
 	componentWillUnmount(){
 		this.setState({
-			"data": 
-			{
-				"saveCard": this.props.userState.saveCard,
-				"showProfile": this.props.userState.showProfile,
-				"showCourse": this.props.userState.showCourse,
-				"emailNotification": this.props.userState.emailNotification
+			'data':{
+				'saveCard': this.props.userState.saveCard,
+				'showProfile': this.props.userState.showProfile,
+				'showCourse': this.props.userState.showCourse,
+				'emailNotification': this.props.userState.emailNotification
 			}
-		});		
+		});     
 	}
 
 	onChange(e){
 		this.setState({[e.target.name]: (e.target.checked ? 1 : 0)});
 	}
 
-	submit(){
-		console.log("submit");
-		console.log(this.state.saveCard);
-		console.log(this.state.showProfile);
-		console.log(this.state.showCourse);
-		console.log(this.state.emailNotification);
-		
+	submit(){        
 		this.props.changeSettingCall({
-			"saveCard": this.state.saveCard,
-			"showProfile": this.state.showProfile,
-			"showCourse": this.state.showCourse,
-			"emailNotification": this.state.emailNotification
+			'saveCard': this.state.saveCard,
+			'showProfile': this.state.showProfile,
+			'showCourse': this.state.showCourse,
+			'emailNotification': this.state.emailNotification
 		},{
-			"x-user-id": this.props.userState.uid,
-			"x-access-token": this.props.userState.token
-		})
+			'x-user-id': this.props.userState.uid,
+			'x-access-token': this.props.userState.token
+		});
 	}
 
-    render(){
-	    return (
-	    	<div className="account-setting-page">
+	render(){
+		return (
+			<div className="account-setting-page">
 				<div className="account-page-header">
 					<h1>{string.AccountSetting}</h1>
 					<p>{string.AccountSettingSubheading}</p>
@@ -78,7 +69,7 @@ class AccountSettingPage extends Component{
 					<FormGroup check>
 						<Label check>
 							<Input
-								name={"saveCard"}
+								name={'saveCard'}
 								type="checkbox" 
 								checked={!!this.state.saveCard}
 								onChange={this.onChange}
@@ -89,7 +80,7 @@ class AccountSettingPage extends Component{
 					<FormGroup check>
 						<Label check>
 							<Input
-								name={"showProfile"}
+								name={'showProfile'}
 								type="checkbox" 
 								checked={!!this.state.showProfile}
 								onChange={this.onChange}
@@ -100,7 +91,7 @@ class AccountSettingPage extends Component{
 					<FormGroup check>
 						<Label check>
 							<Input
-								name={"showCourse"}
+								name={'showCourse'}
 								type="checkbox" 
 								checked={!!this.state.showCourse}
 								onChange={this.onChange}
@@ -111,7 +102,7 @@ class AccountSettingPage extends Component{
 					<FormGroup check>
 						<Label check>
 							<Input
-								name={"emailNotification"}
+								name={'emailNotification'}
 								type="checkbox" 
 								checked={!!this.state.emailNotification}
 								onChange={this.onChange}
@@ -121,9 +112,9 @@ class AccountSettingPage extends Component{
 					</FormGroup>
 					<Button onClick={() => this.submit()}>{string.Submit}</Button>
 				</Form>
-	    	</div>
-	    )
-  	}
+			</div>
+		);
+	}
 }
 
 export default AccountSettingPage;

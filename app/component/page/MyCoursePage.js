@@ -5,13 +5,13 @@ class MyCoursePage extends Component{
 		super(props);
 	}
 
-    render(){
-	    return (
-	    	<div>
-	    		<h1>MyCoursePage</h1>
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div>
+				<h1>MyCoursePage</h1>
+			</div>
+		);
+	}
 }
 
 export default MyCoursePage;

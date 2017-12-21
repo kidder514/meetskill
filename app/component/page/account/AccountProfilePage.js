@@ -10,8 +10,8 @@ import {
 	InputGroupAddon,
 	FormFeedback
 } from 'reactstrap';
-import string from "../../../String"
-import validator from "validator"
+import string from '../../../String';
+import validator from 'validator';
 
 const MAX_HEADLINE_CHAR = 60;
 const MAX_BIOGRAPHY_CHAR = 250;
@@ -20,35 +20,35 @@ class AccountProfilePage extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			firstName: "",
-			errorFirstName:"",
-			lastName:"",
-			errorLastName:"",
-			headline:"",
-			errorHeadline:"",
+			firstName: '',
+			errorFirstName:'',
+			lastName:'',
+			errorLastName:'',
+			headline:'',
+			errorHeadline:'',
 			headlineCount: MAX_HEADLINE_CHAR,
-			biography:"",
+			biography:'',
 			biographyCount: MAX_BIOGRAPHY_CHAR,
-			errorBiography:"",
-			language:"",
-			errorLanguage:"",
-			link: "",
-			errorLink:"",
-			google:"",
-			errorGoogle:"",
-			facebook:"",
-			errorFacebook:"",
-			twitter:"",
-			errorTwitter:"",
-			linkedin:"",
-			errorLinkedin:"",
-			youtube:"",
-			errorYoutube:""
-		}
+			errorBiography:'',
+			language:'',
+			errorLanguage:'',
+			link: '',
+			errorLink:'',
+			google:'',
+			errorGoogle:'',
+			facebook:'',
+			errorFacebook:'',
+			twitter:'',
+			errorTwitter:'',
+			linkedin:'',
+			errorLinkedin:'',
+			youtube:'',
+			errorYoutube:''
+		};
 
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
-		this.sanitizer = this.sanitizer.bind(this);	
+		this.sanitizer = this.sanitizer.bind(this); 
 	}
 
 	componentWillMount(){
@@ -56,12 +56,12 @@ class AccountProfilePage extends Component{
 	}
 
 	componentWillUnmount(){
-		this.setState(this.props.userState);		
+		this.setState(this.props.userState);        
 	}
 
 	sanitizer(string){
-		if (string == null || string == ""){
-			return "";
+		if (string == null || string == ''){
+			return '';
 		} else {
 			return validator.escape(string);
 		}
@@ -69,12 +69,12 @@ class AccountProfilePage extends Component{
 
 	onChange(e){
 		this.setState({[e.target.name]: e.target.value});
-		
-		if (e.target.name == "headline"){
+        
+		if (e.target.name == 'headline'){
 			this.setState({headlineCount: MAX_HEADLINE_CHAR - e.target.value.length});
 		}
 
-		if (e.target.name == "biography"){
+		if (e.target.name == 'biography'){
 			this.setState({biographyCount: MAX_BIOGRAPHY_CHAR - e.target.value.length});
 		}
 	}
@@ -83,59 +83,59 @@ class AccountProfilePage extends Component{
 		var stateCache = {};
 		var errorCache = {};
 		var isValid = true;
-		if (this.state.firstName == "" || this.state.firstName == null){
+		if (this.state.firstName == '' || this.state.firstName == null){
 			errorCache.errorFirstName = string.NoFirstName;
 			isValid = false;
 		} else if (!validator.isAlpha(this.state.firstName)) {
 			errorCache.errorFirstName = string.ErrorNameFormat;
 			isValid = false;
 		} else {
-			errorCache.errorFirstName = "";
+			errorCache.errorFirstName = '';
 			stateCache.firstName = this.state.firstName;
 		}
 
-		if (this.state.lastName == "" || this.state.lastName == null){
-			errorCache.errorLastName = string.NoLastName;		
+		if (this.state.lastName == '' || this.state.lastName == null){
+			errorCache.errorLastName = string.NoLastName;       
 			isValid = false;
 		} else if (!validator.isAlpha(this.state.lastName)) {
-			errorCache.errorLastName = string.ErrorNameFormat;		
-			isValid = false;			
+			errorCache.errorLastName = string.ErrorNameFormat;      
+			isValid = false;            
 		} else {
-			errorCache.errorLastName = "";
+			errorCache.errorLastName = '';
 			stateCache.lastName = this.state.lastName;
 		}
 
-		if (this.state.headline == "" || 
-			this.state.headline == null ||
-			this.state.headline.length <= MAX_HEADLINE_CHAR)
+		if (this.state.headline == '' || 
+            this.state.headline == null ||
+            this.state.headline.length <= MAX_HEADLINE_CHAR)
 		{
-			errorCache.errorHeadline = "";
+			errorCache.errorHeadline = '';
 			stateCache.headline = this.sanitizer(this.state.headline);
 		} else {
 			errorCache.errorHeadline = string.ExceedLengthLimit;
 			isValid = false;
 		}
 
-		if (this.state.biography == "" || 
-			this.state.biography == null ||
-			this.state.biography.length <= MAX_BIOGRAPHY_CHAR)
-		{		
-			errorCache.errorBiography = "";
+		if (this.state.biography == '' || 
+            this.state.biography == null ||
+            this.state.biography.length <= MAX_BIOGRAPHY_CHAR)
+		{       
+			errorCache.errorBiography = '';
 			stateCache.biography = this.sanitizer(this.state.biography);
 		} else {
 			errorCache.errorBiography = string.ExceedLengthLimit;
 			isValid = false;
 		}
 
-		if (this.state.language != "" && this.state.language != null){
+		if (this.state.language != '' && this.state.language != null){
 			stateCache.language = this.sanitizer(this.state.language);
 		}
 
-		if (this.state.link == "" || 
-			this.state.link == null || 
-			validator.isURL(this.state.link, {allow_underscores: true}))
+		if (this.state.link == '' || 
+            this.state.link == null || 
+            validator.isURL(this.state.link, {allow_underscores: true}))
 		{
-			errorCache.errorLink = "";
+			errorCache.errorLink = '';
 			stateCache.link = this.sanitizer(this.state.link);
 		} else {
 			errorCache.errorLink = string.WebsiteWrongFormat;
@@ -151,22 +151,22 @@ class AccountProfilePage extends Component{
 		stateCache.showProfile = this.props.userState.showProfile;
 		stateCache.showCourse = this.props.userState.showCourse;
 		stateCache.emailNotification = this.props.userState.emailNotification;
-		
+        
 		if (isValid){
 			this.setState(errorCache, 
-				this.props.updateProfileCall({"data" : stateCache}, {
-					"x-user-id": this.props.userState.uid,
-					"x-access-token": this.props.userState.token
+				this.props.updateProfileCall({'data' : stateCache}, {
+					'x-user-id': this.props.userState.uid,
+					'x-access-token': this.props.userState.token
 				})
-			);			
+			);          
 		} else {
-			this.setState(errorCache);			
+			this.setState(errorCache);          
 		}
 	}
 
-    render(){
-	    return (
-	    	<div className="account-profile-page">
+	render(){
+		return (
+			<div className="account-profile-page">
 				<div className="account-page-header">
 					<h1>{string.AccountProfile}</h1>
 					<p>{string.AccountProfileSubheading}</p>
@@ -178,8 +178,8 @@ class AccountProfilePage extends Component{
 						<Input 
 							type="text" 
 							name="firstName" 
-							value={this.state.firstName || ""}
-							valid={this.state.errorFirstName == ""}
+							value={this.state.firstName || ''}
+							valid={this.state.errorFirstName == ''}
 							onChange={this.onChange} 
 							placeholder={string.InputYourFirstName} 
 						/>
@@ -190,8 +190,8 @@ class AccountProfilePage extends Component{
 						<Input 
 							type="text" 
 							name="lastName" 
-							value={this.state.lastName || ""} 
-							valid={this.state.errorLastName == ""}
+							value={this.state.lastName || ''} 
+							valid={this.state.errorLastName == ''}
 							onChange={this.onChange} 
 							placeholder={string.InputYourLastName} 
 						/>
@@ -203,8 +203,8 @@ class AccountProfilePage extends Component{
 							<Input 
 								type="textarea"
 								name="headline"
-								valid={this.state.errorHeadline == ""}
-								value={this.state.headline || ""}
+								valid={this.state.errorHeadline == ''}
+								value={this.state.headline || ''}
 								onChange={this.onChange} 
 								placeholder={string.InputYourHeadline} 
 							/>
@@ -219,28 +219,28 @@ class AccountProfilePage extends Component{
 							<Input
 								type="textarea" 
 								name="biography" 
-								valid={this.state.errorBiography == ""}
-								value={this.state.biography || ""}
+								valid={this.state.errorBiography == ''}
+								value={this.state.biography || ''}
 								onChange={this.onChange} 
 							/>
-							<InputGroupAddon>{this.state.biographyCount}</InputGroupAddon>							
+							<InputGroupAddon>{this.state.biographyCount}</InputGroupAddon>                          
 						</InputGroup>
-						<FormFeedback>{this.state.errorBiography}</FormFeedback>																			
-						<FormText>{string.BiographyHint}</FormText>						
+						<FormFeedback>{this.state.errorBiography}</FormFeedback>                                                                            
+						<FormText>{string.BiographyHint}</FormText>                     
 					</FormGroup>
 					<FormGroup>
 						<Label for="language">{string.Language}</Label>
 						<Input 
 							type="select" 
 							name="language" 
-							value={this.state.language || ""}
+							value={this.state.language || ''}
 							onChange={this.onChange} 
-							valid={this.state.errorLanguage == ""}
+							valid={this.state.errorLanguage == ''}
 						>
-							<option>{"English"}</option>
-							<option>{"French"}</option>
-							<option>{"Chinese"}</option>
-							<option>{"Portuguese"}</option>
+							<option>{'English'}</option>
+							<option>{'French'}</option>
+							<option>{'Chinese'}</option>
+							<option>{'Portuguese'}</option>
 						</Input>
 						<FormFeedback>{this.state.errorLanguage}</FormFeedback>
 					</FormGroup>
@@ -250,8 +250,8 @@ class AccountProfilePage extends Component{
 						<Input 
 							type="text"
 							name="link" 
-							valid={this.state.errorLink == ""}
-							value={this.state.link || ""}
+							valid={this.state.errorLink == ''}
+							value={this.state.link || ''}
 							onChange={this.onChange}
 							placeholder={string.WebsiteHint}
 						/>
@@ -260,42 +260,42 @@ class AccountProfilePage extends Component{
 					<FormGroup>
 						<Label for="google">{string.GooglePlus}</Label>
 						<InputGroup>
-							<InputGroupAddon>{string.GooglePlusUrl}</InputGroupAddon>						
+							<InputGroupAddon>{string.GooglePlusUrl}</InputGroupAddon>                       
 							<Input 
 								type="text"
 								name="google" 
-								valid={this.state.errorGoogle == ""}
-								value={this.state.google || ""}
+								valid={this.state.errorGoogle == ''}
+								value={this.state.google || ''}
 								onChange={this.onChange}
 								placeholder={string.GooglePlusHint}
 							/>
 						</InputGroup>
-						<FormFeedback>{this.state.errorGoogle}</FormFeedback>							
+						<FormFeedback>{this.state.errorGoogle}</FormFeedback>                           
 					</FormGroup>
 					<FormGroup>
 						<Label for="facebook">{string.Facebook}</Label>
 						<InputGroup>
-							<InputGroupAddon>{string.FacebookUrl}</InputGroupAddon>						
+							<InputGroupAddon>{string.FacebookUrl}</InputGroupAddon>                     
 							<Input 
 								type="text"
 								name="facebook" 
-								valid={this.state.errorFacebook == ""}
-								value={this.state.facebook || ""}
+								valid={this.state.errorFacebook == ''}
+								value={this.state.facebook || ''}
 								onChange={this.onChange}
 								placeholder={string.FacebookHint}
 							/>
 						</InputGroup>
-						<FormFeedback>{this.state.errorFacebook}</FormFeedback>						
+						<FormFeedback>{this.state.errorFacebook}</FormFeedback>                     
 					</FormGroup>
 					<FormGroup>
 						<Label for="twitter">{string.Twitter}</Label>
 						<InputGroup>
-							<InputGroupAddon>{string.TwitterUrl}</InputGroupAddon>						
+							<InputGroupAddon>{string.TwitterUrl}</InputGroupAddon>                      
 							<Input 
 								type="text"
 								name="twitter" 
-								valid={this.state.errorTwitter == ""}
-								value={this.state.twitter || ""}
+								valid={this.state.errorTwitter == ''}
+								value={this.state.twitter || ''}
 								onChange={this.onChange}
 								placeholder={string.TwitterHint}
 							/>
@@ -305,12 +305,12 @@ class AccountProfilePage extends Component{
 					<FormGroup>
 						<Label for="linkedin">{string.Linkedin}</Label>
 						<InputGroup>
-							<InputGroupAddon>{string.LinkedinUrl}</InputGroupAddon>						
+							<InputGroupAddon>{string.LinkedinUrl}</InputGroupAddon>                     
 							<Input 
 								type="text"
 								name="linkedin" 
-								valid={this.state.errorLinkedin == ""}
-								value={this.state.linkedin || ""}
+								valid={this.state.errorLinkedin == ''}
+								value={this.state.linkedin || ''}
 								onChange={this.onChange}
 								placeholder={string.LinkedinHint}
 							/>
@@ -320,12 +320,12 @@ class AccountProfilePage extends Component{
 					<FormGroup>
 						<Label for="youtube">{string.Youtube}</Label>
 						<InputGroup>
-							<InputGroupAddon>{string.YoutubeUrl}</InputGroupAddon>						
+							<InputGroupAddon>{string.YoutubeUrl}</InputGroupAddon>                      
 							<Input 
 								type="text"
 								name="youtube" 
-								valid={this.state.errorYoutube == ""}
-								value={this.state.youtube || ""}
+								valid={this.state.errorYoutube == ''}
+								value={this.state.youtube || ''}
 								onChange={this.onChange}
 								placeholder={string.YoutubeHint}
 							/>
@@ -334,9 +334,9 @@ class AccountProfilePage extends Component{
 					</FormGroup>
 					<Button onClick={() => this.submit()}>{string.Signup}</Button>
 				</Form>
-	    	</div>
-	    )
-  	}
+			</div>
+		);
+	}
 }
 
 export default AccountProfilePage;

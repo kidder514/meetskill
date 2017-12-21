@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Container, Row, Col} from "reactstrap"
-import LoadingSpinner from "../../helper/uicomponent/LoadingSpinner"
-import { DrawStar } from "../../helper/uicomponent/DrawStar"
-import { Link } from "react-router"
-import string from "../../String"
-import pagePath from "../../pagePath"
-import { RemainingTime } from "../../helper/uicomponent/RemainingTime"
+import {Container, Row, Col} from 'reactstrap';
+import LoadingSpinner from '../../helper/uicomponent/LoadingSpinner';
+import { DrawStar } from '../../helper/uicomponent/DrawStar';
+import { Link } from 'react-router';
+import string from '../../String';
+import pagePath from '../../pagePath';
+import { RemainingTime } from '../../helper/uicomponent/RemainingTime';
 
 class SingleCoursePage extends Component{
 	constructor(props){
@@ -30,16 +30,16 @@ class SingleCoursePage extends Component{
 							<h2>course headline</h2>
 							{ DrawStar(course.avg_rating_recent, course.num_reviews) }
 							<p>
-								<span>{course.num_subscribers + " " + string.StudentsEnrolled}</span>
+								<span>{course.num_subscribers + ' ' + string.StudentsEnrolled}</span>
 							</p>
 							<p>
-								{string.CreateBy + " "}
-								<Link to={pagePath.Author + "/" + course.visible_instructors[0].id}>{course.visible_instructors[0].title}</Link>
-								{string.LastUpdated + " " + course.last_update_date}
+								{string.CreateBy + ' '}
+								<Link to={pagePath.Author + '/' + course.visible_instructors[0].id}>{course.visible_instructors[0].title}</Link>
+								{string.LastUpdated + ' ' + course.last_update_date}
 							</p>
 							<p>
-								<i className="material-icons">language</i>{course.language + "language"}
-								<i className="material-icons">closed_caption</i>{course.cclanguage + "cc language"}
+								<i className="material-icons">language</i>{course.language + 'language'}
+								<i className="material-icons">closed_caption</i>{course.cclanguage + 'cc language'}
 							</p>
 						</Col>
 						<Col className="single-course-board" xs="12" sm="12" md="3" lg="3" xl="3">
@@ -51,7 +51,7 @@ class SingleCoursePage extends Component{
 								<span>{course.discount.price.price_string}</span><span>{course.price}</span>
 							</div>
 							<div>
-								{course.discount.discount_percent_for_display + "%" + string.Off}
+								{course.discount.discount_percent_for_display + '%' + string.Off}
 							</div>
 							<div>
 								{ RemainingTime(course.discount.campaign.end_time) +  string.LeftAtThisPrice}
@@ -64,7 +64,7 @@ class SingleCoursePage extends Component{
 									<li>{course.content_info + string.OnDemandVideo}</li>
 									<li>{course.supplementalResources + string.SupplementalResources}</li>
 									<li>{string.FullLifetimeAccess}</li>
-									<li>{string.AccessonmobileandTV}</li>					
+									<li>{string.AccessonmobileandTV}</li>                   
 								</ul>
 							</div>
 						</Col>
@@ -86,16 +86,16 @@ class SingleCoursePage extends Component{
 					</Col>
 				</Row>
 			</Container>
-		])
+		]);
 	}
 
-    render(){
-	    return (
-	    	<div className="course-page">
+	render(){
+		return (
+			<div className="course-page">
 				{this.props.course.id == undefined ? <LoadingSpinner /> : this.renderComponent()}
-	    	</div>
-	    )
-  	}
+			</div>
+		);
+	}
 }
 
 export default SingleCoursePage;

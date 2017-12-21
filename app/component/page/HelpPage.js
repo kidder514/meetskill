@@ -6,13 +6,13 @@ class HelpPage extends Component{
 	}
 
 
-    render(){
-	    return (
-	    	<div className="help-page">
-	    		HelpPage
-	    	</div>
-	    )
-  	}
+	render(){
+		return (
+			<div className="help-page">
+                HelpPage
+			</div>
+		);
+	}
 }
 
 export default HelpPage;
