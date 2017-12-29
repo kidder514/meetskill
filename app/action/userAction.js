@@ -36,6 +36,13 @@ export const updatePhoto = (data) => {
 	};
 };
 
+export const setRememberLogin = (rememberLogin) => {
+	return {
+		type: 'SET_REMEMBER_LOGIN',
+		rememberLogin : rememberLogin
+	};
+};
+
 export const loginCall = (data) => {
 	return authPostApiCall(resourcePath.login, data, login);
 };

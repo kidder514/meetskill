@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LoginSection from '../../component/section/LoginSection';
-import { loginCall, googleLoginCall,facebookLoginCall } from '../../action/userAction'; 
+import { loginCall, googleLoginCall,facebookLoginCall, setRememberLogin } from '../../action/userAction'; 
 import { showDialog,resetAllServerError } from '../../action/uiAction';
 
 const mapStateToProps = (state) => {
@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 		facebookLoginCall: (data) => {dispatch(facebookLoginCall(data));},                
 		showDialog: (content) => {dispatch(showDialog(content));},
 		resetAllServerError: () => {dispatch(resetAllServerError());},
+		setRememberLogin: (rememberLogin) => {dispatch(setRememberLogin(rememberLogin));}
 	};
 };
 

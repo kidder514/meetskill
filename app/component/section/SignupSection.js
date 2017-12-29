@@ -28,6 +28,7 @@ class SignupSection extends Component {
 			errorConfirmPassword: '',
 			recaptcha:'',
 			errorRecaptcha: '',
+			rememberLogin: ''
 		};
 		this.state = this.initialState;
 		this.submit = this.submit.bind(this);
@@ -59,7 +60,11 @@ class SignupSection extends Component {
 	}
 
 	onChange(e){
-		this.setState({[e.target.name]: e.target.value});                   
+		if ( e.target.name == 'rememberLogin') {
+			this.setState({[e.target.name]: (e.target.checked ? 1 : 0)});
+		} else {
+			this.setState({[e.target.name]: e.target.value});                   
+		}                 
 	}
 
 	tickRecaptcha(token){
@@ -134,6 +139,7 @@ class SignupSection extends Component {
 
 		if(isValid){
 			stateCache.recaptcha = this.state.recaptcha;
+			this.props.setRememberLogin(!!this.state.rememberLogin);
 			this.setState(stateCache,
 				this.props.signupCall({
 					firstname: this.state.firstName,
@@ -214,6 +220,15 @@ class SignupSection extends Component {
 						<div id="signup-recaptcha"></div>
 						<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
 					</div>
+					<FormGroup check>
+						<Input
+							name={'rememberLogin'}
+							type="checkbox" 
+							checked={!!this.state.rememberLogin}
+							onChange={this.onChange}
+						/>
+						{' ' + string.RememberLogin}
+					</FormGroup>
 					<FormFeedback>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
 					<Button onClick={() => this.submit()}>{string.Signup}</Button>
 				</Form>

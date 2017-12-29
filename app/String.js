@@ -58,6 +58,7 @@ const string = new LocalizedString({
 		Submit: 'Submit',
 		Delete: 'Delete',
 		Activate: 'Activate',
+		RememberLogin: 'Remember Your Login Status.',
 		Login: 'Login',
 		Signup: 'Sign up',
 		Inbox: 'Inbox',

@@ -22,7 +22,7 @@ export const InitAppCall = () => {
 		if (!state.app.isInitialized) {
 
 			if ((state.userState.location != '') && (state.userState.language != '')) {
-				axios.post(config.APIserver + resourcePath.init, {
+				axios.post(config.APIserver, {
 					'location': state.userState.location, 'language': state.userState.language
 				})
 					.then(function (res) {
@@ -33,7 +33,7 @@ export const InitAppCall = () => {
 						dispatch(showErrorDialog(string.ErrorNotAbleToInitApp));
 					});
 			} else {
-				axios.post(config.APIserver + resourcePath.init, {})
+				axios.post(config.APIserver, {})
 					.then(function (res) {
 						dispatch(locate(res.data.location));
 						dispatch(setSearchOptions(res.data.searchOptions));

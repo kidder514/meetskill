@@ -9,17 +9,16 @@ import createLogger from 'redux-logger';
 import rootReducer from './app/reducer';
 import route from './app/route';
 import 'bootstrap/dist/css/bootstrap.css';
-import { persistStore, autoRehydrate } from 'redux-persist'
+import { persistStore } from 'redux-persist';
 
 require('./app/asset/style.css');
 require('./app/asset/responsive.css');
 
 const logger = createLogger();
 const store = compose(
-	autoRehydrate(),
 	applyMiddleware(thunk, logger),
 	window.devToolsExtension ? window.devToolsExtension() : f => f
-)(createStore)(rootReducer)
+)(createStore)(rootReducer);
 const history = syncHistoryWithStore(browserHistory, store);
 
 
@@ -27,12 +26,12 @@ const history = syncHistoryWithStore(browserHistory, store);
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { rehydrated: false }
+		this.state = { rehydrated: false };
 	}
 
 	componentWillMount() {
 		persistStore(store, { whitelist: ['userState'] }, () => {
-			this.setState({ rehydrated: true })
+			this.setState({ rehydrated: true });
 		});
 	}
 
@@ -44,7 +43,7 @@ class App extends Component {
 			<Provider store={store}>
 				<Router history={history} routes={route} />
 			</Provider>
-		)
+		);
 	}
 }
 

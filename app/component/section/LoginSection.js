@@ -40,7 +40,11 @@ class LoginSection extends Component {
 	}
 
 	onChange(e){
-		this.setState({[e.target.name]: e.target.value});                   
+		if ( e.target.name == 'rememberLogin') {
+			this.setState({[e.target.name]: (e.target.checked ? 1 : 0)});
+		} else {
+			this.setState({[e.target.name]: e.target.value});                   
+		}
 	}
 
 	componentDidMount(){
@@ -132,6 +136,7 @@ class LoginSection extends Component {
 
 		if(isValid){
 			stateCache.recaptcha = this.state.recaptcha;
+			this.props.setRememberLogin(!!this.state.rememberLogin);
 			this.setState(stateCache,
 				this.props.loginCall({'email': this.state.email, 'password': this.state.password})
 			);
@@ -175,6 +180,15 @@ class LoginSection extends Component {
 							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
 						</div>
 						<FormFeedback>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>                    
+						<FormGroup check>
+							<Input
+								name={'rememberLogin'}
+								type="checkbox" 
+								checked={!!this.state.rememberLogin}
+								onChange={this.onChange}
+							/>
+							{' ' + string.RememberLogin}
+						</FormGroup>
 						<Button id="login-submit" onClick={() => this.submit()}>{string.Login}</Button>
 						<Link className="forgot-password-link" onClick={() => this.props.showDialog('forgotPassword')}>{string.ForgotPassword}</Link>
 						<hr />
@@ -187,7 +201,7 @@ class LoginSection extends Component {
 							buttonText={string.LoginWithGoogle}
 							onSuccess={this.gLoginSuccess}
 							onFailure={this.gLoginFail}
-						/>\
+						/>
 					</div>
 					<div className="input-item">
 						<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
