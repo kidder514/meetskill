@@ -55,7 +55,7 @@ class ProfilePopOverSection extends Component {
 							</Link>
 						</li>
 						<li>
-							<Link onClick={()=>{this.props.logout();}}>
+							<Link to={pagePath.Logout}>
 								{string.LogOut}
 							</Link>
 						</li>

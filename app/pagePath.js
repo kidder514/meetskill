@@ -18,6 +18,7 @@ const pagePath = {
 	Notification:'/notification',
 	InstructorDashboard:'/instructordashboard',
 	ResetPassword: '/resetpassword',
+	Logout: '/logout',
 };
 
 export default pagePath;

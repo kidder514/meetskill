@@ -22,6 +22,7 @@ import ShoppingCart from './container/page/ShoppingCart';
 import Notification from './container/page/Notification';
 import InstructorDashboard from './container/page/InstructorDashboard';
 import ResetPassword from './container/page/ResetPassword';
+import Logout from './container/Logout';
 import NotFoundPage from './component/page/NotFoundPage';
 import pagePath from './pagePath';
 
@@ -53,6 +54,7 @@ export default (
 			<Route path={pagePath.Author + '/:id'} component={Author} />
 			<Route path={pagePath.Inbox} component={Inbox} />
 			<Route path={pagePath.Help} component={Help} />
+			<Route path={pagePath.Logout} component={Logout} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>
 	</Route>

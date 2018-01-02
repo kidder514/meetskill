@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import ProfilePopOverSection from '../../../component/common/menu/ProfilePopOverSection';
-import { logout } from '../../../action/userAction';
 
 const mapStateToProps = (state) => {
 	return {
@@ -9,10 +8,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		logout: (query) => {dispatch(logout(query));},
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePopOverSection);
+export default connect(mapStateToProps)(ProfilePopOverSection);
