@@ -1,4 +1,16 @@
 
+export const showLoading = () => {
+	return {
+		type: 'SHOW_LOADING',
+	};
+};
+
+export const hideLoading = () => {
+	return {
+		type: 'HIDE_LOADING',
+	};
+};
+
 export const showDialog = (dialogType) => {
 	return {
 		type: 'SHOW_DIALOG',

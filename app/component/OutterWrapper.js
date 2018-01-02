@@ -4,6 +4,7 @@ import ErrorDialogBox from '../helper/uicomponent/ErrorDialogBox';
 import MenuWrapper from './common/menu/MenuWrapper';
 import Footer from '../container/common/Footer';
 import LoadingSpinner from '../helper/uicomponent/LoadingSpinner';
+import LoadingWrapper from '../helper/uicomponent/LoadingWrapper';
 import string from '../String';
 
 class OutterWrapper extends Component{
@@ -38,6 +39,7 @@ class OutterWrapper extends Component{
 		return (
 			<div className="outter-wrapper clearfix">
 				{this.renderComponent()}
+				{this.props.ui.showLoadingWrapper && <LoadingWrapper/>}
 			</div>
 		);
 	}

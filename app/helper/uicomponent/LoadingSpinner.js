@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// loading spinner cover a single section.
 class LoadingSpinner extends Component{
 
 	render(){

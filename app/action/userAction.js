@@ -44,11 +44,11 @@ export const setRememberLogin = (rememberLogin) => {
 };
 
 export const loginCall = (data) => {
-	return authPostApiCall(resourcePath.login, data, login);
+	return authPostApiCall(resourcePath.login, data, login, true);
 };
 
 export const signupCall = (data) => {
-	return authPostApiCall(resourcePath.signup, data, login);
+	return authPostApiCall(resourcePath.signup, data, login, true);
 };
 
 export const updatePhotoCall = (data, header) => {
@@ -60,11 +60,11 @@ export const updateProfileCall = (data, header) => {
 };
 
 export const googleLoginCall = (data) => {
-	return authPostApiCall(resourcePath.googleLogin, data, login);    
+	return authPostApiCall(resourcePath.googleLogin, data, login, true);    
 };
 
 export const facebookLoginCall = (data) => {
-	return authPostApiCall(resourcePath.facebookLogin, data, login);    
+	return authPostApiCall(resourcePath.facebookLogin, data, login, true);    
 };
 
 

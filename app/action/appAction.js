@@ -7,9 +7,8 @@ import {
 import string from '../String';
 import config from '../config';
 import { locate } from './userAction';
-import resourcePath from '../resourcePath';
 import { setSearchOptions } from './searchAction';
-
+import { showLoading, hideLoading } from './uiAction'
 export const initApp = () =>{
 	return {
 		type: 'INIT_APP'
@@ -66,28 +65,34 @@ export function getApiCall(query, action, errorMessage) {
 // successParam: if it is not null or undefined, pass it to the success action
 // failure: failure action
 // failureParam: if it is not null or undefined, pass it to the failure action
-export function authPostApiCall(resource, query, success) {
+export function authPostApiCall(resource, query, success, loadingOverLay) {
 	return dispatch => {
+		if (loadingOverLay) dispatch(showLoading());	
 		axios.post(config.tempAPIserver + resource, query)
 			.then(function (res) {
+				if (loadingOverLay) dispatch(hideLoading());
 				dispatch(success(res.data));
 				dispatch(hideDialog());
 			})
 			.catch(function (error) {
+				if (loadingOverLay) dispatch(hideLoading());
 				dispatch(updateServerError(resource, error.response.data.Error.Message ));
 			});
 	};
 }
 
-export function authPostApiCallWithHeader(resource, data, success, postHeaders) {
+export function authPostApiCallWithHeader(resource, data, success, postHeaders, loadingOverLay) {
 	return dispatch => {
+		if (loadingOverLay) dispatch(showLoading());
 		axios.post(config.tempAPIserver + resource, data, {
 			headers: postHeaders})
 			.then(function (res) {
+				if (loadingOverLay) dispatch(hideLoading());
 				if(success) { dispatch(success(res.data)); }
 				dispatch(hideDialog());
 			})
 			.catch(function (error) {
+				if (loadingOverLay) dispatch(hideLoading());
 				dispatch(updateServerError(resource, error.response));
 			});
 	};

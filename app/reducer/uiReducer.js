@@ -3,6 +3,7 @@ const initialState = {
 	showDialogBox: false,
 	dialogType: '',
 	showErrorDialogBox: false,
+	showLoadingWrapper: false,
 	errorMessage: '',
 	serverErrorType:'',
 	serverErrorMessage: '',
@@ -12,6 +13,14 @@ const initialState = {
 
 function ui(state = initialState, action) {
 	switch (action.type){
+	case 'SHOW_LOADING':
+		return { ...state, 
+			showLoadingWrapper: true
+		};
+	case 'HIDE_LOADING':
+		return { ...state, 
+			showLoadingWrapper: false
+		};
 	case 'SHOW_DIALOG':
 		return { ...state, 
 			showDialogBox: true, 

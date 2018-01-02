@@ -4,7 +4,8 @@ import OutterWrapper from '../component/OutterWrapper';
 
 const mapStateToProps = (state) => {
 	return {
-		app: state.app
+		app: state.app,
+		ui: state.ui
 	};
 };
 
