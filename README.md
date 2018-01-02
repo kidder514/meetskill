@@ -2,7 +2,7 @@
 
 ### Recent task break down ###
 
-21. handle the senario that we as a visitor, enter an link that has authenticated content, it shows error because something like userState is empty.(solution: add "you need to log in to see this content" section to all authenticated content page, )
+
 22. add a overlay spinner that happens in every blocking API load
 23. so here is how it works, we place a in page spinner if we still allow user to do anything else while loading this api call. If they are not allow to do anythign else, we place a full screen spinner which is a overlay that covers entire page.
 17.1. pass in browser default language

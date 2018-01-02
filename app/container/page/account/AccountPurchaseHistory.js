@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import AccountPurchaseHistoryPage from '../../component/page/AccountPurchaseHistoryPage';
+import AccountPurchaseHistoryPage from '../../../component/page/account/AccountPurchaseHistoryPage';
 
 const mapStateToProps = (state) => {
 	return {

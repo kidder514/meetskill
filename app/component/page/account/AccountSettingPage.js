@@ -7,6 +7,7 @@ import {
 	Input, 
 } from 'reactstrap';
 import string from '../../../String';
+import NoPermissionPage from '../NoPermissionPage';
 
 class AccountSettingPage extends Component{
 	constructor(props){
@@ -59,61 +60,65 @@ class AccountSettingPage extends Component{
 	}
 
 	render(){
-		return (
-			<div className="account-setting-page">
-				<div className="account-page-header">
-					<h1>{string.AccountSetting}</h1>
-					<p>{string.AccountSettingSubheading}</p>
+		if (this.props.userState.isLoggedin) {
+			return (
+				<div className="account-setting-page">
+					<div className="account-page-header">
+						<h1>{string.AccountSetting}</h1>
+						<p>{string.AccountSettingSubheading}</p>
+					</div>
+					<Form>
+						<FormGroup check>
+							<Label check>
+								<Input
+									name={'saveCard'}
+									type="checkbox" 
+									checked={!!this.state.saveCard}
+									onChange={this.onChange}
+								/>
+								{' ' + string.SaveCardInfo}
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									name={'showProfile'}
+									type="checkbox" 
+									checked={!!this.state.showProfile}
+									onChange={this.onChange}
+								/>
+								{' ' + string.ShowProfile}
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									name={'showCourse'}
+									type="checkbox" 
+									checked={!!this.state.showCourse}
+									onChange={this.onChange}
+								/>
+								{' ' + string.ShowCourse}
+							</Label>
+						</FormGroup>
+						<FormGroup check>
+							<Label check>
+								<Input
+									name={'emailNotification'}
+									type="checkbox" 
+									checked={!!this.state.emailNotification}
+									onChange={this.onChange}
+								/>
+								{' ' + string.ReceiveEmail}
+							</Label>
+						</FormGroup>
+						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+					</Form>
 				</div>
-				<Form>
-					<FormGroup check>
-						<Label check>
-							<Input
-								name={'saveCard'}
-								type="checkbox" 
-								checked={!!this.state.saveCard}
-								onChange={this.onChange}
-							/>
-							{' ' + string.SaveCardInfo}
-						</Label>
-					</FormGroup>
-					<FormGroup check>
-						<Label check>
-							<Input
-								name={'showProfile'}
-								type="checkbox" 
-								checked={!!this.state.showProfile}
-								onChange={this.onChange}
-							/>
-							{' ' + string.ShowProfile}
-						</Label>
-					</FormGroup>
-					<FormGroup check>
-						<Label check>
-							<Input
-								name={'showCourse'}
-								type="checkbox" 
-								checked={!!this.state.showCourse}
-								onChange={this.onChange}
-							/>
-							{' ' + string.ShowCourse}
-						</Label>
-					</FormGroup>
-					<FormGroup check>
-						<Label check>
-							<Input
-								name={'emailNotification'}
-								type="checkbox" 
-								checked={!!this.state.emailNotification}
-								onChange={this.onChange}
-							/>
-							{' ' + string.ReceiveEmail}
-						</Label>
-					</FormGroup>
-					<Button onClick={() => this.submit()}>{string.Submit}</Button>
-				</Form>
-			</div>
-		);
+			);
+		} else {
+			return (<NoPermissionPage />);
+		}
 	}
 }
 

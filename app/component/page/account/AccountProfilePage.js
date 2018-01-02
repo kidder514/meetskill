@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import string from '../../../String';
 import validator from 'validator';
+import NoPermissionPage from '../NoPermissionPage';
 
 const MAX_HEADLINE_CHAR = 60;
 const MAX_BIOGRAPHY_CHAR = 250;
@@ -165,177 +166,183 @@ class AccountProfilePage extends Component{
 	}
 
 	render(){
-		return (
-			<div className="account-profile-page">
-				<div className="account-page-header">
-					<h1>{string.AccountProfile}</h1>
-					<p>{string.AccountProfileSubheading}</p>
+		if (this.props.userState.isLoggedin) {
+			return (
+				<div className="account-profile-page">
+					<div className="account-page-header">
+						<h1>{string.AccountProfile}</h1>
+						<p>{string.AccountProfileSubheading}</p>
+					</div>
+	
+					<Form>
+						<FormGroup>
+							<Label for="firstName">{string.FirstName}</Label>
+							<Input 
+								type="text" 
+								name="firstName" 
+								value={this.state.firstName || ''}
+								valid={this.state.errorFirstName == ''}
+								onChange={this.onChange} 
+								placeholder={string.InputYourFirstName} 
+							/>
+							<FormFeedback>{this.state.errorFirstName}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="lastName">{string.LastName}</Label>
+							<Input 
+								type="text" 
+								name="lastName" 
+								value={this.state.lastName || ''} 
+								valid={this.state.errorLastName == ''}
+								onChange={this.onChange} 
+								placeholder={string.InputYourLastName} 
+							/>
+							<FormFeedback>{this.state.errorLastName}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="headline">{string.Headline}</Label>
+							<InputGroup>
+								<Input 
+									type="textarea"
+									name="headline"
+									valid={this.state.errorHeadline == ''}
+									value={this.state.headline || ''}
+									onChange={this.onChange} 
+									placeholder={string.InputYourHeadline} 
+								/>
+								<InputGroupAddon>{this.state.headlineCount}</InputGroupAddon>
+							</InputGroup>
+							<FormFeedback>{this.state.errorHeadline}</FormFeedback>
+							<FormText>{string.HeadlineHint}</FormText>
+						</FormGroup>
+						<FormGroup>
+							<Label for="biography">{string.Biography}</Label>
+							<InputGroup>
+								<Input
+									type="textarea" 
+									name="biography" 
+									valid={this.state.errorBiography == ''}
+									value={this.state.biography || ''}
+									onChange={this.onChange} 
+								/>
+								<InputGroupAddon>{this.state.biographyCount}</InputGroupAddon>                          
+							</InputGroup>
+							<FormFeedback>{this.state.errorBiography}</FormFeedback>                                                                            
+							<FormText>{string.BiographyHint}</FormText>                     
+						</FormGroup>
+						<FormGroup>
+							<Label for="language">{string.Language}</Label>
+							<Input 
+								type="select" 
+								name="language" 
+								value={this.state.language || ''}
+								onChange={this.onChange} 
+								valid={this.state.errorLanguage == ''}
+							>
+								<option>{'English'}</option>
+								<option>{'French'}</option>
+								<option>{'Chinese'}</option>
+								<option>{'Portuguese'}</option>
+							</Input>
+							<FormFeedback>{this.state.errorLanguage}</FormFeedback>
+						</FormGroup>
+						<hr />
+						<FormGroup>
+							<Label for="link">{string.Website}</Label>
+							<Input 
+								type="text"
+								name="link" 
+								valid={this.state.errorLink == ''}
+								value={this.state.link || ''}
+								onChange={this.onChange}
+								placeholder={string.WebsiteHint}
+							/>
+							<FormFeedback>{this.state.errorLink}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="google">{string.GooglePlus}</Label>
+							<InputGroup>
+								<InputGroupAddon>{string.GooglePlusUrl}</InputGroupAddon>                       
+								<Input 
+									type="text"
+									name="google" 
+									valid={this.state.errorGoogle == ''}
+									value={this.state.google || ''}
+									onChange={this.onChange}
+									placeholder={string.GooglePlusHint}
+								/>
+							</InputGroup>
+							<FormFeedback>{this.state.errorGoogle}</FormFeedback>                           
+						</FormGroup>
+						<FormGroup>
+							<Label for="facebook">{string.Facebook}</Label>
+							<InputGroup>
+								<InputGroupAddon>{string.FacebookUrl}</InputGroupAddon>                     
+								<Input 
+									type="text"
+									name="facebook" 
+									valid={this.state.errorFacebook == ''}
+									value={this.state.facebook || ''}
+									onChange={this.onChange}
+									placeholder={string.FacebookHint}
+								/>
+							</InputGroup>
+							<FormFeedback>{this.state.errorFacebook}</FormFeedback>                     
+						</FormGroup>
+						<FormGroup>
+							<Label for="twitter">{string.Twitter}</Label>
+							<InputGroup>
+								<InputGroupAddon>{string.TwitterUrl}</InputGroupAddon>                      
+								<Input 
+									type="text"
+									name="twitter" 
+									valid={this.state.errorTwitter == ''}
+									value={this.state.twitter || ''}
+									onChange={this.onChange}
+									placeholder={string.TwitterHint}
+								/>
+							</InputGroup>
+							<FormFeedback>{this.state.errorTwitter}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="linkedin">{string.Linkedin}</Label>
+							<InputGroup>
+								<InputGroupAddon>{string.LinkedinUrl}</InputGroupAddon>                     
+								<Input 
+									type="text"
+									name="linkedin" 
+									valid={this.state.errorLinkedin == ''}
+									value={this.state.linkedin || ''}
+									onChange={this.onChange}
+									placeholder={string.LinkedinHint}
+								/>
+							</InputGroup>
+							<FormFeedback>{this.state.errorLinkedin}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="youtube">{string.Youtube}</Label>
+							<InputGroup>
+								<InputGroupAddon>{string.YoutubeUrl}</InputGroupAddon>                      
+								<Input 
+									type="text"
+									name="youtube" 
+									valid={this.state.errorYoutube == ''}
+									value={this.state.youtube || ''}
+									onChange={this.onChange}
+									placeholder={string.YoutubeHint}
+								/>
+							</InputGroup>
+							<FormFeedback>{this.state.errorYoutube}</FormFeedback>
+						</FormGroup>
+						<Button onClick={() => this.submit()}>{string.Signup}</Button>
+					</Form>
 				</div>
+			);
+		} else {
+			return (<NoPermissionPage />);
+		}
 
-				<Form>
-					<FormGroup>
-						<Label for="firstName">{string.FirstName}</Label>
-						<Input 
-							type="text" 
-							name="firstName" 
-							value={this.state.firstName || ''}
-							valid={this.state.errorFirstName == ''}
-							onChange={this.onChange} 
-							placeholder={string.InputYourFirstName} 
-						/>
-						<FormFeedback>{this.state.errorFirstName}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="lastName">{string.LastName}</Label>
-						<Input 
-							type="text" 
-							name="lastName" 
-							value={this.state.lastName || ''} 
-							valid={this.state.errorLastName == ''}
-							onChange={this.onChange} 
-							placeholder={string.InputYourLastName} 
-						/>
-						<FormFeedback>{this.state.errorLastName}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="headline">{string.Headline}</Label>
-						<InputGroup>
-							<Input 
-								type="textarea"
-								name="headline"
-								valid={this.state.errorHeadline == ''}
-								value={this.state.headline || ''}
-								onChange={this.onChange} 
-								placeholder={string.InputYourHeadline} 
-							/>
-							<InputGroupAddon>{this.state.headlineCount}</InputGroupAddon>
-						</InputGroup>
-						<FormFeedback>{this.state.errorHeadline}</FormFeedback>
-						<FormText>{string.HeadlineHint}</FormText>
-					</FormGroup>
-					<FormGroup>
-						<Label for="biography">{string.Biography}</Label>
-						<InputGroup>
-							<Input
-								type="textarea" 
-								name="biography" 
-								valid={this.state.errorBiography == ''}
-								value={this.state.biography || ''}
-								onChange={this.onChange} 
-							/>
-							<InputGroupAddon>{this.state.biographyCount}</InputGroupAddon>                          
-						</InputGroup>
-						<FormFeedback>{this.state.errorBiography}</FormFeedback>                                                                            
-						<FormText>{string.BiographyHint}</FormText>                     
-					</FormGroup>
-					<FormGroup>
-						<Label for="language">{string.Language}</Label>
-						<Input 
-							type="select" 
-							name="language" 
-							value={this.state.language || ''}
-							onChange={this.onChange} 
-							valid={this.state.errorLanguage == ''}
-						>
-							<option>{'English'}</option>
-							<option>{'French'}</option>
-							<option>{'Chinese'}</option>
-							<option>{'Portuguese'}</option>
-						</Input>
-						<FormFeedback>{this.state.errorLanguage}</FormFeedback>
-					</FormGroup>
-					<hr />
-					<FormGroup>
-						<Label for="link">{string.Website}</Label>
-						<Input 
-							type="text"
-							name="link" 
-							valid={this.state.errorLink == ''}
-							value={this.state.link || ''}
-							onChange={this.onChange}
-							placeholder={string.WebsiteHint}
-						/>
-						<FormFeedback>{this.state.errorLink}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="google">{string.GooglePlus}</Label>
-						<InputGroup>
-							<InputGroupAddon>{string.GooglePlusUrl}</InputGroupAddon>                       
-							<Input 
-								type="text"
-								name="google" 
-								valid={this.state.errorGoogle == ''}
-								value={this.state.google || ''}
-								onChange={this.onChange}
-								placeholder={string.GooglePlusHint}
-							/>
-						</InputGroup>
-						<FormFeedback>{this.state.errorGoogle}</FormFeedback>                           
-					</FormGroup>
-					<FormGroup>
-						<Label for="facebook">{string.Facebook}</Label>
-						<InputGroup>
-							<InputGroupAddon>{string.FacebookUrl}</InputGroupAddon>                     
-							<Input 
-								type="text"
-								name="facebook" 
-								valid={this.state.errorFacebook == ''}
-								value={this.state.facebook || ''}
-								onChange={this.onChange}
-								placeholder={string.FacebookHint}
-							/>
-						</InputGroup>
-						<FormFeedback>{this.state.errorFacebook}</FormFeedback>                     
-					</FormGroup>
-					<FormGroup>
-						<Label for="twitter">{string.Twitter}</Label>
-						<InputGroup>
-							<InputGroupAddon>{string.TwitterUrl}</InputGroupAddon>                      
-							<Input 
-								type="text"
-								name="twitter" 
-								valid={this.state.errorTwitter == ''}
-								value={this.state.twitter || ''}
-								onChange={this.onChange}
-								placeholder={string.TwitterHint}
-							/>
-						</InputGroup>
-						<FormFeedback>{this.state.errorTwitter}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="linkedin">{string.Linkedin}</Label>
-						<InputGroup>
-							<InputGroupAddon>{string.LinkedinUrl}</InputGroupAddon>                     
-							<Input 
-								type="text"
-								name="linkedin" 
-								valid={this.state.errorLinkedin == ''}
-								value={this.state.linkedin || ''}
-								onChange={this.onChange}
-								placeholder={string.LinkedinHint}
-							/>
-						</InputGroup>
-						<FormFeedback>{this.state.errorLinkedin}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="youtube">{string.Youtube}</Label>
-						<InputGroup>
-							<InputGroupAddon>{string.YoutubeUrl}</InputGroupAddon>                      
-							<Input 
-								type="text"
-								name="youtube" 
-								valid={this.state.errorYoutube == ''}
-								value={this.state.youtube || ''}
-								onChange={this.onChange}
-								placeholder={string.YoutubeHint}
-							/>
-						</InputGroup>
-						<FormFeedback>{this.state.errorYoutube}</FormFeedback>
-					</FormGroup>
-					<Button onClick={() => this.submit()}>{string.Signup}</Button>
-				</Form>
-			</div>
-		);
+
 	}
 }
 

@@ -145,6 +145,7 @@ const string = new LocalizedString({
 		SearchEnterKeyWord:'Enter a keywork. etc. Math, English.',
 		YouAreAlreadyLoggedIn: 'You are already logged in',
 		NotAbleToChangeEmail: 'You can\'t change your email address once signed up.',
+		NoPermissionPage:'You are not logged in, please log in to see the content of this page.'
 	},
 	it: {
 	}

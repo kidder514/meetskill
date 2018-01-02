@@ -9,7 +9,7 @@ import SingleCourse from './container/page/SingleCourse';
 import MyCourse from './container/page/MyCourse';
 import Account from './container/page/Account';
 import Author from './container/page/Author';
-import AccountPurchaseHistory from './container/page/AccountPurchaseHistory';
+import AccountPurchaseHistory from './container/page/account/AccountPurchaseHistory';
 import Help from './container/page/Help';
 import Inbox from './container/page/Inbox';
 import AccountViewPublicProfile from './container/page/account/AccountViewPublicProfile';

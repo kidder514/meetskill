@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import string from '../../../String';
 import isPasswordValid from '../../../helper/passwordChecker';
+import NoPermissionPage from '../NoPermissionPage';
 
 class AccountAccountPage extends Component{
 	constructor(props){
@@ -95,63 +96,67 @@ class AccountAccountPage extends Component{
 	}
 
 	render(){
-		return (
-			<div className="account-account-page">
-				<div className="account-page-header">
-					<h1>{string.AccountAccount}</h1>
-					<p>{string.AccountAccountSubheading}</p>
+		if (this.props.userState.isLoggedin) {
+			return (
+				<div className="account-account-page">
+					<div className="account-page-header">
+						<h1>{string.AccountAccount}</h1>
+						<p>{string.AccountAccountSubheading}</p>
+					</div>
+					<Form>
+						<FormGroup>
+							<Label for="email">{string.Email}</Label>
+							<Input 
+								type="text" 
+								name="email" 
+								value={this.props.userState.email}
+								disabled={true}
+							/>
+							<FormText>{string.NotAbleToChangeEmail}</FormText>
+						</FormGroup>
+						<FormGroup>
+							<Label for="currentPassword">{string.CurrentPassword}</Label>
+							<Input 
+								type="password" 
+								name="currentPassword" 
+								value={this.state.currentPassword || ''}
+								valid={this.state.errorCurrentPassword == ''}
+								onChange={this.onChange} 
+								placeholder={string.InputYourCurrentPassword} 
+							/>
+							<FormFeedback>{this.state.errorCurrentPassword}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="newPassword">{string.NewPassword}</Label>
+							<Input 
+								type="password" 
+								name="newPassword" 
+								value={this.state.newPassword || ''} 
+								valid={this.state.errorNewPassword == ''}
+								onChange={this.onChange} 
+								placeholder={string.InputNewPassword} 
+							/>
+							<FormFeedback>{this.state.errorNewPassword}</FormFeedback>
+						</FormGroup>
+						<FormGroup>
+							<Label for="confirmNewPassword">{string.ConfirmNewPassword}</Label>
+							<Input 
+								type="password"
+								name="confirmNewPassword"
+								valid={this.state.errorConfirmNewPassword == ''}
+								value={this.state.confirmNewPassword || ''}
+								onChange={this.onChange} 
+								placeholder={string.InputConfirmNewPassword} 
+							/>
+							<FormFeedback>{this.state.errorConfirmNewPassword}</FormFeedback>
+						</FormGroup>
+						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+					</Form>
 				</div>
-				<Form>
-					<FormGroup>
-						<Label for="email">{string.Email}</Label>
-						<Input 
-							type="text" 
-							name="email" 
-							value={this.props.userState.email}
-							disabled={true}
-						/>
-						<FormText>{string.NotAbleToChangeEmail}</FormText>
-					</FormGroup>
-					<FormGroup>
-						<Label for="currentPassword">{string.CurrentPassword}</Label>
-						<Input 
-							type="password" 
-							name="currentPassword" 
-							value={this.state.currentPassword || ''}
-							valid={this.state.errorCurrentPassword == ''}
-							onChange={this.onChange} 
-							placeholder={string.InputYourCurrentPassword} 
-						/>
-						<FormFeedback>{this.state.errorCurrentPassword}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="newPassword">{string.NewPassword}</Label>
-						<Input 
-							type="password" 
-							name="newPassword" 
-							value={this.state.newPassword || ''} 
-							valid={this.state.errorNewPassword == ''}
-							onChange={this.onChange} 
-							placeholder={string.InputNewPassword} 
-						/>
-						<FormFeedback>{this.state.errorNewPassword}</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="confirmNewPassword">{string.ConfirmNewPassword}</Label>
-						<Input 
-							type="password"
-							name="confirmNewPassword"
-							valid={this.state.errorConfirmNewPassword == ''}
-							value={this.state.confirmNewPassword || ''}
-							onChange={this.onChange} 
-							placeholder={string.InputConfirmNewPassword} 
-						/>
-						<FormFeedback>{this.state.errorConfirmNewPassword}</FormFeedback>
-					</FormGroup>
-					<Button onClick={() => this.submit()}>{string.Submit}</Button>
-				</Form>
-			</div>
-		);
+			);
+		} else {
+			return (<NoPermissionPage />);
+		}
 	}
 }
 

@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'r
 import string from '../../../String';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
+import NoPermissionPage from '../NoPermissionPage';
 
 const IMAGE_WIDTH = 100;
 const IMAGE_HEIGHT = 100;
@@ -78,49 +79,53 @@ class AccountPhotoPage extends Component{
 	}
 
 	render(){
-		return (
-			<div className="account-photo-page">
-				<div className="account-page-header">
-					<h1>{string.AccountPhoto}</h1>
-					<p>{string.AccountPhotoSubheading}</p>
-				</div>
-				<div className="cropper-wrapper">
-					<div className={this.state.showCropper ? 'hidden' : 'photo-preview'}>
-						<span>{string.ImagePreview} </span>
+		if (this.props.userState.isLoggedin){
+			return (
+				<div className="account-photo-page">
+					<div className="account-page-header">
+						<h1>{string.AccountPhoto}</h1>
+						<p>{string.AccountPhotoSubheading}</p>
 					</div>
-					<Cropper
-						ref='cropper'
-						src={this.state.file}
-						style={{padding:'0.5em 0', height: '12em', width:'100%' ,}}
-						aspectRatio={1 / 1}
-						guides={false}
-						background={false}
-						zoomable={false}
-						crop={this.crop.bind(this)} 
-					/>
-				</div>
-				<Form>
-					<FormGroup>
-						<Label for="photoUpload" >{string.UploadYourPhoto}</Label>
-						<Input 
-							type="file" 
-							name="file" 
-							id="photoUpload"
-							onChange={this.onChange}
+					<div className="cropper-wrapper">
+						<div className={this.state.showCropper ? 'hidden' : 'photo-preview'}>
+							<span>{string.ImagePreview} </span>
+						</div>
+						<Cropper
+							ref='cropper'
+							src={this.state.file}
+							style={{padding:'0.5em 0', height: '12em', width:'100%' ,}}
+							aspectRatio={1 / 1}
+							guides={false}
+							background={false}
+							zoomable={false}
+							crop={this.crop.bind(this)} 
 						/>
-						<FormFeedback>{this.state.errorFile}</FormFeedback>
-						<FormText>{string.PhotoWarning}</FormText>
-					</FormGroup>
-					<Button onClick={() => this.submit()}>{string.Submit}</Button>
-				</Form>
-
-				{/* use for drawing and getting the resized image only */}
-				{/* not for display */}
-				<canvas className="hidden" ref="canvas" width={IMAGE_WIDTH} height={IMAGE_HEIGHT}/>
-				<img className="hidden" onLoad={this.imageOnLoad} ref="imageCache"/>
-
-			</div>
-		);
+					</div>
+					<Form>
+						<FormGroup>
+							<Label for="photoUpload" >{string.UploadYourPhoto}</Label>
+							<Input 
+								type="file" 
+								name="file" 
+								id="photoUpload"
+								onChange={this.onChange}
+							/>
+							<FormFeedback>{this.state.errorFile}</FormFeedback>
+							<FormText>{string.PhotoWarning}</FormText>
+						</FormGroup>
+						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+					</Form>
+	
+					{/* use for drawing and getting the resized image only */}
+					{/* not for display */}
+					<canvas className="hidden" ref="canvas" width={IMAGE_WIDTH} height={IMAGE_HEIGHT}/>
+					<img className="hidden" onLoad={this.imageOnLoad} ref="imageCache"/>
+	
+				</div>
+			);
+		} else {
+			return (<NoPermissionPage />);
+		}
 	}
 }
 

@@ -8,6 +8,7 @@ import {
 	Input, 
 	FormFeedback
 } from 'reactstrap';
+import NoPermissionPage from '../NoPermissionPage';
 
 class AccountDeleteAccountPage extends Component{
 	constructor(props){
@@ -48,27 +49,31 @@ class AccountDeleteAccountPage extends Component{
 	}
 
 	render(){
-		return (
-			<div className="account-delete-page">
-				<div className="account-page-header">
-					<h1>{string.AccountDelete}</h1>
-					<p>{string.AccountDeleteSubheading}</p>
+		if (this.props.userState.isLoggedin) {
+			return (
+				<div className="account-delete-page">
+					<div className="account-page-header">
+						<h1>{string.AccountDelete}</h1>
+						<p>{string.AccountDeleteSubheading}</p>
+					</div>
+					<Form>
+						<FormGroup>
+							<Label for="password" >{string.Password}</Label>
+							<Input 
+								type="password" 
+								name="password"
+								value={this.state.password}
+								onChange={this.onChange}
+							/>
+							<FormFeedback>{this.state.errorPassword}</FormFeedback>
+						</FormGroup>
+						<Button onClick={() => this.submit()}>{string.Delete}</Button>
+					</Form>
 				</div>
-				<Form>
-					<FormGroup>
-						<Label for="password" >{string.Password}</Label>
-						<Input 
-							type="password" 
-							name="password"
-							value={this.state.password}
-							onChange={this.onChange}
-						/>
-						<FormFeedback>{this.state.errorPassword}</FormFeedback>
-					</FormGroup>
-					<Button onClick={() => this.submit()}>{string.Delete}</Button>
-				</Form>
-			</div>
-		);
+			);
+		} else {
+			return (<NoPermissionPage />);
+		}
 	}
 }
 
