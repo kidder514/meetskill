@@ -9,6 +9,7 @@ import {
 	FormFeedback
 } from 'reactstrap';
 import NoPermissionPage from '../NoPermissionPage';
+import resourcePath from '../../../resourcePath';
 
 class AccountDeleteAccountPage extends Component{
 	constructor(props){
@@ -67,6 +68,7 @@ class AccountDeleteAccountPage extends Component{
 							/>
 							<FormFeedback>{this.state.errorPassword}</FormFeedback>
 						</FormGroup>
+						<FormFeedback>{this.props.ui.apiCallType == resourcePath.deleteAccount && this.props.ui.serverErrorMessage}</FormFeedback>
 						<Button onClick={() => this.submit()}>{string.Delete}</Button>
 					</Form>
 				</div>

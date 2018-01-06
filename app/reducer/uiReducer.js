@@ -5,7 +5,8 @@ const initialState = {
 	showErrorDialogBox: false,
 	showLoadingWrapper: false,
 	errorMessage: '',
-	serverErrorType:'',
+	apiCallType:'',
+	apiCalling: false,
 	serverErrorMessage: '',
 	serverSuccessType:'',
 	serverSuccessMessage:''
@@ -18,7 +19,7 @@ function ui(state = initialState, action) {
 			showLoadingWrapper: true
 		};
 	case 'HIDE_LOADING':
-		return { ...state, 
+		return { ...state,
 			showLoadingWrapper: false
 		};
 	case 'SHOW_DIALOG':
@@ -35,17 +36,21 @@ function ui(state = initialState, action) {
 		};
 	case 'HIDE_ERROR':
 		return {...state, showErrorDialogBox: false};
+	case 'SHOW_SECTION_LOADING':
+		return {...state, apiCalling: true};
+	case 'HIDE_SECTION_LOADING':
+		return {...state, apiCalling: false};
 	case 'UPDATE_SERVER_ERROR':
-		return {...state, serverErrorType: action.resource, serverErrorMessage: action.serverErrorMessage};
+		return {...state, apiCallType: action.resource, serverErrorMessage: action.serverErrorMessage};
 	case 'RESET_SERVER_ERROR':
-		return {...state, serverErrorType: '', serverErrorMessage: ''};     
+		return {...state, apiCallType: '', serverErrorMessage: ''};     
 	case 'UPDATE_SERVER_SUCCESS':
 		return {...state, serverSuccessType: action.resource, serverSuccessMessage: action.serverSuccessMessage};
 	case 'RESET_SERVER_SUCCESS':
 		return {...state, serverSuccessType: '', serverSuccessMessage: ''};
 	case 'RESET_ALL_SERVER_MESSAGE':
 		return {...state, 
-			serverErrorType: '',
+			apiCallType: '',
 			serverErrorMessage: '',
 			serverSuccessType: '',
 			serverSuccessMessage: ''

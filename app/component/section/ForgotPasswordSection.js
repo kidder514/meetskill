@@ -61,7 +61,7 @@ class ForgotPasswordSection extends Component {
 							placeholder={string.Email} 
 						/>
 						<FormFeedback>{this.state.errorEmail}</FormFeedback>
-						<FormFeedback>{ui.serverErrorType == resourcePath.recoverPassword && ui.serverErrorMessage}</FormFeedback>
+						<FormFeedback>{ui.apiCallType == resourcePath.recoverPassword && ui.serverErrorMessage}</FormFeedback>
 						<FormText>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</FormText>                  
 						<Button onClick={() => this.submit()}>{string.ResetPassword}</Button>
 					</FormGroup>

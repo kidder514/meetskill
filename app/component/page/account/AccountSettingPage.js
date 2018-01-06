@@ -5,9 +5,11 @@ import {
 	FormGroup, 
 	Label, 
 	Input, 
+	FormFeedback
 } from 'reactstrap';
 import string from '../../../String';
 import NoPermissionPage from '../NoPermissionPage';
+import resourcePath from '../../../resourcePath';
 
 class AccountSettingPage extends Component{
 	constructor(props){
@@ -112,6 +114,7 @@ class AccountSettingPage extends Component{
 								{' ' + string.ReceiveEmail}
 							</Label>
 						</FormGroup>
+						<FormFeedback>{this.props.ui.apiCallType == resourcePath.paymentAndSetting && this.props.ui.serverErrorMessage}</FormFeedback>
 						<Button onClick={() => this.submit()}>{string.Submit}</Button>
 					</Form>
 				</div>

@@ -229,7 +229,7 @@ class SignupSection extends Component {
 						/>
 						{' ' + string.RememberLogin}
 					</FormGroup>
-					<FormFeedback>{this.props.ui.serverErrorType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
+					<FormFeedback>{this.props.ui.apiCallType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
 					<Button onClick={() => this.submit()}>{string.Signup}</Button>
 				</Form>
 			</div>

@@ -4,6 +4,7 @@ import string from '../../../String';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import NoPermissionPage from '../NoPermissionPage';
+import resourcePath from '../../../resourcePath';
 
 const IMAGE_WIDTH = 100;
 const IMAGE_HEIGHT = 100;
@@ -113,14 +114,13 @@ class AccountPhotoPage extends Component{
 							<FormFeedback>{this.state.errorFile}</FormFeedback>
 							<FormText>{string.PhotoWarning}</FormText>
 						</FormGroup>
+						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updatePhoto && this.props.ui.serverErrorMessage}</FormFeedback>
 						<Button onClick={() => this.submit()}>{string.Submit}</Button>
 					</Form>
-	
 					{/* use for drawing and getting the resized image only */}
 					{/* not for display */}
 					<canvas className="hidden" ref="canvas" width={IMAGE_WIDTH} height={IMAGE_HEIGHT}/>
 					<img className="hidden" onLoad={this.imageOnLoad} ref="imageCache"/>
-	
 				</div>
 			);
 		} else {

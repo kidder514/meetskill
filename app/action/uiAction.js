@@ -11,6 +11,18 @@ export const hideLoading = () => {
 	};
 };
 
+export const showSectionLoading = () => {
+	return {
+		type: 'SHOW_SECTION_LOADING',
+	};
+};
+
+export const hideSectionLoading = () => {
+	return {
+		type: 'HIDE_SECTION_LOADING',
+	};
+};
+
 export const showDialog = (dialogType) => {
 	return {
 		type: 'SHOW_DIALOG',

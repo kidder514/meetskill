@@ -1,5 +1,4 @@
-import string from '../String';
-import {authPostApiCall, authPostApiCallWithHeader, postApiCall} from './appAction';
+import {postApiCall, authPostApiCallWithHeader} from './appAction';
 import resourcePath from '../resourcePath';
 
 export const login = (data) => {
@@ -44,52 +43,42 @@ export const setRememberLogin = (rememberLogin) => {
 };
 
 export const loginCall = (data) => {
-	return authPostApiCall(resourcePath.login, data, login, true);
+	return postApiCall(resourcePath.login, data, login, null, true);
 };
 
 export const signupCall = (data) => {
-	return authPostApiCall(resourcePath.signup, data, login, true);
+	return postApiCall(resourcePath.signup, data, login, null, true);
 };
 
 export const updatePhotoCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, header);
+	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, null, header);
 };
 
 export const updateProfileCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, header);
+	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, null, header);
 };
 
 export const googleLoginCall = (data) => {
-	return authPostApiCall(resourcePath.googleLogin, data, login, true);    
+	return postApiCall(resourcePath.googleLogin, data, login, null, true);    
 };
 
 export const facebookLoginCall = (data) => {
-	return authPostApiCall(resourcePath.facebookLogin, data, login, true);    
+	return postApiCall(resourcePath.facebookLogin, data, login, null, true);    
 };
 
 
 export const changePasswordCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, header);
-};
-
-export const recoverPasswordCall = (data) => {
-	return postApiCall(
-		resourcePath.recoverPassword,
-		data,
-		null,
-		null, 
-		string.EmailSentToRecoverPassword, 
-		string.ErrorUnknown );
+	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, null, header);
 };
 
 export const changeSettingCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, header);
+	return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, null, header);
 };
 
 export const deleteAccountCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, header);
+	return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, null, header);
 };
 
 export const activateInstructorCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, header);
+	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, null, header);
 };

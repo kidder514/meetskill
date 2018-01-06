@@ -179,7 +179,7 @@ class LoginSection extends Component {
 							<div id="login-recaptcha"></div>
 							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
 						</div>
-						<FormFeedback>{ui.serverErrorType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>                    
+						<FormFeedback>{ui.apiCallType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>                    
 						<FormGroup check>
 							<Input
 								name={'rememberLogin'}
@@ -195,7 +195,7 @@ class LoginSection extends Component {
 						<Button onClick={() => this.gotoSignup()}>{string.Signup}</Button>
 					</Form>
 					<div className="input-item">
-						<span>{ui.serverErrorType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
+						<span>{ui.apiCallType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
 						<GoogleLogin
 							clientId={config.googleLoginClientId}
 							buttonText={string.LoginWithGoogle}
@@ -204,7 +204,7 @@ class LoginSection extends Component {
 						/>
 					</div>
 					<div className="input-item">
-						<span>{ui.serverErrorType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
+						<span>{ui.apiCallType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
 						<FacebookLogin
 							appId={config.FBAppId}
 							autoLoad={false}

@@ -11,6 +11,7 @@ import {
 import string from '../../../String';
 import isPasswordValid from '../../../helper/passwordChecker';
 import NoPermissionPage from '../NoPermissionPage';
+import resourcePath from '../../../resourcePath';
 
 class AccountAccountPage extends Component{
 	constructor(props){
@@ -150,6 +151,7 @@ class AccountAccountPage extends Component{
 							/>
 							<FormFeedback>{this.state.errorConfirmNewPassword}</FormFeedback>
 						</FormGroup>
+						<FormFeedback>{this.props.ui.apiCallType == resourcePath.changePassword && this.props.ui.serverErrorMessage}</FormFeedback>
 						<Button onClick={() => this.submit()}>{string.Submit}</Button>
 					</Form>
 				</div>

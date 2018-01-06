@@ -2,13 +2,18 @@ import axios from 'axios';
 import { 
 	showErrorDialog,
 	updateServerError, 
-	hideDialog, 
-	updateServerSuccess } from './uiAction';
+	hideDialog } from './uiAction';
 import string from '../String';
 import config from '../config';
 import { locate } from './userAction';
 import { setSearchOptions } from './searchAction';
-import { showLoading, hideLoading } from './uiAction'
+import { 
+	showLoading, 
+	hideLoading, 
+	showSectionLoading, 
+	hideSectionLoading 
+} from './uiAction';
+
 export const initApp = () =>{
 	return {
 		type: 'INIT_APP'
@@ -65,56 +70,52 @@ export function getApiCall(query, action, errorMessage) {
 // successParam: if it is not null or undefined, pass it to the success action
 // failure: failure action
 // failureParam: if it is not null or undefined, pass it to the failure action
-export function authPostApiCall(resource, query, success, loadingOverLay) {
+export function postApiCall(resource, query, success, failure, loadingOverLay, loadingSection ) {
 	return dispatch => {
-		if (loadingOverLay) dispatch(showLoading());	
+		if (loadingOverLay) dispatch(showLoading());
+		if (loadingSection) dispatch(showSectionLoading());		
 		axios.post(config.tempAPIserver + resource, query)
 			.then(function (res) {
 				if (loadingOverLay) dispatch(hideLoading());
-				dispatch(success(res.data));
-				dispatch(hideDialog());
+				if (loadingSection) dispatch(hideSectionLoading());	
+				if (success) dispatch(success(res.data));
+				if (resource.indexOf('auth') != -1 ||
+					resource.indexOf('login') != -1 ||
+					resource.indexOf('signup') != -1)
+					dispatch(hideDialog());
 			})
 			.catch(function (error) {
 				if (loadingOverLay) dispatch(hideLoading());
+				if (loadingSection) dispatch(hideSectionLoading());	
+				if (failure) dispatch(failure(error.data));
+				if (resource.indexOf('auth') != -1 ||
+					resource.indexOf('login') != -1 ||
+					resource.indexOf('signup') != -1)
+					dispatch(hideDialog());
 				dispatch(updateServerError(resource, error.response.data.Error.Message ));
 			});
 	};
 }
 
-export function authPostApiCallWithHeader(resource, data, success, postHeaders, loadingOverLay) {
+export function authPostApiCallWithHeader(resource, data, success, failure, postHeaders, loadingOverLay, loadingSection) {
 	return dispatch => {
 		if (loadingOverLay) dispatch(showLoading());
+		if (loadingSection) dispatch(showSectionLoading());		
 		axios.post(config.tempAPIserver + resource, data, {
 			headers: postHeaders})
 			.then(function (res) {
 				if (loadingOverLay) dispatch(hideLoading());
-				if(success) { dispatch(success(res.data)); }
-				dispatch(hideDialog());
+				if (loadingSection) dispatch(hideSectionLoading());	
+				if (success) { dispatch(success(res.data)); }
 			})
 			.catch(function (error) {
 				if (loadingOverLay) dispatch(hideLoading());
+				if (loadingSection) dispatch(hideSectionLoading());		
 				dispatch(updateServerError(resource, error.response));
 			});
 	};
 }
 
-export function postApiCall(resource, query, success, fail, successMessage, errorMessage) {
-	return dispatch => {
-		axios.post(config.tempAPIserver + resource, query)
-			.then(function (res) {
-				if (success){dispatch(success(res.data));}
-				if (successMessage) {dispatch(updateServerSuccess(resource, successMessage));}
-			})
-			.catch(function (error) {
-				if (fail){dispatch(fail());}
-				if (errorMessage) {
-					dispatch(updateServerError(resource, errorMessage));
-				} else {
-					dispatch(updateServerError(resource, error.response.data.Error.Message));                   
-				}               
-			});
-	};
-}
 
 // export function deleteApiCall(resource, param, action, errorMessage) {
 //  return dispatch => {};

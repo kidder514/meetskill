@@ -13,6 +13,7 @@ import {
 import string from '../../../String';
 import validator from 'validator';
 import NoPermissionPage from '../NoPermissionPage';
+import resourcePath from '../../../resourcePath';
 
 const MAX_HEADLINE_CHAR = 60;
 const MAX_BIOGRAPHY_CHAR = 250;
@@ -334,6 +335,7 @@ class AccountProfilePage extends Component{
 							</InputGroup>
 							<FormFeedback>{this.state.errorYoutube}</FormFeedback>
 						</FormGroup>
+						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updateProfile && this.props.ui.serverErrorMessage}</FormFeedback>
 						<Button onClick={() => this.submit()}>{string.Signup}</Button>
 					</Form>
 				</div>
