@@ -10,6 +10,7 @@ import {
 import string from '../../../String';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
+import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 class AccountSettingPage extends Component{
 	constructor(props){
@@ -23,6 +24,7 @@ class AccountSettingPage extends Component{
 
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
+		this.renderButton = this.renderButton.bind(this);
 	}
 
 	componentWillMount(){
@@ -59,6 +61,17 @@ class AccountSettingPage extends Component{
 			'x-user-id': this.props.userState.uid,
 			'x-access-token': this.props.userState.token
 		});
+	}
+
+	renderButton(){	
+		if (this.props.ui.apiCalling && (this.props.ui.apiCallType == resourcePath.paymentAndSetting)) {
+			return ([
+				<Button key='submit-button' onClick={() => this.submit()} disabled>{string.Submit}</Button>,
+				<LoadingSectionSpinner key='loading-spinner'/>
+			]);
+		}
+
+		return (<Button onClick={() => this.submit()}>{string.Submit}</Button>);
 	}
 
 	render(){
@@ -115,7 +128,7 @@ class AccountSettingPage extends Component{
 							</Label>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.paymentAndSetting && this.props.ui.serverErrorMessage}</FormFeedback>
-						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+						{this.renderButton()}
 					</Form>
 				</div>
 			);

@@ -73,7 +73,7 @@ export function getApiCall(query, action, errorMessage) {
 export function postApiCall(resource, query, success, failure, loadingOverLay, loadingSection ) {
 	return dispatch => {
 		if (loadingOverLay) dispatch(showLoading());
-		if (loadingSection) dispatch(showSectionLoading());		
+		if (loadingSection) dispatch(showSectionLoading(resource));		
 		axios.post(config.tempAPIserver + resource, query)
 			.then(function (res) {
 				if (loadingOverLay) dispatch(hideLoading());
@@ -100,7 +100,7 @@ export function postApiCall(resource, query, success, failure, loadingOverLay, l
 export function authPostApiCallWithHeader(resource, data, success, failure, postHeaders, loadingOverLay, loadingSection) {
 	return dispatch => {
 		if (loadingOverLay) dispatch(showLoading());
-		if (loadingSection) dispatch(showSectionLoading());		
+		if (loadingSection) dispatch(showSectionLoading(resource));		
 		axios.post(config.tempAPIserver + resource, data, {
 			headers: postHeaders})
 			.then(function (res) {

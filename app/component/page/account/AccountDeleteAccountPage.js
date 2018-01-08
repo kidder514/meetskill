@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
+import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 class AccountDeleteAccountPage extends Component{
 	constructor(props){
@@ -20,7 +21,8 @@ class AccountDeleteAccountPage extends Component{
 		};
 
 		this.onChange = this.onChange.bind(this);
-		this.submit = this.submit.bind(this);       
+		this.submit = this.submit.bind(this);
+		this.renderButton = this.renderButton.bind(this);
 	}
 
 	componentWillMount(){
@@ -49,7 +51,18 @@ class AccountDeleteAccountPage extends Component{
 		}
 	}
 
-	render(){
+	renderButton(){
+		if (this.props.ui.apiCalling && (this.props.ui.apiCallType == resourcePath.deleteAccount)) {
+			return ([
+				<Button key='submit-button' onClick={() => this.submit()} disabled>{string.Delete}</Button>,
+				<LoadingSpinner key='submit-button'/>
+			]);
+		} else {
+			return (<Button onClick={() => this.submit()}>{string.Delete}</Button>);
+		}
+	}
+
+	render(){ 
 		if (this.props.userState.isLoggedin) {
 			return (
 				<div className="account-delete-page">
@@ -69,7 +82,7 @@ class AccountDeleteAccountPage extends Component{
 							<FormFeedback>{this.state.errorPassword}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.deleteAccount && this.props.ui.serverErrorMessage}</FormFeedback>
-						<Button onClick={() => this.submit()}>{string.Delete}</Button>
+						{this.returnButton()}
 					</Form>
 				</div>
 			);

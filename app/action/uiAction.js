@@ -11,9 +11,10 @@ export const hideLoading = () => {
 	};
 };
 
-export const showSectionLoading = () => {
+export const showSectionLoading = (resource) => {
 	return {
 		type: 'SHOW_SECTION_LOADING',
+		resource: resource
 	};
 };
 

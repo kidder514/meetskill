@@ -37,9 +37,9 @@ function ui(state = initialState, action) {
 	case 'HIDE_ERROR':
 		return {...state, showErrorDialogBox: false};
 	case 'SHOW_SECTION_LOADING':
-		return {...state, apiCalling: true};
+		return {...state, apiCalling: true, apiCallType: action.resource};
 	case 'HIDE_SECTION_LOADING':
-		return {...state, apiCalling: false};
+		return {...state, apiCalling: false, apiCallType: ''};
 	case 'UPDATE_SERVER_ERROR':
 		return {...state, apiCallType: action.resource, serverErrorMessage: action.serverErrorMessage};
 	case 'RESET_SERVER_ERROR':

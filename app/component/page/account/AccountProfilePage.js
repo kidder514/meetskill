@@ -14,6 +14,7 @@ import string from '../../../String';
 import validator from 'validator';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
+import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 const MAX_HEADLINE_CHAR = 60;
 const MAX_BIOGRAPHY_CHAR = 250;
@@ -51,6 +52,7 @@ class AccountProfilePage extends Component{
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
 		this.sanitizer = this.sanitizer.bind(this); 
+		this.renderButton = this.renderButton.bind(this);
 	}
 
 	componentWillMount(){
@@ -164,6 +166,17 @@ class AccountProfilePage extends Component{
 		} else {
 			this.setState(errorCache);          
 		}
+	}
+
+	renderButton(){	
+		if (this.props.ui.apiCalling && (this.props.ui.apiCallType == resourcePath.updateProfile)) {
+			return ([
+				<Button key='submit-button' onClick={() => this.submit()} disabled>{string.Submit}</Button>,
+				<LoadingSectionSpinner key='loading-spinner'/>
+			]);
+		}
+
+		return (<Button onClick={() => this.submit()}>{string.Submit}</Button>);
 	}
 
 	render(){
@@ -336,7 +349,7 @@ class AccountProfilePage extends Component{
 							<FormFeedback>{this.state.errorYoutube}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updateProfile && this.props.ui.serverErrorMessage}</FormFeedback>
-						<Button onClick={() => this.submit()}>{string.Signup}</Button>
+						{this.renderButton()}
 					</Form>
 				</div>
 			);

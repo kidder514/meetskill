@@ -12,6 +12,7 @@ import string from '../../../String';
 import isPasswordValid from '../../../helper/passwordChecker';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
+import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 class AccountAccountPage extends Component{
 	constructor(props){
@@ -27,6 +28,7 @@ class AccountAccountPage extends Component{
 
 		this.onChange = this.onChange.bind(this);
 		this.submit = this.submit.bind(this);
+		this.renderButton = this.renderButton.bind(this);
 	}
 
 	componentWillMount(){
@@ -96,6 +98,17 @@ class AccountAccountPage extends Component{
 		}
 	}
 
+	renderButton(){	
+		if (this.props.ui.apiCalling && (this.props.ui.apiCallType == resourcePath.changePassword)) {
+			return ([
+				<Button key='submit-button' onClick={() => this.submit()} disabled>{string.Submit}</Button>,
+				<LoadingSectionSpinner key='loading-spinner'/>
+			]);
+		}
+
+		return (<Button onClick={() => this.submit()}>{string.Submit}</Button>);
+	}
+
 	render(){
 		if (this.props.userState.isLoggedin) {
 			return (
@@ -152,7 +165,7 @@ class AccountAccountPage extends Component{
 							<FormFeedback>{this.state.errorConfirmNewPassword}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.changePassword && this.props.ui.serverErrorMessage}</FormFeedback>
-						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+						{this.renderButton()}
 					</Form>
 				</div>
 			);

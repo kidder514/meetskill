@@ -51,11 +51,11 @@ export const signupCall = (data) => {
 };
 
 export const updatePhotoCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, null, header);
+	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, null, header, false, true);
 };
 
 export const updateProfileCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, null, header);
+	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, null, header, false, true);
 };
 
 export const googleLoginCall = (data) => {
@@ -68,17 +68,17 @@ export const facebookLoginCall = (data) => {
 
 
 export const changePasswordCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, null, header);
+	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, null, header, false, true);
 };
 
 export const changeSettingCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, null, header);
+	return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, null, header, false, true);
 };
 
 export const deleteAccountCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, null, header);
+	return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, null, header, false, true);
 };
 
 export const activateInstructorCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, null, header);
+	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, null, header, false, true);
 };

@@ -5,6 +5,7 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
+import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 const IMAGE_WIDTH = 100;
 const IMAGE_HEIGHT = 100;
@@ -22,6 +23,7 @@ class AccountPhotoPage extends Component{
 		this.submit = this.submit.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.imageOnLoad = this.imageOnLoad.bind(this);
+		this.renderButton = this.renderButton.bind(this);
 	}
     
 	componentWillMount(){
@@ -79,6 +81,17 @@ class AccountPhotoPage extends Component{
 		});
 	}
 
+	renderButton(){	
+		if (this.props.ui.apiCalling && (this.props.ui.apiCallType == resourcePath.updatePhoto)) {
+			return ([
+				<Button key='submit-button' onClick={() => this.submit()} disabled>{string.Submit}</Button>,
+				<LoadingSectionSpinner key='loading-spinner'/>
+			]);
+		}
+
+		return (<Button onClick={() => this.submit()}>{string.Submit}</Button>);
+	}
+
 	render(){
 		if (this.props.userState.isLoggedin){
 			return (
@@ -115,7 +128,7 @@ class AccountPhotoPage extends Component{
 							<FormText>{string.PhotoWarning}</FormText>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updatePhoto && this.props.ui.serverErrorMessage}</FormFeedback>
-						<Button onClick={() => this.submit()}>{string.Submit}</Button>
+						{this.renderButton()}
 					</Form>
 					{/* use for drawing and getting the resized image only */}
 					{/* not for display */}
