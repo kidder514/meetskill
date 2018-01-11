@@ -146,7 +146,6 @@ input[type=text][disabled]{
 
 .outter-wrapper{
 	overflow-x: hidden;
-	min-height: 100vh;
 }
 
 .wrapper{
@@ -244,9 +243,6 @@ input[type=text][disabled]{
 /*=====================3.0 Header===========================*/
 
 .outter-wrapper{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	min-height: 100vh;
 }
 

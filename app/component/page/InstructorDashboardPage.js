@@ -35,7 +35,12 @@ class InstructorDashboardPage extends Component{
 	}
 
 	renderCourseListScreen(){
-
+		return (
+			<div>
+				<h1>Add new course here</h1>
+				<div>Course List</div>
+			</div>
+		);
 	}
 
 	renderAddCourseScreen(){
@@ -46,7 +51,7 @@ class InstructorDashboardPage extends Component{
 
 	render(){
 		if (this.props.userState.isInstructor){
-			//logic here should
+			// logic here should
 			// 1. display loading spinner, and call api to get the courses of current instructor
 			// 2.1. if no courses, render add course screen
 			// 2.2. if there is courses, render course list screen
