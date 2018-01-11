@@ -6,6 +6,9 @@ class InstructorDashboardPage extends Component{
 	constructor(props){
 		super(props);
 		this.onActivate = this.onActivate.bind(this);
+		this.renderActivationScreen = this.renderActivationScreen.bind(this);
+		this.renderCourseListScreen = this.renderCourseListScreen.bind(this);
+		this.renderAddCourseScreen = this.renderAddCourseScreen.bind(this);		
 	}
 
 	onActivate(){
@@ -15,7 +18,7 @@ class InstructorDashboardPage extends Component{
 		});
 	}
 
-	render(){
+	renderActivationScreen(){
 		return (
 			<Container>
 				<Row>
@@ -29,6 +32,29 @@ class InstructorDashboardPage extends Component{
 				</Row>
 			</Container>
 		);
+	}
+
+	renderCourseListScreen(){
+
+	}
+
+	renderAddCourseScreen(){
+		return (
+			<div>Add new course here</div>
+		);
+	}
+
+	render(){
+		if (this.props.userState.isInstructor){
+			//logic here should
+			// 1. display loading spinner, and call api to get the courses of current instructor
+			// 2.1. if no courses, render add course screen
+			// 2.2. if there is courses, render course list screen
+			return this.renderAddCourseScreen();
+		} else {
+			return this.renderActivationScreen();
+		}
+
 	}
 }
 

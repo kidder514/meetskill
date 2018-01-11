@@ -23,6 +23,8 @@ function userState(state = initialState, action) {
 		return {...state, photo: action.data.Data.photo};
 	case 'SET_REMEMBER_LOGIN':
 		return {...state, rememberLogin: action.rememberLogin};
+	case 'ACTIVATE_INSTRUCTOR':
+		return {...state, isInstructor: true};
 	case 'persist/REHYDRATE':
 		if (action.payload.userState.rememberLogin)
 			return action.payload.userState;

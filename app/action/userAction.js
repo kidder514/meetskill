@@ -42,6 +42,12 @@ export const setRememberLogin = (rememberLogin) => {
 	};
 };
 
+export const activateInstructor = () => {
+	return {
+		type: 'ACTIVATE_INSTRUCTOR'
+	};
+};
+
 export const loginCall = (data) => {
 	return postApiCall(resourcePath.login, data, login, null, true);
 };
@@ -80,5 +86,5 @@ export const deleteAccountCall = (data, header) => {
 };
 
 export const activateInstructorCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, null, null, header, false, true);
+	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, activateInstructor, null, header, true, false);
 };
