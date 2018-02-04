@@ -4,6 +4,9 @@
 
 17.1. pass in browser default language
 
+1. Now work on add course page, 
+2. add more than one page of course and build the course listing page according to the design.
+3. build single course page according to the design
 23. you need to support multi-language, so in all the forms, you can only validate whether a string has invalid character, instead allow it only to be  alphabetic characters only.
 24. for security, double check everything you receive user input!!!! we can do it later.
 - need to work on account pages

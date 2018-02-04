@@ -19,6 +19,7 @@ const pagePath = {
 	InstructorDashboard:'/instructordashboard',
 	ResetPassword: '/resetpassword',
 	Logout: '/logout',
+	AddNewCourse: '/addnewcourse',
 };
 
 export default pagePath;

@@ -21,6 +21,7 @@ import AccountDeleteAccount from './container/page/account/AccountDeleteAccount'
 import ShoppingCart from './container/page/ShoppingCart';
 import Notification from './container/page/Notification';
 import InstructorDashboard from './container/page/InstructorDashboard';
+import AddNewCourse from './container/page/AddNewCourse';
 import ResetPassword from './container/page/ResetPassword';
 import Logout from './container/Logout';
 import NotFoundPage from './component/page/NotFoundPage';
@@ -48,6 +49,7 @@ export default (
 			<Route path={pagePath.ShoppingCart} component={ShoppingCart} />
 			<Route path={pagePath.Notification} component={Notification} />
 			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
+			<Route path={pagePath.AddNewCourse} component={AddNewCourse} />			
 			<Route path={pagePath.ResetPassword} component={ResetPassword} />
 			<Route path={pagePath.SingleCourse + '/:id'} component={SingleCourse} />
 			<Route path={pagePath.Mycourses} component={MyCourse} />

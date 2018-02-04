@@ -11,6 +11,7 @@ const resourcePath = {
 	paymentAndSetting: '/api/model/usersettings',
 	deleteAccount:'/api/model/deleteuser',
 	activateInstructor: '/api/model/reginstructor',
+	addCourse: '/api/model/course',
 	init:'/init'
 };
 

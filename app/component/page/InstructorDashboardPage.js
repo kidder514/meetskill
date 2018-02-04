@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button, Container, Row, Col} from 'reactstrap';
 import string from '../../String';
+import {Link} from 'react-router';
+import pagePath from '../../pagePath';
 
 class InstructorDashboardPage extends Component{
 	constructor(props){
@@ -45,7 +47,7 @@ class InstructorDashboardPage extends Component{
 
 	renderAddCourseScreen(){
 		return (
-			<div>Add new course here</div>
+			<Link to={pagePath.AddNewCourse}>{string.CreateNewCourse}</Link>
 		);
 	}
 

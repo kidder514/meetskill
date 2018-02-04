@@ -6,9 +6,7 @@ import 'cropperjs/dist/cropper.css';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
 import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
-
-const IMAGE_WIDTH = 100;
-const IMAGE_HEIGHT = 100;
+import isObjectEmpty from '../../../helper/isObjectEmpty';
 
 class AccountPhotoPage extends Component{
 	constructor(props){
@@ -16,13 +14,13 @@ class AccountPhotoPage extends Component{
 		this.state ={
 			file:'',
 			errorFile:'',
-			croppedImage: '',
-			showCropper: false
+			showCropper: false,
+			coordinate: {},
+			timerOn: false
 		};
 
 		this.submit = this.submit.bind(this);
 		this.onChange = this.onChange.bind(this);
-		this.imageOnLoad = this.imageOnLoad.bind(this);
 		this.renderButton = this.renderButton.bind(this);
 	}
     
@@ -35,8 +33,6 @@ class AccountPhotoPage extends Component{
 	}
 
 	onChange(e){
-		// check the file type
-		// if they are image, push it to the cropper
 		if (e.target.files && e.target.files[0]){
 			if (e.target.files[0].name.indexOf('.png') != -1 || 
                 e.target.files[0].name.indexOf('.jpg') != -1 ||
@@ -54,31 +50,35 @@ class AccountPhotoPage extends Component{
 		}
 	}
 
-	crop(){
-		this.setState({croppedImage: this.refs.cropper.getCroppedCanvas().toDataURL() });
+	cropend(){
+		const cropBoxData = this.refs.cropper.getCropBoxData();
+		this.setState({coordinate: {
+			'x1' : cropBoxData.left,
+			'y1' : cropBoxData.top,
+			'x2' : cropBoxData.left + cropBoxData.width,
+			'y2' : cropBoxData.top + cropBoxData.height
+		}});
 	}
 
 	submit(){
 		if ((!!this.state.file) && 
             this.state.errorFile == '' && 
-            this.state.croppedImage != '')
+            !isObjectEmpty(this.state.coordinate))
 		{
-			// api call will only triggered when the image cache is loaded
-			this.refs.imageCache.src = this.state.croppedImage;
+			const user = this.props.userState; 
+			const coordinate = this.state.coordinate;
+			this.props.updatePhotoCall({
+				'picture': this.state.file,
+				'crop': '{’x1’:' + coordinate.x1 + ',’y1’:' + coordinate.y1 + ',' + 
+						'’x2’:'+ coordinate.x2  + ',’y2’:' + coordinate.y2  +'}'
+			},{
+				'x-user-id': user.uid,
+				'x-access-token': user.token
+			});
+
 		} else if (!this.state.file){
 			this.setState({errorFile: string.ChooseYourFile});
 		}
-	}
-
-	imageOnLoad(){
-		this.refs.canvas.getContext('2d').drawImage(this.refs.imageCache, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
-		var user = this.props.userState;        
-		this.props.updatePhotoCall({
-			'data': {'picture': this.refs.canvas.toDataURL()}
-		},{
-			'x-user-id': user.uid,
-			'x-access-token': user.token
-		});
 	}
 
 	renderButton(){	
@@ -112,7 +112,7 @@ class AccountPhotoPage extends Component{
 							guides={false}
 							background={false}
 							zoomable={false}
-							crop={this.crop.bind(this)} 
+							cropend={this.cropend.bind(this)} 
 						/>
 					</div>
 					<Form>
@@ -130,10 +130,6 @@ class AccountPhotoPage extends Component{
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updatePhoto && this.props.ui.serverErrorMessage}</FormFeedback>
 						{this.renderButton()}
 					</Form>
-					{/* use for drawing and getting the resized image only */}
-					{/* not for display */}
-					<canvas className="hidden" ref="canvas" width={IMAGE_WIDTH} height={IMAGE_HEIGHT}/>
-					<img className="hidden" onLoad={this.imageOnLoad} ref="imageCache"/>
 				</div>
 			);
 		} else {
