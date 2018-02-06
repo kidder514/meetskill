@@ -19,21 +19,29 @@ class MobileMenuSection extends Component {
         
 		this.toggleMenu = this.toggleMenu.bind(this);
 		this.toggleSearch = this.toggleSearch.bind(this);
-		this.renderMenuItem = this.renderMenuItem.bind(this);
 		this.slideTo = this.slideTo.bind(this);     
+		this.renderMenuItem = this.renderMenuItem.bind(this);
 		this.renderCategory = this.renderCategory.bind(this);
+		this.renderLogin = this.renderLogin.bind(this);
+		this.Login = this.Login.bind(this);
 	}
 
 	toggleMenu(){
 		this.layerCount = 0;
 		this.setState({isMenuOpen: !this.state.isMenuOpen});
 	}
+
 	toggleSearch(){
 		this.setState({isSearchOpen: !this.state.isSearchOpen});        
 	}
 
+	Login(){
+		this.toggleMenu();
+		this.props.showDialog('login');
+	}
+
 	slideTo(e, count, isBack){
-		this.setState({left: '-' + count * 100 + 'vw'});
+		this.setState({left: '-' + count * 300 + 'px'});
 		if (isBack){
 			var ulNode  = e.target.parentNode.parentNode;
 			ulNode.className = ulNode.className.replace(' top-layer', '');
@@ -50,7 +58,9 @@ class MobileMenuSection extends Component {
 				<li >
 					<Link activeClassName="active" className="mobile-menu-back" onClick={(e) => this.slideTo(e, parentLayerCount, true)}>
 						{string.Back}
-						<span className="pull-right">{'<'}</span>                    
+						<span className="pull-right">
+							<IconButton icon="chevron_left" />
+						</span>                    
 					</Link>
 				</li>
 				{category.map((subcategory, index) => {
@@ -59,7 +69,9 @@ class MobileMenuSection extends Component {
 							<li key={'key-' + currentLayerCount + '-' + index}>
 								<Link activeClassName="active" onClick={(e) => this.slideTo(e, currentLayerCount + 1, false)}>
 									{subcategory.name}
-									<span className="pull-right">></span>                            
+									<span className="pull-right">
+										<IconButton icon="chevron_right" />
+									</span>                            
 								</Link>
 								{ this.renderCategory(subcategory.subcategory, parentCategory + subcategory.path, currentLayerCount) }
 							</li>
@@ -77,9 +89,21 @@ class MobileMenuSection extends Component {
 		);
 	}
 
+	renderLogin() {
+		if (this.props.userState.isLoggedin) {
+			return (
+				<li onClick={() => this.toggleMenu()}>
+					<Link to={pagePath.Logout}>
+						{string.LogOut}
+					</Link>
+				</li>);
+		} else {
+			return (<li onClick={() => this.Login()}><Link>{string.Login}</Link></li>);
+		}
+	}
+
 	renderMenuItem(){
 		return ([
-			<hr key="hr1"></hr>,
 			<div 
 				key="mobile-category" 
 				className="mobile-category" 
@@ -89,15 +113,16 @@ class MobileMenuSection extends Component {
 					<li>
 						<Link onClick={ (e) => this.slideTo(e, 1, false) }>
 							{string.MenuCategory}
-							<span className="pull-right">></span>
+							<span className="pull-right">
+								<IconButton icon="chevron_right"/>
+							</span>
 						</Link>
 						{ this.renderCategory(this.props.category, pagePath.Category, 0) }
 					</li>
 				</ul>
-			</div>,
-			<hr key="hr2"></hr>,            
+			</div>,         
 			<div key="mobile-menu-section" className="mobile-menu-section">
-				<ul>
+				<ul className="mobile-common-menu">
 					<li onClick={() => this.toggleMenu()}>
 						<Link activeClassName="active" to={pagePath.ShoppingCart}>{string.MyCart}</Link>
 					</li>                    
@@ -132,7 +157,7 @@ class MobileMenuSection extends Component {
 				}
 				<ul className="second-section">
 					<li onClick={() => this.toggleMenu()}><Link to={pagePath.Help}>{string.Help}</Link></li>                    
-					<li onClick={() => this.toggleMenu()}><Link>{string.LogOut}</Link></li>
+					{this.renderLogin()}
 				</ul>
 			</div>
 		]);
@@ -142,35 +167,48 @@ class MobileMenuSection extends Component {
 		return (
 			<div className="menu-wrapper mobile-menu">   
 				<div className="mobile-header">
-					<div className={'mobile-opener ' + (this.state.isMenuOpen ? 'open' : '')} onClick={() => this.toggleMenu()}>
-						<IconButton icon="menu" />  
+					<div className="logo-section">
+						<div className={'mobile-opener ' + (this.state.isMenuOpen ? 'open' : '')} onClick={() => this.toggleMenu()}>
+							<IconButton icon="menu" />  
+						</div>
+						<div className="mobile-logo">
+							<Link to={pagePath.Home}>
+								<img src={config.logoUrl} />
+							</Link>
+						</div>
 					</div>
-					<div className="mobile-logo">
-						<Link to={pagePath.Home}>
-							<img src={config.logoUrl} />
+					<div>
+						<Link className="mobile-shopping-cart" to={pagePath.ShoppingCart}>
+							<IconButton className="icon-button" icon="shopping_cart" />
 						</Link>
+						<div className={'search-icon ' + (this.state.isSearchOpen ? 'open' : '')} onClick={() => this.toggleSearch()}>
+							<IconButton icon="search" />    
+						</div>
 					</div>
-					<div className={'search-icon ' + (this.state.isSearchOpen ? 'open' : '')} onClick={() => this.toggleSearch()}>
-						<IconButton icon="search" />    
-					</div>     
-				</div>    
+				</div>
 
 				<div className={'mobile-search-wrapper ' + (this.state.isSearchOpen ? 'open' : '')}>
 					<SearchField />
 				</div>
-				<div 
-					id={'mobile-slider'} 
-					className={(this.state.isMenuOpen ? 'open' : '')} 
-					style={{left: this.state.left}}>
-					{(!!this.props.userState.isLoggedin) && 
-						<div key="mobile-account-section" className="mobile-account-section">
-							<Link to={pagePath.Account}>
-								{ getInitial(this.props.userState.firstName, this.props.userState.lastName) }
-							</Link> 
-						</div>
-					}
-					{this.renderMenuItem()}
+				<div className={'mobile-slider-wrapper ' + (this.state.isMenuOpen ? 'open' : '')}>
+					<IconButton onClick={() => this.toggleMenu()} className='close-mobile-slider' icon="clear" /> 			
+					<div 
+						id={'mobile-slider'} 
+						style={{left: this.state.left}}>
+						{(!!this.props.userState.isLoggedin) && 
+							<div key="mobile-account-section" className="mobile-account-section">
+								<Link onClick={() => this.toggleMenu()} className="mobile-initials" to={pagePath.Account}>
+									{ getInitial(this.props.userState.firstName, this.props.userState.lastName) }
+								</Link>
+								<Link onClick={() => this.toggleMenu()} className='mobile-name' to={pagePath.Account}>
+									{this.props.userState.firstName + ' ' + this.props.userState.lastName}
+								</Link>
+							</div>
+						}
+						{this.renderMenuItem()}
+					</div>
 				</div>
+				<div onClick={() => this.toggleMenu()} className={'mobile-menu-overlay ' + (this.state.isMenuOpen ? 'on' : '')}></div>
 			</div>
 		);
 	}

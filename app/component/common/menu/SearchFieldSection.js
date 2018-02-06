@@ -17,7 +17,7 @@ class SearchSection extends Component {
 		return (
 			<InputGroup className={'search-section ' + (this.props.className ? this.props.className : '')}>
 				<Input name="keyword" placeholder={string.SearchEnterKeyWord} />
-				<InputGroupAddon onClick={this.search} className="search-icon">
+				<InputGroupAddon onClick={this.search} className="search-field-icon">
 					<IconButton icon="search" />
 				</InputGroupAddon>
 			</InputGroup>

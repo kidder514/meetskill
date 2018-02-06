@@ -28,6 +28,11 @@ class ProfilePopOverSection extends Component {
 				<div className="profile-menu">
 					<ul className="first-section">
 						<li>
+							<Link to={pagePath.Profile}>
+								{string.MyProfile}
+							</Link>
+						</li>
+						<li>
 							<Link to={pagePath.MyCart}>
 								{string.MyCart}
 							</Link>
@@ -35,6 +40,11 @@ class ProfilePopOverSection extends Component {
 						<li>
 							<Link to={pagePath.MyCourses}>
 								{string.MyCourses}
+							</Link>
+						</li>
+						<li>
+							<Link to={pagePath.WishList}>
+								{string.WishList}
 							</Link>
 						</li>
 						<li >

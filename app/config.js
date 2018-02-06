@@ -1,5 +1,5 @@
 const config = {
-	logoUrl:'http://downloadicons.net/sites/default/files/round-icon-68041.png',
+	logoUrl:'/app/asset/img/logo.png',
 	APIserver:'https://jsonplaceholder.typicode.com/users',
 	tempAPIserver:'http://api.meetskill.com',
 	googleLoginClientId:'1044894519430-hv76r463h1oec25f05r8i530djhjp92m.apps.googleusercontent.com',

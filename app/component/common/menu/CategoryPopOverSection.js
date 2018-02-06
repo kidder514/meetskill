@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import LoadingSpinner from '../../../helper/uicomponent/LoadingSpinner';
 import pagePath from '../../../pagePath';
+import IconButton from '../../../helper/uicomponent/IconButton';
 
 class CategoryPopOverSection extends Component {
 	constructor(props) {
@@ -18,7 +19,9 @@ class CategoryPopOverSection extends Component {
 							<li key={'key-' + category.name}>
 								<Link to={parentPath + category.path}>
 									{category.name}
-									<span className="pull-right">></span>
+									<span className="pull-right">
+										<IconButton icon="chevron_right"/>
+									</span>
 								</Link>
 								{ this.renderCategory(category.subcategory, category.path ) }
 							</li>

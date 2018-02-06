@@ -4,6 +4,11 @@
 
 17.1. pass in browser default language
 
++ follow the design to skin everything.
+1. work on login, sign up and other dialog box forms;
+2. All use account pages.
+
+-------------------------------------------------------
 1. Now work on add course page, 
 2. add more than one page of course and build the course listing page according to the design.
 3. build single course page according to the design
@@ -13,8 +18,7 @@
 - need to double check all action workflow when start building api
 26. we should add a username field so that user can login with either his email address or username
 27. create another file with all the const value of server error type, so that you can keep track of them.
-! make things easier for user, not for programmer.
-
+29. solve svg issue and replace all the icon with svg icon
 ### How do I get set up? ###
 1. clone the repo into local and go to that folder
 2. npm install

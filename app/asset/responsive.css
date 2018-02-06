@@ -1,47 +1,16 @@
-@media screen and (max-width: 768px) {
+/* 
+BreakPoints
+phone: > 600px
+tablet-portrait: > 900px;
+desktop: > 1200px;
+*/
+
+
+@media screen and (max-width: 600px) {
 
 /*=====================1.0 General===========================*/
 
 /*=====================2.0 Header===========================*/
-
-.menu-wrapper.desktop-menu{
-	display: none;
-}
-
-.menu-wrapper.mobile-menu{
-	display: flex;	
-}
-
-.mobile-search-wrapper.open{
-	display: block;
-}
-
-.mobile-search-wrapper{
-	display: none;
-}
-
-
-/*=====================3.0 Body===========================*/
-
-
-/*=====================4.0 footer===========================*/
-
-/*=====================5.0 Responsive===========================*/
-
-}
-
-
-
-
-@media screen and (max-width: 992px) {
-
-/*=====================1.0 General===========================*/
-
-/*=====================2.0 Header===========================*/
-
-.instructor-link{
-    display:none;
-}
 
 /*=====================3.0 Body===========================*/
 	
@@ -50,6 +19,76 @@
 /*=====================4.0 footer===========================*/
 
 /*=====================5.0 Responsive===========================*/
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+	.menu-wrapper.desktop-menu{
+		display: none;
+	}
+
+	.menu-wrapper.mobile-menu{
+		display: flex;	
+	}
+
+	.mobile-search-wrapper.open{
+		display: block;
+	}
+
+	.mobile-search-wrapper{
+		display: none;
+	}
+/*=====================3.0 Body===========================*/
+
+/*=====================4.0 footer===========================*/
+
+/*=====================5.0 Responsive===========================*/
 
 }
 
+
+
+@media screen and (max-width: 1200px) {
+
+	/*=====================1.0 General===========================*/
+	
+	/*=====================2.0 Header===========================*/
+	.search-section {
+		margin-right: 0;
+	}
+
+	/*=====================3.0 Body===========================*/
+		
+	
+	
+	/*=====================4.0 footer===========================*/
+	
+	/*=====================5.0 Responsive===========================*/
+	
+}
+
+@media screen and (min-width: 1200px) {
+
+	/*=====================1.0 General===========================*/
+	
+	/*=====================2.0 Header===========================*/
+	.menu-item.notification,
+	.menu-item.wish-list,
+	.menu-item.my-course{
+		display: flex;
+	}
+
+	.mobile-menu-overlay.on{
+		display: none;
+	}
+	/*=====================3.0 Body===========================*/
+		
+	
+	
+	/*=====================4.0 footer===========================*/
+	
+	/*=====================5.0 Responsive===========================*/
+	
+}

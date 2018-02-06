@@ -15,7 +15,7 @@ class DialogBox extends Component{
 		this.renderHeader = this.renderHeader.bind(this);       
 	}
 
-	renderHeader(){
+	renderHeader() {
 		switch (this.props.dialogType) {
 		case 'login':
 			return string.LoginDialogHeader;
@@ -47,11 +47,11 @@ class DialogBox extends Component{
 
 	render(){
 		return (
-			<div className={'dialog-box-Wrapper ' + (this.props.isShown ? '':'hidden')}>
-				<div className="dialog-box">
+			<div onClick={this.props.hide} className={'dialog-box-Wrapper ' + (this.props.isShown ? '':'hidden')}>
+				<div onClick={(event) => event.stopPropagation()} className="dialog-box">
 					<IconButton 
-						className="text-right close-icon" 
-						icon="highlight_off" 
+						className="close-icon" 
+						icon="clear" 
 						onClick={this.props.hide}
 					/>
 					<div className="dialog-header">

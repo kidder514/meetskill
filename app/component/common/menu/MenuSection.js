@@ -19,10 +19,20 @@ class MenuSection extends Component {
 	}
     
 	renderUserSection(){
-		var user = this.props.userState;
+		const user = this.props.userState;
 		if ((user.isLoggedin)){
-			return (
-				<div className="menu-item no-hover-effect">
+			return ([
+				<div key="wishlist" className="menu-item wish-list">
+					<Link to={pagePath.WishList}>
+						<IconButton className="icon-button" icon="favorite_border" />
+					</Link>
+				</div>,
+				<div key="notification" className="menu-item notification">
+					<Link to={pagePath.Notification}>
+						<IconButton className="icon-button" icon="notifications_none" />
+					</Link>
+				</div>,
+				<div key="profile" className="menu-item no-hover-effect">
 					<Link to={pagePath.Account} className="profile-icon">
 						{(user.photo) ? <img className="img-circle" src={user.photo} /> : <div className="user-initials">{ getInitial(user.firstName, user.lastName) }</div>}               
 					</Link>
@@ -30,8 +40,7 @@ class MenuSection extends Component {
 						<ProfilePopOver />
 					</div>
 				</div>
-
-			);
+			]);
 		} else{
 			return (
 				<a className="menu-item login-button" onClick={ () => this.props.showDialog('login')}>{string.MenuLoginSignup}</a>
@@ -40,29 +49,34 @@ class MenuSection extends Component {
 	}
 
 	render() {
+		const user = this.props.userState;
+		const instructorString = (user.isLoggedin && !!user.isInstructor) ? string.MenuInstructor : string.MenuBeAnInstructor;
 		return (
 			<div className="menu-wrapper desktop-menu">
 				<Link to={pagePath.Home} className="menu-item logo-wrapper">
 					<img src={config.logoUrl} />
 				</Link>
-
-				<div className="menu-item" >
-					<Link to={pagePath.Categories}>{string.MenuCategory}</Link>
+				<div className="menu-item menu-item-category" >
+					<Link className="" to={pagePath.Categories}>
+						{string.MenuCategories}
+						<IconButton className="expand-more" icon="expand_more" />						
+					</Link>
 					<div className="category-pop-over popover">
 						<CategoryPopOver />
 					</div>
 				</div>
-
 				<SearchField className="menu-item no-hover-effect "/>
 				<Link className="menu-item instructor-link" to={pagePath.InstructorDashboard}>
-					<span>{string.MenuBeAnInstructor}</span>
+					<span>{instructorString}</span>
 				</Link>
-                
-				<div className="menu-item cart-icon">
+				<Link className="menu-item my-course" to={pagePath.MyCourses}>
+					<span>{string.MyCourses}</span>
+				</Link>
+				<div className="menu-item">
 					<Link to={pagePath.ShoppingCart}>
-						<IconButton icon="shopping_cart" />
+						<IconButton className="icon-button" icon="shopping_cart" />
 					</Link>
-					<div className="popover">
+					<div className="shopping-cart-pop-over popover">
 						<CartItemPopOver />
 					</div>
 				</div>
