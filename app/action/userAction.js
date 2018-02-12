@@ -1,4 +1,4 @@
-import {postApiCall, authPostApiCallWithHeader} from './appAction';
+import {apiCallOptions, apiCallBase} from './appAction';
 import resourcePath from '../resourcePath';
 
 export const login = (data) => {
@@ -48,50 +48,90 @@ export const activateInstructor = () => {
 	};
 };
 
+
+const loginCallOptions = {...apiCallOptions,
+	success: login,
+	loadingOverLay: true};
 export const loginCall = (data) => {
-	return postApiCall(resourcePath.login, data, login, null, true);
+	return apiCallBase(resourcePath.login, data, 'post', loginCallOptions);
 };
 
+const signupCallOptions = {...apiCallOptions,
+	success: login,
+	loadingOverLay: true};
 export const signupCall = (data) => {
-	return postApiCall(resourcePath.signup, data, login, null, true);
+	return apiCallBase(resourcePath.signup, data, 'post', signupCallOptions);
 };
 
-export const updatePhotoCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updatePhoto, data, updatePhoto, null, header, false, true);
-};
-
-export const updateProfileCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.updateProfile, data, updateProfile, null, header, false, true);
-};
-
+const googleLoginCallOptions = {...apiCallOptions,
+	success: login,
+	loadingOverLay: true};
 export const googleLoginCall = (data) => {
-	return postApiCall(resourcePath.googleLogin, data, login, null, true);    
+	return apiCallBase(resourcePath.googleLogin, data, 'post', googleLoginCallOptions);    
 };
 
+const facebookLoginCallOptions = {...apiCallOptions,
+	success: login,
+	loadingOverLay: true};
 export const facebookLoginCall = (data) => {
-	return postApiCall(resourcePath.facebookLogin, data, login, null, true);    
+	return apiCallBase(resourcePath.facebookLogin, data, 'post', facebookLoginCallOptions);    
 };
 
 export const forgotPasswordCall = (data) => {
-	return postApiCall(resourcePath.recoverPassword, data, null, null, false, false);
+	return apiCallBase(resourcePath.recoverPassword, data, 'post');
 };
 
 export const updatePasswordCall = (data) => {
-	return postApiCall(resourcePath.updatePassword, data, null, null, false, false);
+	return apiCallBase(resourcePath.updatePassword, data, 'post');
 };
 
-export const changePasswordCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, null, header, false, true);
+const changePasswordCallOptions = {...apiCallOptions,
+	auth: true,
+	loadingSection: true
+};
+export const changePasswordCall = (data) => {
+	return apiCallBase(resourcePath.changePassword, data, 'post', changePasswordCallOptions);
 };
 
-export const changeSettingCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.paymentAndSetting, data, null, null, header, false, true);
+const updatePhotoCallOptions = {...apiCallOptions,
+	auth: true,
+	loadingSection: true,
+	success: updatePhoto
+};
+export const updatePhotoCall = (data) => {
+	return apiCallBase(resourcePath.updatePhoto, data, updatePhoto, 'post', updatePhotoCallOptions);
 };
 
-export const deleteAccountCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.deleteAccount, data, null, null, header, false, true);
+const updateProfileCallOptions = {...apiCallOptions,
+	auth: true,
+	loadingSection: true,
+	success: updateProfile
+};
+export const updateProfileCall = (data) => {
+	return apiCallBase(resourcePath.updateProfile, data, 'post', updateProfileCallOptions);
 };
 
-export const activateInstructorCall = (data, header) => {
-	return authPostApiCallWithHeader(resourcePath.activateInstructor, data, activateInstructor, null, header, true, false);
+const changeSettingCallOptions = {...apiCallOptions,
+	auth: true,
+	loadingSection: true
+};
+export const changeSettingCall = (data) => {
+	return apiCallBase(resourcePath.paymentAndSetting, data, 'post', changeSettingCallOptions);
+};
+
+const deleteAccountCallOptions = {...apiCallOptions,
+	auth: true,
+	loadingSection: true
+};
+export const deleteAccountCall = (data) => {
+	return apiCallBase(resourcePath.deleteAccount, data, 'post', deleteAccountCallOptions);
+};
+
+const activateInstructorCallOptions = {...apiCallOptions,
+	auth: true,
+	success: activateInstructor,
+	loadingOverLay: true
+};
+export const activateInstructorCall = (data) => {
+	return apiCallBase(resourcePath.activateInstructor, data, 'post', activateInstructorCallOptions);
 };

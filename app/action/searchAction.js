@@ -18,8 +18,3 @@ export const setSearch = (options) =>{
 	};
 };
 
-// export const searchCall = (query) => {
-// 	dispatch(setSearch(query));
-// 	return getApiCall(query, loadList, string.ErrorNotAbleToLoadCourse);
-// };
-

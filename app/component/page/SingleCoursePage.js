@@ -14,9 +14,6 @@ class SingleCoursePage extends Component{
 	}
 
 	componentDidMount(){
-		if (this.props.course.length <= 0){
-			this.props.loadCourse();
-		}
 	}
 
 	renderComponent(){

@@ -9,11 +9,6 @@ class CategoryPage extends Component{
 	}
 
 	componentDidMount(){
-		// if (this.props.list.length > 0){
-
-		// } else {
-		// 	this.props.loadList('');
-		// }
 	}
 
 	render(){

@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		changeSettingCall: (data, header) => {dispatch(changeSettingCall(data, header));},
+		changeSettingCall: (data) => {dispatch(changeSettingCall(data));},
 	};
 };
 

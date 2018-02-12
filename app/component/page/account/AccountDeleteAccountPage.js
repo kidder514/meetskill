@@ -42,9 +42,6 @@ class AccountDeleteAccountPage extends Component{
 			this.setState({errorPassword: ''});         
 			this.props.deleteAccountCall({
 				'current_password': this.state.password                 
-			}, {
-				'x-user-id': this.props.userState.uid,
-				'x-access-token': this.props.userState.token                    
 			});
 		} else {
 			this.setState({errorPassword: string.NoPassword});

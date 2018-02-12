@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		deleteAccountCall: (data, header) => {dispatch(deleteAccountCall(data, header));},
+		deleteAccountCall: (data) => {dispatch(deleteAccountCall(data));},
 	};
 };
 

@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		updateProfileCall: (data, headers) => {dispatch(updateProfileCall(data, headers));},
+		updateProfileCall: (data) => {dispatch(updateProfileCall(data));},
 	};
 };
 

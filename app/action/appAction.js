@@ -51,73 +51,42 @@ export const InitAppCall = () => {
 	};
 };
 
-export function getApiCall(query, action, errorMessage) {
-	return dispatch => {
-		axios.get(config.APIserver, query)
+export function apiCallBase(resource, data, method, apiCallOptions = apiCallOptions){
+	return (dispatch, getState) => {
+		if (apiCallOptions.loadingOverLay) dispatch(showLoading());
+		if (apiCallOptions.loadingSection) dispatch(showSectionLoading(resource));		
+		axios({
+			method: method,
+			url: config.tempAPIserver + resource,
+			data: data,
+			headers: apiCallOptions.auth ? {
+				'x-user-id': getState().userState.uid,
+				'x-access-token': getState().userState.token
+			} : null})
 			.then(function (res) {
-				dispatch(action(res.data));
-			})
-			.catch(function () {
-				dispatch(showErrorDialog(errorMessage));
-			});
-	};
-}
-
-
-// resource: api resource
-// query: query paremeters
-// success: success action
-// successParam: if it is not null or undefined, pass it to the success action
-// failure: failure action
-// failureParam: if it is not null or undefined, pass it to the failure action
-export function postApiCall(resource, query, success, failure, loadingOverLay, loadingSection ) {
-	return dispatch => {
-		if (loadingOverLay) dispatch(showLoading());
-		if (loadingSection) dispatch(showSectionLoading(resource));		
-		axios.post(config.tempAPIserver + resource, query)
-			.then(function (res) {
-				if (loadingOverLay) dispatch(hideLoading());
-				if (loadingSection) dispatch(hideSectionLoading());	
-				if (success) dispatch(success(res.data));
+				if (apiCallOptions.loadingOverLay) dispatch(hideLoading());
+				if (apiCallOptions.loadingSection) dispatch(hideSectionLoading());	
+				if (apiCallOptions.success) { dispatch(apiCallOptions.success(res.data)); }
+				dispatch(updateServerError(resource,''));
 				if (resource.indexOf('auth') != -1 ||
 					resource.indexOf('login') != -1 ||
 					resource.indexOf('signup') != -1)
-					dispatch(hideDialog());
+					dispatch(hideDialog());	
 			})
 			.catch(function (error) {
-				if (loadingOverLay) dispatch(hideLoading());
-				if (loadingSection) dispatch(hideSectionLoading());	
-				if (failure) dispatch(failure(error.data));
-				dispatch(updateServerError(resource, error.response.data.Error.Message ));
-			});
-	};
-}
-
-export function authPostApiCallWithHeader(resource, data, success, failure, postHeaders, loadingOverLay, loadingSection) {
-	return dispatch => {
-		if (loadingOverLay) dispatch(showLoading());
-		if (loadingSection) dispatch(showSectionLoading(resource));		
-		axios.post(config.tempAPIserver + resource, data, {
-			headers: postHeaders})
-			.then(function (res) {
-				if (loadingOverLay) dispatch(hideLoading());
-				if (loadingSection) dispatch(hideSectionLoading());	
-				if (success) { dispatch(success(res.data)); }
-			})
-			.catch(function (error) {
-				if (loadingOverLay) dispatch(hideLoading());
-				if (loadingSection) dispatch(hideSectionLoading());		
+				if (apiCallOptions.loadingOverLay) dispatch(hideLoading());
+				if (apiCallOptions.loadingSection) dispatch(hideSectionLoading());				
+				if (apiCallOptions.failure) { dispatch(apiCallOptions.failure(error.response.data)); }				
 				dispatch(updateServerError(resource, error.response));
 			});
 	};
 }
 
 
-// export function deleteApiCall(resource, param, action, errorMessage) {
-//  return dispatch => {};
-// }
-
-// export function putApiCall(resource, param, action, errorMessage) {
-//  return dispatch => {};
-// }
-
+export const apiCallOptions = {
+	auth: false,
+	success: () => {},
+	failure: () => {},
+	loadingOverLay: false,
+	loadingSection: false
+};

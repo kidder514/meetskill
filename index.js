@@ -21,7 +21,6 @@ const store = compose(
 )(createStore)(rootReducer);
 const history = syncHistoryWithStore(browserHistory, store);
 
-
 // need to create a app to integrate with redux-persist.
 class App extends Component {
 	constructor(props) {

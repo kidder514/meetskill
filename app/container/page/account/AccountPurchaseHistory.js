@@ -7,11 +7,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         loadList: (query) => {dispatch(loadListCall(query))},
-//         cleanList: (query) => {dispatch(cleanList())},        
-//     };
-// };
-
 export default connect(mapStateToProps)(AccountPurchaseHistoryPage);

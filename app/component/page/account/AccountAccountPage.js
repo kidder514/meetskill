@@ -88,9 +88,6 @@ class AccountAccountPage extends Component{
 						'new_password': this.state.newPassword,
 						'confirm_password': this.state.confirmNewPassword
 					}
-				},{
-					'x-user-id': this.props.userState.uid,
-					'x-access-token': this.props.userState.token
 				})
 			);
 		}else {

@@ -57,9 +57,6 @@ class AccountSettingPage extends Component{
 			'showProfile': this.state.showProfile,
 			'showCourse': this.state.showCourse,
 			'emailNotification': this.state.emailNotification
-		},{
-			'x-user-id': this.props.userState.uid,
-			'x-access-token': this.props.userState.token
 		});
 	}
 

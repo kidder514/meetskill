@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		updatePhotoCall: (data, headers) => {dispatch(updatePhotoCall(data, headers));},
+		updatePhotoCall: (data) => {dispatch(updatePhotoCall(data));},
 	};
 };
 

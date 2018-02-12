@@ -1,6 +1,3 @@
-import string from '../String';
-import { getApiCall } from './appAction';
-
 export const loadList = (data) => {
 	return {
 		type: 'LOAD_LIST',
@@ -12,11 +9,6 @@ export const cleanList = () => {
 	return {
 		type: 'CLEAN_LIST'
 	};
-};
-
-// todo: to fix the error message, not it is duplicated
-export const loadListCall = (query) => {
-	return getApiCall(query, loadList, string.ErrorNotAbleToLoadCourse);
 };
 
 export const loadCategory = (category) => {
@@ -39,19 +31,8 @@ export const loadCourse = (course) => {
 	};
 };
 
-
 export const cleanCourse = () => {
 	return {
 		type: 'CLEAN_COURSE'
 	};
-};
-
-
-export const loadCategoryCall = () => {
-	return getApiCall('category', loadCategory, string.ErrorNotAbleToLoadCategory); 
-};
-
-// todo: to fix the error message, now it is duplicated
-export const loadCourseCall = (id) => {
-	return getApiCall('course' + id, loadCourse, string.ErrorNotAbleToLoadCourse);  
 };

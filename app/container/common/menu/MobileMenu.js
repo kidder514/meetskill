@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import MobileMenuSection from '../../../component/common/menu/MobileMenuSection';
-import { loadCategoryCall } from '../../../action/dataAction';
 import { showDialog } from '../../../action/uiAction';
 
 const mapStateToProps = (state) => {
@@ -12,7 +11,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadCategory: () => {dispatch(loadCategoryCall());},
 		showDialog: (content) => {dispatch(showDialog(content));}
 	};
 };

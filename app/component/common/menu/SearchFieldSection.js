@@ -10,7 +10,6 @@ class SearchSection extends Component {
 	}
 
 	search(){
-		this.props.loadList('should be the key word here');
 	}
 
 	render() {

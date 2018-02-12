@@ -65,15 +65,11 @@ class AccountPhotoPage extends Component{
             this.state.errorFile == '' && 
             !isObjectEmpty(this.state.coordinate))
 		{
-			const user = this.props.userState; 
 			const coordinate = this.state.coordinate;
 			this.props.updatePhotoCall({
 				'picture': this.state.file,
 				'crop': '{’x1’:' + coordinate.x1 + ',’y1’:' + coordinate.y1 + ',' + 
 						'’x2’:'+ coordinate.x2  + ',’y2’:' + coordinate.y2  +'}'
-			},{
-				'x-user-id': user.uid,
-				'x-access-token': user.token
 			});
 
 		} else if (!this.state.file){

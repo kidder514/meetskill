@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		changePasswordCall: (data, header) => {dispatch(changePasswordCall(data, header));},
+		changePasswordCall: (data) => {dispatch(changePasswordCall(data));},
 		resetAllServerError: () => {dispatch(resetAllServerError());},
 	};
 };
