@@ -260,7 +260,6 @@ class AccountProfilePage extends Component{
 							</Input>
 							<FormFeedback>{this.state.errorLanguage}</FormFeedback>
 						</FormGroup>
-						<hr />
 						<FormGroup>
 							<Label for="link">{string.Website}</Label>
 							<Input 

@@ -8,6 +8,7 @@ import {
 	FormGroup, 
 	Input, 
 	FormText, 
+	Label,
 	FormFeedback
 } from 'reactstrap';
 
@@ -37,7 +38,7 @@ class ForgotPasswordSection extends Component {
 	submit() {
 		this.props.resetAllServerError();
 		if(validator.isEmail(this.state.email)){
-			this.props.recoverPasswordCall({email: this.state.email});
+			this.props.forgotPasswordCall({email: this.state.email});
 		} else if (this.state.email == ''){ 
 			this.setState({errorEmail: string.NoEmail});            
 		} else {    
@@ -50,8 +51,8 @@ class ForgotPasswordSection extends Component {
 		return (
 			<div className="login-section">
 				<Form>
-					<FormText>{string.EnterEmailToResetPassword}</FormText>
 					<FormGroup>
+						<Label>{string.EnterEmailToRecoverPassword}</Label>
 						<Input 
 							type="text" 
 							name="email" 
@@ -63,7 +64,9 @@ class ForgotPasswordSection extends Component {
 						<FormFeedback>{this.state.errorEmail}</FormFeedback>
 						<FormFeedback>{ui.apiCallType == resourcePath.recoverPassword && ui.serverErrorMessage}</FormFeedback>
 						<FormText>{ui.serverSuccessType == resourcePath.recoverPassword && ui.serverSuccessMessage}</FormText>                  
-						<Button onClick={() => this.submit()}>{string.ResetPassword}</Button>
+					</FormGroup>
+					<FormGroup>
+						<Button className="full-width-button" onClick={() => this.submit()}>{string.RecoverPassword}</Button>
 					</FormGroup>
 				</Form>
 			</div>

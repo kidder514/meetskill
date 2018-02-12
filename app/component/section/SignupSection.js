@@ -16,6 +16,7 @@ class SignupSection extends Component {
 	constructor(props) {
 		super(props);
 		this.initialState = {
+			widgetId:'',
 			firstName : '',
 			errorFirstname : '',
 			lastName : '',
@@ -34,18 +35,20 @@ class SignupSection extends Component {
 		this.submit = this.submit.bind(this);
 		this.tickRecaptcha = this.tickRecaptcha.bind(this);
 		this.recaptchaExpired = this.recaptchaExpired.bind(this);
+		this.resetRecaptcha = this.resetRecaptcha.bind(this);
 		this.onChange = this.onChange.bind(this);
 	}
 
 	componentDidMount(){
 		this.props.resetAllServerError();
-		window.grecaptcha.render('signup-recaptcha', {
+		var id = window.grecaptcha.render('signup-recaptcha', {
 			'badge' : 'bottomright',
 			'sitekey' : config.recaptchaSiteKey,
 			'callback' : this.tickRecaptcha,
 			'data-size': 'invisible',
 			'expired-callback': this.recaptchaExpired           
 		});
+		this.setState({widgetId: id});
 	}
 
 	componentWillUnmount(){
@@ -75,6 +78,10 @@ class SignupSection extends Component {
 
 	recaptchaExpired(){
 		this.setState({recaptcha: ''});
+	}
+
+	resetRecaptcha() {
+		window.grecaptcha.reset(this.state.widgetId);
 	}
 
 	submit() {
@@ -155,6 +162,8 @@ class SignupSection extends Component {
 		}else{
 			this.setState(stateCache);
 		}
+
+		this.resetRecaptcha();
 	}
 
 	render() {
@@ -216,11 +225,14 @@ class SignupSection extends Component {
 						/>
 						<FormFeedback>{this.state.errorConfirmPassword}</FormFeedback>
 					</FormGroup>
-					<div className="recaptcha-wrapper">
-						<div id="signup-recaptcha"></div>
-						<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
-					</div>
-					<FormGroup check>
+					<FormGroup>
+						<div className="recaptcha-wrapper">
+							<div id="signup-recaptcha"></div>
+							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
+						</div>
+					</FormGroup>
+					<FormFeedback>{this.props.ui.apiCallType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
+					<FormGroup check className="text-center">
 						<Input
 							name={'rememberLogin'}
 							type="checkbox" 
@@ -229,8 +241,14 @@ class SignupSection extends Component {
 						/>
 						{' ' + string.RememberLogin}
 					</FormGroup>
-					<FormFeedback>{this.props.ui.apiCallType == resourcePath.signup && this.props.ui.serverErrorMessage}</FormFeedback>
-					<Button onClick={() => this.submit()}>{string.Signup}</Button>
+					<FormGroup className="text-center">
+						<Button 
+							className={'full-width-button'}
+							onClick={() => this.submit()}
+						>
+							{string.Signup}
+						</Button>
+					</FormGroup>
 				</Form>
 			</div>
 		);

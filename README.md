@@ -5,8 +5,13 @@
 17.1. pass in browser default language
 
 + follow the design to skin everything.
-1. work on login, sign up and other dialog box forms;
-2. All use account pages.
+1. we need to make function for api calls that take call type like "post, put," as parameter
+2. then go back and work on change password page
+1. needs to work on change password feature from the url.
+1. implement recover email
+1, add content to all headers,
+1, now build form header first, cuz you need them soon.
+2. All use account pages. -- while doing the form, please follow the class of dialog form.
 
 -------------------------------------------------------
 1. Now work on add course page, 
@@ -62,3 +67,16 @@ Video Player, exactly like Udemy’s
 ### Who do I talk to? ###
 
 Lu: kidder5142@gmail.com
+
+
+Bugs FE: 
+- Signup
+password 123123123ABC is warned as invalid password.
+- recover password
+need to show the correct success call message.
+- change password
+change password is not secure enough, as it shows the token on url.
+
+Bugs BE:
+- Facebook Login
+Failed to fetch user profile

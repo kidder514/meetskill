@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ForgotPasswordSection from '../../component/section/ForgotPasswordSection';
-import { recoverPasswordCall } from '../../action/userAction';
+import { forgotPasswordCall } from '../../action/userAction';
 import { resetAllServerError } from '../../action/uiAction';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		recoverPasswordCall: (data) => {dispatch(recoverPasswordCall(data));},
+		forgotPasswordCall: (data) => {dispatch(forgotPasswordCall(data));},
 		resetAllServerError: () => {dispatch(resetAllServerError());},
 	};
 };

@@ -18,7 +18,7 @@ const pagePath = {
 	ShoppingCart:'/shoppingcart',
 	Notification:'/notification',
 	InstructorDashboard:'/instructordashboard',
-	ResetPassword: '/resetpassword',
+	ChangePassword: '/change-password',
 	Logout: '/logout',
 	AddNewCourse: '/addnewcourse',
 };

@@ -22,7 +22,7 @@ import ShoppingCart from './container/page/ShoppingCart';
 import Notification from './container/page/Notification';
 import InstructorDashboard from './container/page/InstructorDashboard';
 import AddNewCourse from './container/page/AddNewCourse';
-import ResetPassword from './container/page/ResetPassword';
+import RecoverPassword from './container/page/RecoverPassword';
 import Logout from './container/Logout';
 import NotFoundPage from './component/page/NotFoundPage';
 import pagePath from './pagePath';
@@ -50,7 +50,7 @@ export default (
 			<Route path={pagePath.Notification} component={Notification} />
 			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
 			<Route path={pagePath.AddNewCourse} component={AddNewCourse} />			
-			<Route path={pagePath.ResetPassword} component={ResetPassword} />
+			<Route path={pagePath.ChangePassword} component={RecoverPassword} />
 			<Route path={pagePath.SingleCourse + '/:id'} component={SingleCourse} />
 			<Route path={pagePath.Mycourses} component={MyCourse} />
 			<Route path={pagePath.Author + '/:id'} component={Author} />

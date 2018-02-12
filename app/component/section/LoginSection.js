@@ -18,6 +18,7 @@ class LoginSection extends Component {
 	constructor(props) {
 		super(props);
 		this.initialState = {
+			widgetId:'',
 			email: '',
 			errorEmail: '',
 			password: '',
@@ -33,6 +34,7 @@ class LoginSection extends Component {
         
 		this.tickRecaptcha = this.tickRecaptcha.bind(this);
 		this.recaptchaExpired = this.recaptchaExpired.bind(this);       
+		this.resetRecaptcha = this.resetRecaptcha.bind(this);
 		this.onChange = this.onChange.bind(this);       
 		this.gLoginSuccess = this.gLoginSuccess.bind(this);
 		this.fbButtonClicked = this.fbButtonClicked.bind(this);
@@ -49,13 +51,14 @@ class LoginSection extends Component {
 
 	componentDidMount(){
 		this.props.resetAllServerError();
-		window.grecaptcha.render('login-recaptcha', {
+		var id = window.grecaptcha.render('login-recaptcha', {
 			'badge' : 'bottomright',
 			'sitekey' : config.recaptchaSiteKey,
 			'callback' : this.tickRecaptcha,
 			'data-size': 'invisible',
 			'expired-callback': this.recaptchaExpired,
 		});
+		this.setState({widgetId: id});
 	}
 
 	componentWillUnmount(){
@@ -105,6 +108,10 @@ class LoginSection extends Component {
 		this.setState({recaptcha: ''});
 	}
 
+	resetRecaptcha() {
+		window.grecaptcha.reset(this.state.widgetId);
+	}
+
 	submit() {
 		var stateCache = {};
 		var isValid = true;
@@ -143,6 +150,8 @@ class LoginSection extends Component {
 		}else{
 			this.setState(stateCache);
 		}
+
+		this.resetRecaptcha();		
 	}
     
 	render() {
@@ -175,12 +184,14 @@ class LoginSection extends Component {
 							/>
 							<FormFeedback>{this.state.errorPassword}</FormFeedback>
 						</FormGroup>
-						<div className="recaptcha-wrapper">
-							<div id="login-recaptcha"></div>
-							<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
-						</div>
+						<FormGroup>
+							<div className="recaptcha-wrapper">
+								<div id="login-recaptcha"></div>
+								<FormFeedback>{this.state.errorRecaptcha}</FormFeedback>
+							</div>
+						</FormGroup>						
 						<FormFeedback>{ui.apiCallType == resourcePath.login && ui.serverErrorMessage}</FormFeedback>                    
-						<FormGroup check>
+						<FormGroup check className="text-center">
 							<Input
 								name={'rememberLogin'}
 								type="checkbox" 
@@ -189,29 +200,40 @@ class LoginSection extends Component {
 							/>
 							{' ' + string.RememberLogin}
 						</FormGroup>
-						<Button id="login-submit" onClick={() => this.submit()}>{string.Login}</Button>
-						<Link className="forgot-password-link" onClick={() => this.props.showDialog('forgotPassword')}>{string.ForgotPassword}</Link>
-						<hr />
-						<Button onClick={() => this.gotoSignup()}>{string.Signup}</Button>
+						<FormGroup className="text-center">
+							<Button className="full-width-button" onClick={() => this.submit()}>{string.Login}</Button>
+							<Link className="forgot-password-link" onClick={() => this.props.showDialog('forgotPassword')}>{string.ForgotPassword}</Link>	
+						</FormGroup>
+						<FormGroup>
+							<Button className="full-width-button" onClick={() => this.gotoSignup()}>{string.Signup}</Button>
+						</FormGroup>
+						<FormGroup className="google-login">
+							<span>{ui.apiCallType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
+							<GoogleLogin
+								className="full-width-button"
+								clientId={config.googleLoginClientId}
+								buttonText={string.LoginWithGoogle}
+								onSuccess={this.gLoginSuccess}
+								onFailure={this.gLoginFail}
+							/>
+						</FormGroup>
+						<FormGroup className="facebook-login">
+							<span>{ui.apiCallType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
+							<FacebookLogin
+								className="full-width-button"
+								appId={config.FBAppId}
+								autoLoad={false}
+								fields="name,email,picture"
+								onClick={this.fbButtonClicked}
+								textButton={string.LoginWithFacebook}
+								callback={this.responseFb} 
+							/>
+								
+						</FormGroup>
+
 					</Form>
-					<div className="input-item">
-						<span>{ui.apiCallType == resourcePath.googleLogin && ui.serverErrorMessage}</span>
-						<GoogleLogin
-							clientId={config.googleLoginClientId}
-							buttonText={string.LoginWithGoogle}
-							onSuccess={this.gLoginSuccess}
-							onFailure={this.gLoginFail}
-						/>
-					</div>
-					<div className="input-item">
-						<span>{ui.apiCallType == resourcePath.facebookLogin && ui.serverErrorMessage}</span>
-						<FacebookLogin
-							appId={config.FBAppId}
-							autoLoad={false}
-							fields="name,email,picture"
-							onClick={this.fbButtonClicked}
-							callback={this.responseFb} />
-					</div>
+
+
 				</div>
 			);
 		}

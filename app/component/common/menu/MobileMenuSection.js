@@ -103,6 +103,7 @@ class MobileMenuSection extends Component {
 	}
 
 	renderMenuItem(){
+		const { userState, category } = this.props;
 		return ([
 			<div 
 				key="mobile-category" 
@@ -117,7 +118,7 @@ class MobileMenuSection extends Component {
 								<IconButton icon="chevron_right"/>
 							</span>
 						</Link>
-						{ this.renderCategory(this.props.category, pagePath.Category, 0) }
+						{ this.renderCategory(category, pagePath.Category, 0) }
 					</li>
 				</ul>
 			</div>,         
@@ -136,7 +137,7 @@ class MobileMenuSection extends Component {
 						<Link activeClassName="active" to={pagePath.Notification}>{string.Notification}</Link>
 					</li>
 				</ul>
-				{(!!this.props.userState.isLoggedin) && 
+				{(!!userState.isLoggedin) && 
 					<ul className="mobile-account-menu">
 						<li  onClick={() => this.toggleMenu()}>
 							<Link activeClassName="active" to={pagePath.Account + pagePath.ViewPublicProfile}>{string.AccountViewPublicProfile}</Link>
@@ -164,6 +165,7 @@ class MobileMenuSection extends Component {
 	}
 
 	render() {
+		const { userState } = this.props;		
 		return (
 			<div className="menu-wrapper mobile-menu">   
 				<div className="mobile-header">
@@ -195,13 +197,13 @@ class MobileMenuSection extends Component {
 					<div 
 						id={'mobile-slider'} 
 						style={{left: this.state.left}}>
-						{(!!this.props.userState.isLoggedin) && 
+						{(!!userState.isLoggedin) && 
 							<div key="mobile-account-section" className="mobile-account-section">
 								<Link onClick={() => this.toggleMenu()} className="mobile-initials" to={pagePath.Account}>
-									{ getInitial(this.props.userState.firstName, this.props.userState.lastName) }
+									{(userState.photo) ? <img className="img-circle" src={userState.photo} /> :getInitial(userState.firstName, userState.lastName) } 
 								</Link>
 								<Link onClick={() => this.toggleMenu()} className='mobile-name' to={pagePath.Account}>
-									{this.props.userState.firstName + ' ' + this.props.userState.lastName}
+									{userState.firstName + ' ' + userState.lastName}
 								</Link>
 							</div>
 						}

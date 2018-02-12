@@ -88,10 +88,6 @@ export function postApiCall(resource, query, success, failure, loadingOverLay, l
 				if (loadingOverLay) dispatch(hideLoading());
 				if (loadingSection) dispatch(hideSectionLoading());	
 				if (failure) dispatch(failure(error.data));
-				if (resource.indexOf('auth') != -1 ||
-					resource.indexOf('login') != -1 ||
-					resource.indexOf('signup') != -1)
-					dispatch(hideDialog());
 				dispatch(updateServerError(resource, error.response.data.Error.Message ));
 			});
 	};
@@ -124,3 +120,4 @@ export function authPostApiCallWithHeader(resource, data, success, failure, post
 // export function putApiCall(resource, param, action, errorMessage) {
 //  return dispatch => {};
 // }
+

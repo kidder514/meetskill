@@ -32,10 +32,6 @@ export const cleanCategory = () => {
 	};
 };
 
-export const loadCategoryCall = () => {
-	return getApiCall('category', loadCategory, string.ErrorNotAbleToLoadCategory); 
-};
-
 export const loadCourse = (course) => {
 	return {
 		type: 'LOAD_COURSE',
@@ -50,7 +46,12 @@ export const cleanCourse = () => {
 	};
 };
 
-// todo: to fix the error message, not it is duplicated
+
+export const loadCategoryCall = () => {
+	return getApiCall('category', loadCategory, string.ErrorNotAbleToLoadCategory); 
+};
+
+// todo: to fix the error message, now it is duplicated
 export const loadCourseCall = (id) => {
 	return getApiCall('course' + id, loadCourse, string.ErrorNotAbleToLoadCourse);  
 };

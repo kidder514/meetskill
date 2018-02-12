@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { hideDialog } from '../../action/uiAction';
+import { hideDialog, showDialog } from '../../action/uiAction';
 import Login from '../../container/section/Login';
 import ForgotPassword from '../../container/section/ForgotPassword';
 import Signup from '../../container/section/Signup';
@@ -24,7 +24,7 @@ class DialogBox extends Component{
 		case 'forgotPassword':
 			return string.ForgotPasswordDialogHeader;
 		case 'signup':
-			return string.Signup;
+			return string.SignupDialogHeader;
 		default:
 			return string.UnknownDialogHeader;
 		}
@@ -47,14 +47,22 @@ class DialogBox extends Component{
 
 	render(){
 		return (
-			<div onClick={this.props.hide} className={'dialog-box-Wrapper ' + (this.props.isShown ? '':'hidden')}>
+			<div onClick={this.props.hideDialog} className={'dialog-box-Wrapper ' + (this.props.isShown ? '':'hidden')}>
 				<div onClick={(event) => event.stopPropagation()} className="dialog-box">
+					{(this.props.dialogType != 'login') && 
+						<div className="dialog-back-button" onClick={() => this.props.showDialog('login')}>
+							<IconButton 
+								icon="chevron_left" 
+							/>
+							{string.BackToLogin}
+						</div>
+					}
 					<IconButton 
 						className="close-icon" 
 						icon="clear" 
-						onClick={this.props.hide}
+						onClick={this.props.hideDialog}
 					/>
-					<div className="dialog-header">
+					<div className="dialog-header header">
 						{this.renderHeader()}
 					</div>
 					{this.renderComponent()}
@@ -74,7 +82,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		hide: () => {dispatch(hideDialog());}
+		hideDialog: () => {dispatch(hideDialog());},
+		showDialog: (name) => {dispatch(showDialog(name));} 
 	};
 };
 

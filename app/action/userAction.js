@@ -72,6 +72,13 @@ export const facebookLoginCall = (data) => {
 	return postApiCall(resourcePath.facebookLogin, data, login, null, true);    
 };
 
+export const forgotPasswordCall = (data) => {
+	return postApiCall(resourcePath.recoverPassword, data, null, null, false, false);
+};
+
+export const updatePasswordCall = (data) => {
+	return postApiCall(resourcePath.updatePassword, data, null, null, false, false);
+};
 
 export const changePasswordCall = (data, header) => {
 	return authPostApiCallWithHeader(resourcePath.changePassword, data, null, null, header, false, true);

@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
 
 // const mapDispatchToProps = (dispatch) => {
 //  return {
-//         // recoverPasswordCall: (data) => {dispatch(recoverPasswordCall(data))},
 //         // resetAllServerError: () => {dispatch(resetAllServerError())},
 //  }
 // }
