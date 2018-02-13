@@ -76,10 +76,10 @@ class AccountSettingPage extends Component{
 			return (
 				<div className="account-setting-page">
 					<div className="account-page-header">
-						<h1>{string.AccountSetting}</h1>
+						<h3>{string.AccountSetting}</h3>
 						<p>{string.AccountSettingSubheading}</p>
 					</div>
-					<Form>
+					<Form className="account-form">
 						<FormGroup check>
 							<Label check>
 								<Input
@@ -125,8 +125,10 @@ class AccountSettingPage extends Component{
 							</Label>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.paymentAndSetting && this.props.ui.serverErrorMessage}</FormFeedback>
-						{this.renderButton()}
 					</Form>
+					<FormGroup>
+						{this.renderButton()}
+					</FormGroup>
 				</div>
 			);
 		} else {

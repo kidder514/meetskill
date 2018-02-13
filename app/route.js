@@ -37,9 +37,9 @@ export default (
 				<Route path={'*'} component={Category} />
 			</Route>
 			<Route path={pagePath.Account} component={Account}>
-				<IndexRoute component={AccountProfile} />
-				<Route path={pagePath.Account + pagePath.Profile} component={AccountProfile} />             
+				<IndexRoute component={AccountViewPublicProfile} />
 				<Route path={pagePath.Account + pagePath.ViewPublicProfile} component={AccountViewPublicProfile} />
+				<Route path={pagePath.Account + pagePath.Profile} component={AccountProfile} />             
 				<Route path={pagePath.Account + pagePath.Photo} component={AccountPhoto} />             
 				<Route path={pagePath.Account + pagePath.Account} component={AccountAccount} />
 				<Route path={pagePath.Account + pagePath.Setting} component={AccountSetting} />

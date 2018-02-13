@@ -10,7 +10,6 @@ import {
 } from 'reactstrap';
 import NoPermissionPage from '../NoPermissionPage';
 import resourcePath from '../../../resourcePath';
-import LoadingSectionSpinner from '../../../helper/uicomponent/LoadingSectionSpinner';
 
 class AccountDeleteAccountPage extends Component{
 	constructor(props){
@@ -64,10 +63,10 @@ class AccountDeleteAccountPage extends Component{
 			return (
 				<div className="account-delete-page">
 					<div className="account-page-header">
-						<h1>{string.AccountDelete}</h1>
+						<h3>{string.AccountDelete}</h3>
 						<p>{string.AccountDeleteSubheading}</p>
 					</div>
-					<Form>
+					<Form className="account-form">
 						<FormGroup>
 							<Label for="password" >{string.Password}</Label>
 							<Input 
@@ -79,8 +78,10 @@ class AccountDeleteAccountPage extends Component{
 							<FormFeedback>{this.state.errorPassword}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.deleteAccount && this.props.ui.serverErrorMessage}</FormFeedback>
-						{this.returnButton()}
 					</Form>
+					<FormGroup>
+						{this.renderButton()}
+					</FormGroup>
 				</div>
 			);
 		} else {

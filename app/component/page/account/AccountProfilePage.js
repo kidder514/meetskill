@@ -184,11 +184,11 @@ class AccountProfilePage extends Component{
 			return (
 				<div className="account-profile-page">
 					<div className="account-page-header">
-						<h1>{string.AccountProfile}</h1>
+						<h3>{string.AccountProfile}</h3>
 						<p>{string.AccountProfileSubheading}</p>
 					</div>
 	
-					<Form>
+					<Form className="account-form">
 						<FormGroup>
 							<Label for="firstName">{string.FirstName}</Label>
 							<Input 
@@ -348,8 +348,10 @@ class AccountProfilePage extends Component{
 							<FormFeedback>{this.state.errorYoutube}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updateProfile && this.props.ui.serverErrorMessage}</FormFeedback>
-						{this.renderButton()}
 					</Form>
+					<FormGroup>
+						{this.renderButton()}
+					</FormGroup>
 				</div>
 			);
 		} else {

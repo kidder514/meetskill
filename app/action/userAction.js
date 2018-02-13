@@ -78,11 +78,11 @@ export const facebookLoginCall = (data) => {
 };
 
 export const forgotPasswordCall = (data) => {
-	return apiCallBase(resourcePath.recoverPassword, data, 'post');
+	return apiCallBase(resourcePath.recoverPassword, data, 'post', apiCallOptions);
 };
 
 export const updatePasswordCall = (data) => {
-	return apiCallBase(resourcePath.updatePassword, data, 'post');
+	return apiCallBase(resourcePath.updatePassword, data, 'put', apiCallOptions);
 };
 
 const changePasswordCallOptions = {...apiCallOptions,

@@ -111,10 +111,10 @@ class AccountAccountPage extends Component{
 			return (
 				<div className="account-account-page">
 					<div className="account-page-header">
-						<h1>{string.AccountAccount}</h1>
+						<h3>{string.AccountAccount}</h3>
 						<p>{string.AccountAccountSubheading}</p>
 					</div>
-					<Form>
+					<Form className="account-form">
 						<FormGroup>
 							<Label for="email">{string.Email}</Label>
 							<Input 
@@ -162,8 +162,10 @@ class AccountAccountPage extends Component{
 							<FormFeedback>{this.state.errorConfirmNewPassword}</FormFeedback>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.changePassword && this.props.ui.serverErrorMessage}</FormFeedback>
-						{this.renderButton()}
 					</Form>
+					<FormGroup>
+						{this.renderButton()}
+					</FormGroup>
 				</div>
 			);
 		} else {

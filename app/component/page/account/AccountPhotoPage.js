@@ -93,25 +93,25 @@ class AccountPhotoPage extends Component{
 			return (
 				<div className="account-photo-page">
 					<div className="account-page-header">
-						<h1>{string.AccountPhoto}</h1>
+						<h3>{string.AccountPhoto}</h3>
 						<p>{string.AccountPhotoSubheading}</p>
 					</div>
-					<div className="cropper-wrapper">
-						<div className={this.state.showCropper ? 'hidden' : 'photo-preview'}>
-							<span>{string.ImagePreview} </span>
+					<Form className="account-form">
+						<div className="cropper-wrapper">
+							<div className={this.state.showCropper ? 'hidden' : 'photo-preview'}>
+								<span>{string.ImagePreview} </span>
+							</div>
+							<Cropper
+								ref='cropper'
+								src={this.state.file}
+								style={{padding:'0.5em 0', height: '12em', width:'100%' ,}}
+								aspectRatio={1 / 1}
+								guides={false}
+								background={false}
+								zoomable={false}
+								cropend={this.cropend.bind(this)} 
+							/>
 						</div>
-						<Cropper
-							ref='cropper'
-							src={this.state.file}
-							style={{padding:'0.5em 0', height: '12em', width:'100%' ,}}
-							aspectRatio={1 / 1}
-							guides={false}
-							background={false}
-							zoomable={false}
-							cropend={this.cropend.bind(this)} 
-						/>
-					</div>
-					<Form>
 						<FormGroup>
 							<Label for="photoUpload" >{string.UploadYourPhoto}</Label>
 							<Input 
@@ -124,8 +124,10 @@ class AccountPhotoPage extends Component{
 							<FormText>{string.PhotoWarning}</FormText>
 						</FormGroup>
 						<FormFeedback>{this.props.ui.apiCallType == resourcePath.updatePhoto && this.props.ui.serverErrorMessage}</FormFeedback>
-						{this.renderButton()}
 					</Form>
+					<FormGroup>
+						{this.renderButton()}
+					</FormGroup>
 				</div>
 			);
 		} else {

@@ -2,12 +2,13 @@
 
 /* 
 Color
-PrimaryText:  #091e42;
-SecondaryText: #007bd8;
+PrimaryTextBlack:  #091e42; 
+SecondaryTextBlue: #007bd8;
 defaultBorderRadius: 3px;
 greyColor: #848ea0;
 greyBorder&BackgroundColor: #e9e9e9;
 lighterGreyBorder&BackgroundColor: #fafafa;
+lightBluebackgrundColor: #ebf3f8;
 
 boxShadow: 	-moz-box-shadow: 0px 0px 5px #c7c7c7;
 			-webkit-box-shadow: 0px 0px 5px #c7c7c7;
@@ -161,6 +162,12 @@ button.full-width-button {
 }
 
 /*=====================1.2 Reactstrap reset===========================*/
+
+input[type="checkbox"] {
+	font-size: 16px;
+	border-radius: 0;
+	margin-right: 8px;
+}
 
 .invalid-feedback{
 	display: block;
@@ -1024,40 +1031,51 @@ a.menu-item.icon-button{
 	margin: 1em auto 1em auto;
 }
 
-.account-page .name{
-	text-align: center;
-	text-transform: capitalize;
+.account-page .account-side-menu{
+	padding: 0;
+	max-width: 200px;
 }
 
-.account-page .account-side-menu{
-	border: 1px solid #E9E9E9;
-	padding:0;
+.profile-header {
+	font-weight: bold;
+	text-align: center;
+	text-transform: capitalize;	
+}
 
+.profile-header .name{
+	padding-top: 10px;	
 }
 
 .account-page .side-menu{
 	list-style: none;
 	padding-left: 0;
-	padding: 2em 0 2em 0;
+	padding: 0.5em 0;
+	background-color: #fafafa;
 }
 
 .account-page .side-menu-item a{
+	border-left: 2px solid #fafafa;
 	display: inline-block;
 	width: 100%;
-	padding: 0.5em 1em;
+	padding: 0.7em 1em;
+	font-weight: bold;
 }
 
 .account-page .side-menu-item a.active,
 .account-page .side-menu-item a:hover{
-	background-color: #E9E9E9;
+	color: #007bd8;
+	border-left: 2px solid #007bd8;
+	background-color: #ebf3f8;
 }
 
 .account-page-header{
-	text-align: center;
-	padding: 1.5em 0 ;
-	margin: 0 0 3em 0; 
-	border-top: 1px solid #E9E9E9;
-	border-bottom: 1px solid #E9E9E9;
+	padding: 0 0 2em;
+}
+
+.account-form {
+	background-color: #fafafa;
+	padding: 2em 3em;
+	margin-bottom: 2em;
 }
 
 /* 4.7 Photo */

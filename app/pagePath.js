@@ -7,7 +7,7 @@ const pagePath = {
 	Help:'/help',
 	Inbox: '/inbox',
 	ViewPublicProfile: '/viewpublicprofile',    
-	Profile: '/account',
+	Profile: '/profile',
 	Photo:'/photo',
 	MyCourses: '/mycourses',
 	WishList: '/wishlist',
