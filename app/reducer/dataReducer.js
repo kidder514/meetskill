@@ -1,4 +1,4 @@
-var initialUserState = {
+const initialUserState = {
 	list: [
 		{
 			'_class': 'course',
@@ -1389,41 +1389,136 @@ var initialUserState = {
 		'content_info': '25 hours',
 		'buyable_object_type': 'course',
 		'last_update_date': '2016-10-30'
-	}
+	},
+	myCourseList : [
+		{
+			'_class': 'course',
+			'id': 437490,
+			'title': 'The Complete Ethical Hacking Course: Beginner to Advanced!',
+			'url': '/penetration-testing/',
+			'is_paid': true,
+			'price': 'A$200',
+			'visible_instructors': [
+				{
+					'_class': 'user',
+					'id': 10843730,
+					'title': 'Ermin Kreponic',
+					'name': 'Ermin',
+					'display_name': 'Ermin Kreponic',
+					'job_title': 'IT Expert',
+					'image_50x50': 'https://udemy-images.udemy.com/user/50x50/10843730_f039_3.jpg',
+					'image_100x100': 'https://udemy-images.udemy.com/user/100x100/10843730_f039_3.jpg',
+					'initials': 'EK',
+					'url': '/user/erminkreponic/'
+				}
+			],
+			'image_125_H': 'https://udemy-images.udemy.com/course/125_H/437490_c76a_4.jpg',
+			'image_240x135': 'https://udemy-images.udemy.com/course/240x135/437490_c76a_4.jpg',
+			'is_practice_test_course': false,
+			'image_480x270': 'https://udemy-images.udemy.com/course/480x270/437490_c76a_4.jpg',
+			'published_title': 'penetration-testing',
+			'num_subscribers': 204915,
+			'discount': {
+				'price': {
+					'amount': 19,
+					'currency': 'AUD',
+					'price_string': 'A$19',
+					'currency_symbol': 'A$'
+				},
+				'list_price': {
+					'amount': 200,
+					'currency': 'AUD',
+					'price_string': 'A$200',
+					'currency_symbol': 'A$'
+				},
+				'saving_price': {
+					'amount': 181,
+					'currency': 'AUD',
+					'price_string': 'A$181',
+					'currency_symbol': 'A$'
+				},
+				'discount_percent_for_display': 90,
+				'buyable': {
+					'id': 437490,
+					'type': 'course'
+				},
+				'campaign': {
+					'code': 'R1O9SG1017DEAL15',
+					'end_time': '2017-10-31T18:22:32-07:00',
+					'is_instructor_created': false,
+					'is_public': true,
+					'start_time': '2017-10-23T07:00:00Z',
+					'campaign_type': 'deal',
+					'uses_remaining': -1,
+					'maximum_uses': -1
+				},
+				'rate': {
+					'type': 'fixed',
+					'value': 15
+				}
+			},
+			'avg_rating_recent': 4.350906400295967,
+			'num_reviews': 14551,
+			'is_wishlisted': false,
+			'num_published_lectures': 113,
+			'image_75x75': 'https://udemy-images.udemy.com/course/75x75/437490_c76a_4.jpg',
+			'created': '2015-03-03T13:04:51Z',
+			'estimated_content_length': 1510,
+			'content_info': '25 hours',
+			'buyable_object_type': 'course',
+			'last_update_date': '2016-10-30'
+		}
+	]
 };
 
+// const initialUserState = {
+// 	courseList: [],
+// 	myCourseList: [],
+//  category: [],
+// 	singleCourse: {}
+// }
 
 function data(state = initialUserState, action) {
 	switch (action.type) {
-	case 'LOAD_LIST':
+	case 'LOAD_COURSE_LIST':
 		return {
 			...state,
-			list: action.list
+			courseList: action.list
+		};
+	case 'LOAD_MYCOURSE_LIST':
+		return {
+			...state,
+			myCourseList: action.list
 		};
 	case 'LOAD_CATEGORY':
 		return {
 			...state,
 			category: action.category
 		};
-	case 'LOAD_COURSE':
+	case 'LOAD_SINGLE_COURSE':
 		return {
 			...state,
-			course: action.course
+			singleCourse: action.course
 		};
-	case 'CLEAN_LIST':
+	case 'CLEAN_COURSE_LIST':
 		return {
 			...state,
-			list: []
+			courseList: []
+		};
+	case 'CLEAN_MY_COURSE_LIST':
+		return {
+			...state,
+			myCourseList: []
 		};
 	case 'CLEAN_CATEGORY':
 		return {
 			...state,
 			category: []
 		};
-	case 'CLEAN_COURSE':
+	case 'CLEAN_SINGLE_COURSE':
 		return {
 			...state,
-			course: {}
+			singleCourse: {}
 		};
 	default:
 		return state;

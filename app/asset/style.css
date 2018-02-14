@@ -161,6 +161,22 @@ button.full-width-button {
 	width: 100%;
 }
 
+.width80{
+	width: 80%;
+}
+
+.width60{
+	width: 60%;
+}
+
+.width40{
+	width: 40%;
+}
+
+.width20{
+	width: 20%;
+}
+
 /*=====================1.2 Reactstrap reset===========================*/
 
 input[type="checkbox"] {
@@ -226,6 +242,22 @@ button:hover{
 	text-transform: capitalize;
 }
 
+button.header-button,
+button.header-button:focus {
+	color:	#091e42 !important;
+	border: unset;
+	background-color: #fff;
+	-moz-box-shadow: 0px 0px 5px #c7c7c7;
+	-webkit-box-shadow: 0px 0px 5px #c7c7c7;
+	box-shadow: 0px 0px 5px #c7c7c7;
+	padding: 0.375rem 3rem;
+}
+
+button.header-button:hover {
+	background-color: #007bd8;
+	color: #fff !important;
+}
+
 .global-config-text{
 	text-align: center;
 	padding-top: 3em;
@@ -237,7 +269,6 @@ button:hover{
 
 .wrapper{
 	margin-top: 80px;
-	padding-top: 65px;
 }
 
 .dialog-box-Wrapper,
@@ -1109,6 +1140,21 @@ a.menu-item.icon-button{
 }
 
 /* 4.8 instructor Dashboard */
+.instructor-page-header-wrapper{
+	background: linear-gradient(to right, #007ad8, #00c1d9);
+	margin-bottom: 30px;
+}
+
+.instructor-page-header {
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 6em;
+	padding-bottom: 6em;	
+}
+
+
+
 /* 4.9 payment */
 
 

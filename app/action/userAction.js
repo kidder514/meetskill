@@ -133,5 +133,5 @@ const activateInstructorCallOptions = {...apiCallOptions,
 	loadingOverLay: true
 };
 export const activateInstructorCall = (data) => {
-	return apiCallBase(resourcePath.activateInstructor, data, 'post', activateInstructorCallOptions);
+	return apiCallBase(resourcePath.activateInstructor, data, 'put', activateInstructorCallOptions);
 };

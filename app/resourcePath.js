@@ -13,6 +13,7 @@ const resourcePath = {
 	deleteAccount:'/api/model/deleteuser',
 	activateInstructor: '/api/model/reginstructor',
 	addCourse: '/api/model/course',
+	loadMyCourseList: 'undefined',
 	init:'/init'
 };
 

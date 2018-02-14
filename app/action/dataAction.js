@@ -1,20 +1,43 @@
-export const loadList = (data) => {
+import {apiCallOptions, apiCallBase} from './appAction';
+import resourcePath from '../resourcePath';
+
+export const loadCourseList = (list) => {
 	return {
-		type: 'LOAD_LIST',
-		list: data
+		type: 'LOAD_COURSE_LIST',
+		list
 	};
 };
 
-export const cleanList = () => {
+export const loadMyCourseList = (list) => {
 	return {
-		type: 'CLEAN_LIST'
+		type: 'LOAD_MYCOURSE_LIST',
+		list
 	};
 };
 
 export const loadCategory = (category) => {
 	return {
 		type: 'LOAD_CATEGORY',
-		category: category
+		category
+	};
+};
+
+export const loadCourse = (course) => {
+	return {
+		type: 'LOAD_SINGLE_COURSE',
+		course
+	};
+};
+
+export const cleanCourseList = () => {
+	return {
+		type: 'CLEAN_COURSE_LIST'
+	};
+};
+
+export const cleanMyCourseList = () => {
+	return {
+		type: 'CLEAN_MYCOURSE_LIST',
 	};
 };
 
@@ -24,15 +47,15 @@ export const cleanCategory = () => {
 	};
 };
 
-export const loadCourse = (course) => {
+export const cleanSingleCourse = () => {
 	return {
-		type: 'LOAD_COURSE',
-		course: course
+		type: 'CLEAN_SINGLE_COURSE'
 	};
 };
 
-export const cleanCourse = () => {
-	return {
-		type: 'CLEAN_COURSE'
-	};
+const loadMyCourseListCallOptions = {...apiCallOptions,
+	success: loadMyCourseList,
+	loadingSection: true};
+export const loadMyCourseListCall = () => {
+	return apiCallBase(resourcePath.loadMyCourseList, null, 'post', loadMyCourseListCallOptions);    
 };
