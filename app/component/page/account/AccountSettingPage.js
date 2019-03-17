@@ -79,7 +79,7 @@ class AccountSettingPage extends Component{
 						<h3>{string.AccountSetting}</h3>
 						<p>{string.AccountSettingSubheading}</p>
 					</div>
-					<Form className="account-form">
+					<Form className="multi-col-menu-form">
 						<FormGroup check>
 							<Label check>
 								<Input

@@ -3,7 +3,7 @@ import CartItemPopOverSection from '../../../component/common/menu/CartItemPopOv
 
 const mapStateToProps = (state) => {
 	return {
-		list: state.data.list
+		data: state.data
 	};
 };
 

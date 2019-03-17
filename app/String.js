@@ -65,6 +65,7 @@ const string = new LocalizedString({
 		Login: 'Login',
 		Signup: 'Sign up',
 		Inbox: 'Inbox',
+
 		MyCourses: 'My Courses',
 		WishList: 'Wish List',
 		MyProfile: 'My Profile',
@@ -80,6 +81,17 @@ const string = new LocalizedString({
 		CreateCourseTitle: 'Create a New Course',
 		CreateCourseContent: 'ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
 		CreateNewCourse: 'Create New Course',
+		TypeYourCourseName: 'Type a name for you new course',
+		ErrorTitleCannotBeEmpty: 'Title cannot be empty',
+		ErrorTitleCanOnlyBeAlphabetsAndNumbers: 'Title should only contain alphabetic letters or numbers',		
+		EditCourseGoal:'Course Goals',
+		EditCoursePractice:'Practice Tests',
+		EditCourseLanding:'Course Landing Page',
+		EditCoursePrice:'Price & Coupons',
+		EditCourseMessage:'Automatic Messages',
+		Published: 'Published',
+		Draft: 'Draft',
+
 		Messages:'Messages',
 		Help:'Help',
 		Wallet:'Wallet',
@@ -87,6 +99,7 @@ const string = new LocalizedString({
 		Notification: 'Notifications',
 		PurchaseHistory:'Purchase History',
 		InstructorDashboard: 'Instructor Dashboard',
+	
 		AccountViewPublicProfile: 'View public Profile',
 		AccountMyCourses: 'My Courses',
 		AccountPhoto: 'Photo',        

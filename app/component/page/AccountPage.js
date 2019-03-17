@@ -34,7 +34,7 @@ class AccountPage extends Component{
 					<Container>
 						<Row>
 							<Col xs="12" sm="3">
-								<div className="account-side-menu">
+								<div className="multi-col-menu">
 									<div className="profile-header">
 										{this.renderPhoto()}
 										<div className="name">{user.firstName + ' ' + user.lastName}</div>

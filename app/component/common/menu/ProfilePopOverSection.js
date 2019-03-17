@@ -76,11 +76,7 @@ class ProfilePopOverSection extends Component {
 	}
 
 	render() {
-		if( this.props.list.length <= 0){
-			return <LoadingSpinner />;
-		} else {
-			return (this.renderComponent());
-		}
+		return (this.renderComponent());
 	}
 }
 

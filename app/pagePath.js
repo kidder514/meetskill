@@ -18,9 +18,16 @@ const pagePath = {
 	ShoppingCart:'/shoppingcart',
 	Notification:'/notification',
 	InstructorDashboard:'/instructordashboard',
+	AddNewCourse: '/addnewcourse',
+	EditCourse: '/editcourse',
+	EditCourseGoal:'/goals',
+	EditCoursePractice:'/practice',
+	EditCourseLanding:'/landing',
+	EditCoursePrice:'/price',
+	EditCourseMessage:'/Message',
+	
 	ChangePassword: '/change-password',
 	Logout: '/logout',
-	AddNewCourse: '/addnewcourse',
 };
 
 export default pagePath;

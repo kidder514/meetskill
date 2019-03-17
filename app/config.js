@@ -3,6 +3,7 @@ const config = {
 	APIserver:'https://jsonplaceholder.typicode.com/users',
 	tempAPIserver:'http://api.meetskill.com',
 	googleLoginClientId:'1044894519430-hv76r463h1oec25f05r8i530djhjp92m.apps.googleusercontent.com',
+	singleMyCourseImagePlaceHolder: 'http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/4/11/1397210130748/Spring-Lamb.-Image-shot-2-011.jpg',
 	FBAppId: '731831407006838',
 	recaptchaSiteKey:'6LcE7jkUAAAAAJ6x7J8XtS90EbR2N4rvkokCcezF',
 	colorIce:'#99D3Df',

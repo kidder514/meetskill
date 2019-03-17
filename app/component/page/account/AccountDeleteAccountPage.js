@@ -66,7 +66,7 @@ class AccountDeleteAccountPage extends Component{
 						<h3>{string.AccountDelete}</h3>
 						<p>{string.AccountDeleteSubheading}</p>
 					</div>
-					<Form className="account-form">
+					<Form className="multi-col-menu-form">
 						<FormGroup>
 							<Label for="password" >{string.Password}</Label>
 							<Input 

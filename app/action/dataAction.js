@@ -1,17 +1,17 @@
 import {apiCallOptions, apiCallBase} from './appAction';
 import resourcePath from '../resourcePath';
 
-export const loadCourseList = (list) => {
+export const loadCourseList = (courseList) => {
 	return {
 		type: 'LOAD_COURSE_LIST',
-		list
+		courseList
 	};
 };
 
-export const loadMyCourseList = (list) => {
+export const loadMyCourseList = (myCourseList) => {
 	return {
 		type: 'LOAD_MYCOURSE_LIST',
-		list
+		myCourseList
 	};
 };
 
@@ -22,10 +22,17 @@ export const loadCategory = (category) => {
 	};
 };
 
-export const loadCourse = (course) => {
+export const loadSingleCourse = (singleCourse) => {
 	return {
 		type: 'LOAD_SINGLE_COURSE',
-		course
+		singleCourse: singleCourse.Data
+	};
+};
+
+export const loadSingleMyCourse = (singleMyCourse) => {
+	return {
+		type: 'LOAD_SINGLE_MYCOURSE',
+		singleMyCourse: singleMyCourse.Data
 	};
 };
 
@@ -53,9 +60,33 @@ export const cleanSingleCourse = () => {
 	};
 };
 
+export const cleanSingleMyCourse = () => {
+	return {
+		type: 'CLEAN_SINGLE_MYCOURSE'
+	};
+};
+
 const loadMyCourseListCallOptions = {...apiCallOptions,
 	success: loadMyCourseList,
 	loadingSection: true};
 export const loadMyCourseListCall = () => {
 	return apiCallBase(resourcePath.loadMyCourseList, null, 'post', loadMyCourseListCallOptions);    
+};
+
+const createNewCourseTitleOptions = {...apiCallOptions,
+	success: loadSingleMyCourse,
+	loadingSection: true,
+	auth: true
+};
+export const createNewCourseTitleCall = (data) => {
+	return apiCallBase(resourcePath.loadSingleMyCourse, data, 'post', createNewCourseTitleOptions);
+};
+
+const loadSingleMyCourseCallOptions = {...apiCallOptions,
+	success: loadSingleMyCourse,
+	loadingSection: true,
+	auth: true
+};
+export const loadSingleMyCourseCall = () => {
+	return apiCallBase(resourcePath.loadSingleMyCourse, null, 'get', loadSingleMyCourseCallOptions);
 };

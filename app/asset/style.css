@@ -604,6 +604,11 @@ button.header-button:hover {
 	text-align: center;
 }
 
+.mobile-account-section a.mobile-initials img{
+	height: 100%;
+	width: auto;
+}
+
 .mobile-menu .material-icons{
 	display: block;
 }
@@ -1062,7 +1067,7 @@ a.menu-item.icon-button{
 	margin: 1em auto 1em auto;
 }
 
-.account-page .account-side-menu{
+.multi-col-menu{
 	padding: 0;
 	max-width: 200px;
 }
@@ -1077,14 +1082,14 @@ a.menu-item.icon-button{
 	padding-top: 10px;	
 }
 
-.account-page .side-menu{
+.multi-col-menu .side-menu{
 	list-style: none;
 	padding-left: 0;
 	padding: 0.5em 0;
 	background-color: #fafafa;
 }
 
-.account-page .side-menu-item a{
+.multi-col-menu .side-menu-item a{
 	border-left: 2px solid #fafafa;
 	display: inline-block;
 	width: 100%;
@@ -1092,8 +1097,8 @@ a.menu-item.icon-button{
 	font-weight: bold;
 }
 
-.account-page .side-menu-item a.active,
-.account-page .side-menu-item a:hover{
+.multi-col-menu .side-menu-item a.active,
+.multi-col-menue .side-menu-item a:hover{
 	color: #007bd8;
 	border-left: 2px solid #007bd8;
 	background-color: #ebf3f8;
@@ -1103,7 +1108,7 @@ a.menu-item.icon-button{
 	padding: 0 0 2em;
 }
 
-.account-form {
+.multi-col-menu-form {
 	background-color: #fafafa;
 	padding: 2em 3em;
 	margin-bottom: 2em;
@@ -1151,6 +1156,15 @@ a.menu-item.icon-button{
 	justify-content: space-between;
 	padding-top: 6em;
 	padding-bottom: 6em;	
+}
+
+.edit-course-page {
+	padding: 1em 0 2em 0;
+}
+
+.edit-course-page-header img{
+	width: 100%;
+	height: auto;
 }
 
 

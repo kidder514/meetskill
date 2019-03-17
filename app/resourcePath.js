@@ -14,6 +14,7 @@ const resourcePath = {
 	activateInstructor: '/api/model/reginstructor',
 	addCourse: '/api/model/course',
 	loadMyCourseList: 'undefined',
+	loadSingleMyCourse: '/api/model/course',
 	init:'/init'
 };
 

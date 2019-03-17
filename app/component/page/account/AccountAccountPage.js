@@ -114,7 +114,7 @@ class AccountAccountPage extends Component{
 						<h3>{string.AccountAccount}</h3>
 						<p>{string.AccountAccountSubheading}</p>
 					</div>
-					<Form className="account-form">
+					<Form className="multi-col-menu-form">
 						<FormGroup>
 							<Label for="email">{string.Email}</Label>
 							<Input 

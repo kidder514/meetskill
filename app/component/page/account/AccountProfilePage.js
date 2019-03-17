@@ -188,7 +188,7 @@ class AccountProfilePage extends Component{
 						<p>{string.AccountProfileSubheading}</p>
 					</div>
 	
-					<Form className="account-form">
+					<Form className="multi-col-menu-form">
 						<FormGroup>
 							<Label for="firstName">{string.FirstName}</Label>
 							<Input 

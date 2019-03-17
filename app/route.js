@@ -22,6 +22,12 @@ import ShoppingCart from './container/page/ShoppingCart';
 import Notification from './container/page/Notification';
 import InstructorDashboard from './container/page/InstructorDashboard';
 import AddNewCourse from './container/page/AddNewCourse';
+import EditCourse from './container/page/editCourse/EditCourse';
+import EditCourseGoal from './container/page/editCourse/EditCourseGoal';
+import EditCoursePractice from './container/page/editCourse/EditCoursePractice';
+import EditCourseLanding from './container/page/editCourse/EditCourseLanding';
+import EditCoursePrice from './container/page/editCourse/EditCoursePrice';
+import EditCourseMessage from './container/page/editCourse/EditCourseMessage';
 import RecoverPassword from './container/page/RecoverPassword';
 import Logout from './container/Logout';
 import NotFoundPage from './component/page/NotFoundPage';
@@ -45,11 +51,19 @@ export default (
 				<Route path={pagePath.Account + pagePath.Setting} component={AccountSetting} />
 				<Route path={pagePath.Account + pagePath.PurchaseHistory} component={AccountPurchaseHistory} />             
 				<Route path={pagePath.Account + pagePath.DeleteAccount} component={AccountDeleteAccount} />
-			</Route>                
+			</Route>
+			<Route path={pagePath.EditCourse + '/:courseId'} component={EditCourse}>
+				<IndexRoute component={EditCourseGoal} />
+				<Route path={pagePath.EditCourse + '/:courseId' + pagePath.EditCourseGoal} component={EditCourseGoal} />
+				<Route path={pagePath.EditCourse + '/:courseId' + pagePath.EditCoursePractice} component={EditCoursePractice} />             
+				<Route path={pagePath.EditCourse + '/:courseId' + pagePath.EditCourseLanding} component={EditCourseLanding} />             
+				<Route path={pagePath.EditCourse + '/:courseId' + pagePath.EditCoursePrice} component={EditCoursePrice} />
+				<Route path={pagePath.EditCourse + '/:courseId' + pagePath.EditCourseMessage} component={EditCourseMessage} />
+			</Route>            
 			<Route path={pagePath.ShoppingCart} component={ShoppingCart} />
 			<Route path={pagePath.Notification} component={Notification} />
 			<Route path={pagePath.InstructorDashboard} component={InstructorDashboard} />
-			<Route path={pagePath.AddNewCourse} component={AddNewCourse} />			
+			<Route path={pagePath.AddNewCourse} component={AddNewCourse} />								
 			<Route path={pagePath.ChangePassword} component={RecoverPassword} />
 			<Route path={pagePath.SingleCourse + '/:id'} component={SingleCourse} />
 			<Route path={pagePath.Mycourses} component={MyCourse} />

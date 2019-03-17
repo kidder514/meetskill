@@ -96,7 +96,7 @@ class AccountPhotoPage extends Component{
 						<h3>{string.AccountPhoto}</h3>
 						<p>{string.AccountPhotoSubheading}</p>
 					</div>
-					<Form className="account-form">
+					<Form className="multi-col-menu-form">
 						<div className="cropper-wrapper">
 							<div className={this.state.showCropper ? 'hidden' : 'photo-preview'}>
 								<span>{string.ImagePreview} </span>
